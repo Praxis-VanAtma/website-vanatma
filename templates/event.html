@@ -22,6 +22,7 @@
       <div>
         <div class="facts" style="flex-direction:column;align-items:flex-start;margin-top:0">
           <span>{{ m.icon('clock') }}{{ e.when }}</span>
+          {% if e.times %}<span>{{ m.icon('clock') }}{{ e.times }}</span>{% endif %}
           <span>{{ m.icon('pin') }}{{ e.where }}</span>
           <span>{{ m.icon('users') }}{{ e.lead }}</span>
           {% if e.capacity %}<span>{{ m.icon('users') }}{{ e.capacity }}</span>{% endif %}
@@ -34,4 +35,17 @@
     </article>
   </div>
 </section>
+{% if e.program %}
+<section class="sec sand">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Ablauf</p><h2>Dein Wochenende im Wald</h2></div>
+    <div class="program">{% for d in e.program %}
+      <div class="pday"><p class="pdate">{{ d.day }} · {{ d.time }}</p><h3>{{ d.title }}</h3>
+        <ul class="check">{% for i in d['items'] %}<li>{{ m.icon('check') }}<span>{{ i }}</span></li>{% endfor %}</ul></div>
+    {% endfor %}</div>
+    <p class="note" style="margin-top:1.4rem">Der Ablauf ist ein Rahmen. Wir richten uns nach der Gruppe, dem Wetter und dem, was der Wald uns schenkt.</p>
+    <div class="btns" style="margin-top:1.2rem"><a class="btn btn-primary" href="{{ url('/kontakt/') }}?thema={{ ('Anmeldung: ' ~ e.title)|urlencode }}#formular">Jetzt anmelden</a></div>
+  </div>
+</section>
+{% endif %}
 {% endblock %}

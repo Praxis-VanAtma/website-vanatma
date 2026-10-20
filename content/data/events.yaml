@@ -10,22 +10,55 @@ events:
     start: 2026-11-06
     end: 2026-11-08
     when: Freitag bis Sonntag, 6. bis 8. November 2026
+    times: "Fr 14 bis ca. 18 Uhr · Sa 10 bis ca. 18 Uhr · So 10 bis ca. 16 Uhr"
     where: Praxis VanAtma, Bayerweg 57, Sankt Englmar
-    lead: Mit Steffi und Stephan
+    lead: Mit Dr. med. Stefanie Klappenberger und Stephan Dietl
     capacity: Kleine Gruppe mit maximal 8 Teilnehmenden
     price: Energieausgleich 290 €
     price_value: 290
     price_note: Eröffnungspreis 240 € bei Anmeldung bis 25.10.2026
     image: event-waldstille.jpg
     description:
-      - Der November schenkt dem Bayerischen Wald eine besondere Ruhe. Diese Stille nutzen wir für drei Tage zum Durchatmen, Loslassen und Ankommen bei dir selbst, in der Praxis und draußen im Wald.
-      - Abends geht es für dich entspannt nach Hause.
+      - "Der November schenkt dem Bayerischen Wald eine besondere Ruhe. Diese Stille nutzen wir für drei Tage zum Durchatmen, Loslassen und Ankommen bei dir selbst, in der Praxis und draußen im Wald."
+      - "Durch das Wochenende zieht sich ein roter Faden: Impulse aus Reality Transurfing nach Vadim Zeland. Statt zu wünschen und zu hoffen, übst du, bewusst zu wählen. Aus „Ich wünsche mir …“ wird „Ich wähle …“. Diese kleine Verschiebung verändert, wie du deinem Leben begegnest: leichter, klarer und mit mehr Vertrauen."
+      - "Zum Programm gehört für jede Teilnehmerin und jeden Teilnehmer eine Sitzung IHHT-Zelltraining, Höhenluft für deine Zellen. Vorab führt Dr. med. Stefanie Klappenberger ein kurzes ärztliches Vorgespräch mit dir."
+      - "Abends geht es für dich entspannt nach Hause, und am nächsten Morgen kommst du ausgeruht wieder in den Wald."
     includes:
-      - Stille Waldwege
+      - Stille Waldwege und Räucherrituale
       - Meditationen
-      - Räucherrituale
+      - Übungen aus Reality Transurfing
       - Impulse zu den universellen Gesetzen
-      - Gesundes Mittagessen und Nachmittagssnack
+      - Eine Sitzung IHHT-Zelltraining mit ärztlichem Vorgespräch
+      - Gesundes Mittagessen am Samstag und Sonntag, dazu ein Nachmittagssnack
+    program:
+      - day: "Freitag, 6. November"
+        time: "14 bis ca. 18 Uhr"
+        title: Ankommen und wählen
+        items:
+          - Ankommen bei Tee und Kennenlernen in der Runde
+          - Räucherritual zur Eröffnung
+          - "Einstieg in Reality Transurfing: vom „Ich wünsche“ zum „Ich wähle“"
+          - Kurzes ärztliches Vorgespräch für deine IHHT-Sitzung
+          - Erster stiller Waldgang in der Dämmerung
+      - day: "Samstag, 7. November"
+        time: "10 bis ca. 18 Uhr"
+        title: Loslassen und still werden
+        items:
+          - Morgenmeditation
+          - "Stiller Waldweg mit Übungen: Wichtigkeit loslassen und die Pendel erkennen, die dir Energie ziehen"
+          - Gesundes Mittagessen
+          - Impulse zu den universellen Gesetzen
+          - IHHT-Zelltraining in kleinen Zeitfenstern
+          - Nachmittagssnack und gemeinsame Runde
+      - day: "Sonntag, 8. November"
+        time: "10 bis ca. 16 Uhr"
+        title: Verankern und mitnehmen
+        items:
+          - Meditation und das Formulieren deiner Absicht
+          - Ritual im Wald
+          - Gesundes Mittagessen
+          - IHHT-Zelltraining in kleinen Zeitfenstern
+          - "Abschlusskreis: was du mit in deinen Alltag nimmst"
 
   - slug: mitananda-2026
     title: Mitananda
