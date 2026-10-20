@@ -120,6 +120,26 @@ for e in EVENTS:
 UPCOMING = sorted([e for e in EVENTS if (e.get("end") or e["start"]) >= TODAY], key=lambda e: e["start"])
 
 OFFERS_BY_SLUG = {o["slug"]: o for o in OFFERS}
+
+# Blog-Themen: abgeleitet aus dem verknüpften Angebot (related), überschreibbar mit "thema:" im Front Matter
+for p in POSTS:
+    t = p.get("thema") or OFFERS_BY_SLUG.get(p.get("related", ""), {}).get("group") or "alltag"
+    p["thema"] = t if t in GROUPS else "alltag"
+    p["thema_title"] = GROUPS[p["thema"]]["title"]
+BLOG_THEMES = [{"slug": k, "title": v["title"], "count": sum(1 for p in POSTS if p["thema"] == k)}
+               for k, v in GROUPS.items()]
+BLOG_THEMES = [t for t in BLOG_THEMES if t["count"]]
+
+
+def blog_archive(posts):
+    months = []
+    for p in posts:
+        label = f"{MONTHS[p['date'].month - 1]} {p['date'].year}"
+        if not months or months[-1]["label"] != label:
+            months.append({"label": label, "posts": []})
+        months[-1]["posts"].append(p)
+    return months
+
 PAGES = {}
 for p in (CONTENT / "pages").glob("*.md"):
     meta, body = read_front_matter(p)
@@ -244,7 +264,14 @@ def build():
            schema=jsonld(*ev_schema))
 
     render("blog.html", "/blog/", nav="blog", title="Blog · Heilraum Wissenswertes · VanAtma",
-           description="Impulse und neue Erkenntnisse aus Naturmedizin, Longevity und Seelenarbeit von der Praxis VanAtma in Sankt Englmar.")
+           description="Impulse und neue Erkenntnisse aus Naturmedizin, Longevity und Seelenarbeit von der Praxis VanAtma in Sankt Englmar.",
+           themes=BLOG_THEMES, active="", list_posts=POSTS, archive=blog_archive(POSTS))
+    for t in BLOG_THEMES:
+        tp = [p for p in POSTS if p["thema"] == t["slug"]]
+        render("blog.html", f"/blog/thema/{t['slug']}/", nav="blog", themes=BLOG_THEMES, active=t["slug"],
+               list_posts=tp, archive=blog_archive(tp), theme=t,
+               title=f"{t['title']} · Blog · VanAtma",
+               description=f"Blogbeiträge zum Thema {t['title']} aus der Praxis VanAtma in Sankt Englmar.")
     for p in POSTS:
         author = SITE["people"].get(p.get("author", "stephan"), {})
         s = {"@type": "BlogPosting", "headline": p["title"], "datePublished": p["date"].isoformat(),

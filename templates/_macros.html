@@ -67,6 +67,20 @@
 </a>
 {%- endmacro %}
 
+{% macro post_feature(p) -%}
+<a class="post-feature" href="{{ url('/blog/' ~ p.slug ~ '/') }}">
+  <div class="pic">{{ photo(p.image, p.title) }}</div>
+  <div class="body">
+    <p class="eyebrow">Neuester Beitrag</p>
+    <span class="cat">{{ p.category }}</span>
+    <h2>{{ p.title }}</h2>
+    <p>{{ p.excerpt }}</p>
+    <p class="meta"><time datetime="{{ p.date }}">{{ date_de(p.date) }}</time> · {{ p.minutes }} Min. Lesezeit</p>
+    <span class="more">Weiterlesen →</span>
+  </div>
+</a>
+{%- endmacro %}
+
 {% macro faq_list(items) -%}
 <div class="faq">
 {% for f in items %}<details{% if loop.first %} open{% endif %}><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>

@@ -4,9 +4,25 @@
   {{ m.pic("hero-blog.jpg") }}
   <div class="wrap">
     <p class="eyebrow">Heilraum Wissenswertes</p>
-    <h1 id="h1">Blog</h1>
+    <h1 id="h1">{% if theme %}{{ theme.title }}{% else %}Blog{% endif %}</h1>
     <p class="lead">Impulse, Hintergründe und neue Erkenntnisse aus Naturmedizin, Longevity und Seelenarbeit.</p>
   </div>
 </section>
-<section class="sec tight-top"><div class="wrap"><div class="posts">{% for p in posts %}{{ m.post_card(p) }}{% endfor %}</div></div></section>
+<section class="sec tight-top"><div class="wrap">
+  <nav class="blog-themes" aria-label="Blog nach Themen">
+    <a class="chip" href="{{ url('/blog/') }}"{% if not active %} aria-current="page"{% endif %}>Alle Beiträge <span>{{ posts|length }}</span></a>
+    {% for t in themes %}<a class="chip" href="{{ url('/blog/thema/' ~ t.slug ~ '/') }}"{% if active == t.slug %} aria-current="page"{% endif %}>{{ t.title }} <span>{{ t.count }}</span></a>
+    {% endfor %}
+  </nav>
+  {% if list_posts %}{{ m.post_feature(list_posts[0]) }}{% endif %}
+  {% if list_posts|length > 1 %}<div class="posts">{% for p in list_posts[1:] %}{{ m.post_card(p) }}{% endfor %}</div>{% endif %}
+  {% if list_posts|length > 3 %}
+  <details class="archive">
+    <summary>Alle Beiträge nach Monat</summary>
+    <div class="months">{% for mo in archive %}
+      <div><h3>{{ mo.label }}</h3><ul>{% for p in mo.posts %}<li><a href="{{ url('/blog/' ~ p.slug ~ '/') }}">{{ p.title }}</a> <small>{{ p.category }}</small></li>{% endfor %}</ul></div>
+    {% endfor %}</div>
+  </details>
+  {% endif %}
+</div></section>
 {% endblock %}
