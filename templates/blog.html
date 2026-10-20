@@ -3,13 +3,13 @@
 <section class="fixed top hero sub" aria-labelledby="h1">
   {{ m.pic("hero-blog.jpg") }}
   <div class="wrap">
-    <p class="eyebrow">Heilraum Wissenswertes</p>
-    <h1 id="h1">{% if theme %}{{ theme.title }}{% else %}Blog{% endif %}</h1>
+    <p class="eyebrow">{% if theme %}Heilraum{% else %}Impulse und Wissenswertes{% endif %}</p>
+    <h1 id="h1">{% if theme %}{{ theme.title }}{% else %}Heilraum{% endif %}</h1>
     <p class="lead">Impulse, Hintergründe und neue Erkenntnisse aus Naturmedizin, Longevity und Seelenarbeit.</p>
   </div>
 </section>
 <section class="sec tight-top"><div class="wrap">
-  <nav class="blog-themes" aria-label="Blog nach Themen">
+  <nav class="blog-themes" aria-label="Heilraum nach Themen">
     <a class="chip" href="{{ url('/blog/') }}"{% if not active %} aria-current="page"{% endif %}>Alle Beiträge <span>{{ posts|length }}</span></a>
     {% for t in themes %}<a class="chip" href="{{ url('/blog/thema/' ~ t.slug ~ '/') }}"{% if active == t.slug %} aria-current="page"{% endif %}>{{ t.title }} <span>{{ t.count }}</span></a>
     {% endfor %}

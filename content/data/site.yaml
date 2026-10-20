@@ -66,5 +66,5 @@ nav:
   - { title: Angebote, href: /angebote/, key: angebote }
   - { title: Philosophie, href: /philosophie/, key: philosophie }
   - { title: Veranstaltungen, href: /veranstaltungen/, key: veranstaltungen }
-  - { title: Blog, href: /blog/, key: blog }
+  - { title: Heilraum, href: /blog/, key: blog }
   - { title: Kontakt, href: /kontakt/, key: kontakt, cta: true }

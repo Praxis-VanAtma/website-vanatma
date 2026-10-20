@@ -254,14 +254,14 @@ def build():
            description="Retreats, Seminare und Kreise in Sankt Englmar im Bayerischen Wald. Alle Termine der Praxis VanAtma.",
            schema=jsonld(*ev_schema))
 
-    render("blog.html", "/blog/", nav="blog", title="Blog · Heilraum Wissenswertes · VanAtma",
+    render("blog.html", "/blog/", nav="blog", title="Heilraum · Blog für Naturmedizin und Bewusstsein · VanAtma",
            description="Impulse und neue Erkenntnisse aus Naturmedizin, Longevity und Seelenarbeit von der Praxis VanAtma in Sankt Englmar.",
            themes=BLOG_THEMES, active="", list_posts=POSTS)
     for t in BLOG_THEMES:
         tp = [p for p in POSTS if p["thema"] == t["slug"]]
         render("blog.html", f"/blog/thema/{t['slug']}/", nav="blog", themes=BLOG_THEMES, active=t["slug"],
                list_posts=tp, theme=t,
-               title=f"{t['title']} · Blog · VanAtma",
+               title=f"{t['title']} · Heilraum Blog · VanAtma",
                description=f"Blogbeiträge zum Thema {t['title']} aus der Praxis VanAtma in Sankt Englmar.")
     for p in POSTS:
         author = SITE["people"].get(p.get("author", "stephan"), {})
@@ -269,8 +269,8 @@ def build():
              "author": {"@type": "Person", "name": author.get("name", "")}, "publisher": {"@id": abs_url("/#praxis")},
              "description": p.get("excerpt", ""), "inLanguage": "de-DE", "mainEntityOfPage": abs_url(f"/blog/{p['slug']}/")}
         render("post.html", f"/blog/{p['slug']}/", nav="blog", p=p, author=author,
-               title=f"{p['title']} · VanAtma Blog", description=p.get("excerpt", ""),
-               schema=jsonld(s, breadcrumb([("Start", "/"), ("Blog", "/blog/"), (p["title"], f"/blog/{p['slug']}/")])))
+               title=f"{p['title']} · Heilraum Blog · VanAtma", description=p.get("excerpt", ""),
+               schema=jsonld(s, breadcrumb([("Start", "/"), ("Heilraum", "/blog/"), (p["title"], f"/blog/{p['slug']}/")])))
 
     faq = load_yaml("faq.yaml")["faq"]
     render("faq.html", "/faq/", nav="", faq=faq, title="Häufige Fragen · VanAtma Sankt Englmar",
