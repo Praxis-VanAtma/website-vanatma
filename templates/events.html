@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("hero-veranstaltungen.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Retreats, Seminare und Kreise</p>
+    <h1 id="h1">Veranstaltungen</h1>
+    <p class="lead">Gemeinsam still werden, Kraft schöpfen und Neues entdecken, mit uns und wechselnden Gastreferentinnen und Gastreferenten.</p>
+  </div>
+</section>
+<section class="sec tight-top">
+  <div class="wrap">
+    {% if upcoming %}<div class="events">{% for e in upcoming %}{{ m.event_card(e) }}{% endfor %}</div>
+    {% else %}<p class="empty">Neue Termine folgen in Kürze. Trag dich gern in den Newsletter ein.</p>{% endif %}
+    <p class="muted" style="margin-top:1.4rem;font-size:.95rem">Anmeldung über das <a href="{{ url('/kontakt/') }}#formular">Kontaktformular</a>, per E-Mail an {{ site.email }} oder telefonisch unter {{ site.phones[1].display }}.</p>
+  </div>
+</section>
+{% endblock %}

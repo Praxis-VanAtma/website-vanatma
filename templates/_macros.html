@@ -1,0 +1,75 @@
+{% macro pic(name, cls="img") -%}
+{%- set src = image(name) -%}
+{%- if src -%}<div class="{{ cls }}" style="background-image:url('{{ src }}')" role="presentation"></div>
+{%- else -%}<div class="{{ cls }} ph" role="presentation"></div>{%- endif -%}
+{%- endmacro %}
+
+{% macro photo(name, alt) -%}
+{%- set src = image(name) -%}
+{%- if src -%}<img src="{{ src }}" alt="{{ alt }}" loading="lazy" decoding="async">
+{%- else -%}<div class="img ph" role="img" aria-label="{{ alt }}"></div>{%- endif -%}
+{%- endmacro %}
+
+{% macro mark(cls="mark") -%}
+{%- set logo = image("logo.png") -%}
+{%- if logo -%}<img class="{{ cls }}" src="{{ logo }}" alt="">
+{%- else -%}
+<svg class="{{ cls }}" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49" fill="#4a4920"/><path d="M50 40c-6-7-11-10-17-10a10 10 0 0 0 0 20c6 0 11-3 17-10 6-7 11-10 17-10a10 10 0 0 1 0 20c-6 0-11-3-17-10z" fill="none" stroke="#f6f1e1" stroke-width="4" stroke-linecap="round"/><text x="50" y="71" text-anchor="middle" font-family="Jost, sans-serif" font-size="15" fill="#f6f1e1">VanAtma</text><text x="62" y="82" text-anchor="middle" font-family="Jost, sans-serif" font-size="7" letter-spacing="1" fill="#e9e1c0">evolve</text></svg>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro tile(o) -%}
+<a class="tile" href="{{ url(offer_url(o)) }}">
+  <div class="pic">{{ photo(o.image, o.title) }}{% if o.badge %}<span class="badge{% if o.soon %} soon{% endif %}">{{ o.badge }}</span>{% endif %}</div>
+  <div class="body"><h4>{{ o.title }}</h4><p>{{ o.short }}</p><span class="more">Mehr erfahren →</span></div>
+</a>
+{%- endmacro %}
+
+{% macro tiles() -%}
+{% for gkey, g in groups.items() %}
+<div class="group-title"><h3>{{ g.title }}</h3><span>{{ g.sub }}</span></div>
+<div class="tiles">
+{% for o in offers if o.group == gkey %}{{ tile(o) }}{% endfor %}
+</div>
+{% endfor %}
+{%- endmacro %}
+
+{% macro icon(name) -%}
+{%- if name == 'clock' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+{%- elif name == 'pin' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+{%- elif name == 'users' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.8.7 3 2.5 3.5 5.2"/></svg>
+{%- elif name == 'check' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro event_card(e, compact=False) -%}
+<article class="event">
+  <div class="date"><b>{{ e.day }}</b><span>{{ e.month }}{% if not compact %} {{ e.year }}{% endif %}</span></div>
+  <div>
+    <p class="eyebrow" style="font-size:.7rem">{{ e.kind }}</p>
+    <h3><a href="{{ url('/veranstaltungen/' ~ e.slug ~ '/') }}" style="text-decoration:none">{{ e.title }}</a></h3>
+    <p class="sub">{{ e.subtitle }}</p>
+    <div class="facts"><span>{{ icon('clock') }}{{ e.when }}</span>{% if not compact %}<span>{{ icon('pin') }}{{ e.where }}</span>{% endif %}<span>{{ icon('users') }}{{ e.lead }}</span></div>
+    {% if not compact %}<p class="desc">{{ e.description[0] }}</p>{% endif %}
+    <div class="foot-row">
+      <span class="price">{{ e.price }}{% if e.price_note and not compact %}<small>{{ e.price_note }}</small>{% endif %}</span>
+      {% if compact %}<a class="btn btn-ghost" style="padding:.6rem 1rem" href="{{ url('/veranstaltungen/' ~ e.slug ~ '/') }}">Details</a>
+      {% else %}<a class="btn btn-primary" href="{{ url('/kontakt/') }}?thema={{ ('Anmeldung: ' ~ e.title)|urlencode }}#formular">Jetzt anmelden</a>{% endif %}
+    </div>
+  </div>
+</article>
+{%- endmacro %}
+
+{% macro post_card(p) -%}
+<a class="post" href="{{ url('/blog/' ~ p.slug ~ '/') }}">
+  <div class="pic">{{ photo(p.image, p.title) }}</div>
+  <div class="body"><span class="cat">{{ p.category }}</span><h4>{{ p.title }}</h4><p>{{ p.excerpt }}</p><time datetime="{{ p.date }}">{{ date_de(p.date) }}</time></div>
+</a>
+{%- endmacro %}
+
+{% macro faq_list(items) -%}
+<div class="faq">
+{% for f in items %}<details{% if loop.first %} open{% endif %}><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+{% endfor %}
+</div>
+{%- endmacro %}

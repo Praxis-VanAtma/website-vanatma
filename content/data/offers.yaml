@@ -1,0 +1,313 @@
+# Angebote der Praxis. Jedes Angebot bekommt automatisch eine Kachel
+# und eine eigene Detailseite unter /angebote/<slug>/.
+# group: koerper | seele | alltag
+# person: steffi | stephan | beide | praxis
+
+groups:
+  koerper:
+    title: Körper und Medizin
+    sub: Ärztlich begleitet von Dr. med. Stefanie Klappenberger
+  seele:
+    title: Geist und Seele
+    sub: Begleitet von Stephan Dietl
+  alltag:
+    title: Regeneration und Gemeinschaft
+    sub: Für deinen Alltag und gemeinsame Zeit im Wald
+
+offers:
+
+  - slug: ihht
+    group: koerper
+    person: beide
+    title: IHHT Zelltraining
+    badge: Neu
+    short: Höhentraining im Liegen, ein sanfter Trainingsreiz für deine Mitochondrien.
+    lead: Entspannt liegen und abwechselnd sauerstoffärmere und sauerstoffreichere Luft atmen, wie ein Ausflug in die Berge für deine Zellen.
+    image: angebot-ihht.jpg
+    chart: o2
+    seo_title: IHHT in Sankt Englmar · Zelltraining im Bayerischen Wald
+    seo_description: IHHT Intervall-Hypoxie-Hyperoxie-Training in Sankt Englmar im Bayerischen Wald. Sanftes Zelltraining im Liegen für deine Mitochondrien, mit ärztlichem Erstgespräch.
+    intro:
+      - "**IHHT, das Intervall-Hypoxie-Hyperoxie-Training,** ist ein Zelltraining, bei dem sich Phasen mit reduziertem Sauerstoff und Phasen mit erhöhtem Sauerstoff abwechseln. Man könnte es auch Höhentraining im Liegen nennen."
+      - In den sauerstoffärmeren Phasen atmest du Luft mit etwa 10 bis 15 Prozent Sauerstoff, ähnlich wie in mehreren tausend Metern Höhe. In den sauerstoffreichen Phasen erhältst du Luft mit etwa 30 bis 40 Prozent. Die normale Raumluft enthält rund 21 Prozent.
+      - Ein Sensor am Finger misst laufend deine Sauerstoffsättigung und deinen Puls. Das Gerät passt die Intervalle in Echtzeit an deine Werte an, so bleibt das Training jederzeit in deinem persönlichen Wohlfühlbereich.
+    sections:
+      - title: Mitochondrien, die Kraftwerke deiner Zellen
+        text:
+          - In fast jeder deiner Zellen arbeiten Hunderte bis Tausende Mitochondrien. Sie gewinnen aus Sauerstoff und Nährstoffen die Energie, die dein Körper für Bewegung, Denken und Regeneration braucht.
+          - IHHT nutzt ein Prinzip, das in der Longevity-Forschung **Hormesis** heißt. Ein kurzer, gut dosierter Reiz regt den Körper zur Anpassung an. Der Wechsel zwischen wenig und viel Sauerstoff ist ein sanfter Trainingsreiz für deine Mitochondrien und soll zwei natürliche Prozesse unterstützen, das Aussortieren schwächerer Mitochondrien und die Bildung neuer, leistungsfähiger.
+    points:
+      - Rund 45 Minuten pro Sitzung, entspannt im Liegen
+      - Bewährt sind regelmäßige Sitzungen, bis zu zweimal pro Woche
+      - Sauerstoffsättigung und Puls werden laufend überwacht
+      - Nach der Sitzung bist du sofort wieder alltagsbereit
+    steps:
+      - title: "Ärztliches Erstgespräch"
+        who: "Steffi"
+        text: "Anamnese und Gesundheits-Check bei Dr. med. Stefanie Klappenberger. Gemeinsam klärt ihr, ob IHHT zu dir passt."
+      - title: "Eingangstest"
+        text: "Ein kurzer Hypoxietest zeigt, wie dein Körper auf weniger Sauerstoff reagiert. Daraus entsteht dein persönliches Programm."
+      - title: "Deine Sitzungen"
+        who: "Stephan"
+        text: "Ab deinem zweiten Besuch empfängt dich Stephan, startet dein Programm und begleitet jede Sitzung. Du ruhst, hörst Musik oder gehst einfach in die Stille."
+      - title: "Verlaufsgespräch"
+        text: "Gemeinsam schauen wir auf deine Entwicklung und darauf, wie du die neue Energie im Alltag hältst."
+    faq:
+      - q: "Wer begleitet mich bei IHHT?"
+        a: "Dein Einstieg ist immer ein ärztliches Erstgespräch mit Anamnese bei Dr. med. Stefanie Klappenberger. Ab deinem zweiten Besuch empfängt dich Stephan und begleitet jede Sitzung."
+      - q: "Wie fühlt sich eine Sitzung an?"
+        a: "Die meisten empfinden IHHT als angenehm und entspannend, ähnlich wie eine Ruhepause. In den sauerstoffärmeren Phasen spürst du manchmal ein leichtes Kribbeln oder einen etwas schnelleren Puls, so wie bei einem Spaziergang in den Bergen."
+      - q: "Was kostet IHHT?"
+        a: "Die Kosten für dein IHHT-Programm besprechen wir persönlich im Erstgespräch, abgestimmt auf deine Ziele und die Anzahl der Sitzungen."
+      - q: "Erstattet die Krankenversicherung IHHT?"
+        a: "Manche private Krankenversicherungen erstatten IHHT-Anwendungen ganz oder teilweise, abhängig vom Tarif. Frag am besten vorab bei deiner Versicherung nach."
+      - q: "Wann sollte ich vorab Bescheid geben?"
+        a: "Bitte sprich uns im Erstgespräch an bei Schwangerschaft, akuten Infekten oder Fieber, nach Herzinfarkt oder Schlaganfall, bei schweren Herzrhythmusstörungen, unbehandeltem Bluthochdruck, Epilepsie, akuter Thrombose, schweren Lungenerkrankungen oder laufender Krebstherapie. Dann finden wir gemeinsam den passenden Weg."
+    note: IHHT ist eine Begleitung für dein Wohlbefinden und ergänzt eine ärztliche Behandlung.
+
+  - slug: eigenbluttherapie
+    group: koerper
+    person: steffi
+    title: Eigenbluttherapie
+    short: Ein bewährtes Verfahren der Naturmedizin, individuell und ärztlich begleitet.
+    lead: Impulse aus deinem eigenen Körper, mit Zeit, Sorgfalt und ärztlicher Erfahrung.
+    image: angebot-eigenblut.jpg
+    seo_title: Eigenbluttherapie in Sankt Englmar · VanAtma
+    seo_description: Eigenbluttherapie bei Ärztin Dr. med. Stefanie Klappenberger in Sankt Englmar im Bayerischen Wald. Ein bewährtes Verfahren der Naturmedizin, individuell abgestimmt.
+    intro:
+      - Die Eigenbluttherapie gehört zu den klassischen Verfahren der Naturmedizin. Dabei wird eine kleine Menge deines Blutes entnommen und dir aufbereitet wieder zurückgegeben.
+      - Wie die Behandlung für dich gestaltet wird, stimmt Dr. med. Stefanie Klappenberger nach einer ausführlichen Anamnese individuell mit dir ab. Gern verbindest du sie mit weiteren Angeboten der Praxis, zum Beispiel mit IHHT oder Akupunktur.
+    points:
+      - Ausführliches ärztliches Vorgespräch
+      - Individuell abgestimmter Ablauf
+      - Ruhige Atmosphäre mit Zeit für deine Fragen
+    faq:
+      - q: "Wie läuft eine Eigenbluttherapie ab?"
+        a: "Nach dem ärztlichen Vorgespräch wird eine kleine Menge Blut entnommen, aufbereitet und zurückgegeben. Dauer und Anzahl der Termine besprecht ihr individuell."
+      - q: "Für wen ist sie geeignet?"
+        a: "Das klärt Steffi im persönlichen Gespräch mit dir, abgestimmt auf deine Gesundheit und deine Wünsche."
+
+  - slug: akupunktur
+    group: koerper
+    person: steffi
+    title: Akupunktur
+    short: Feine Nadeln, sanfte Impulse zur Regulation, ärztlich durchgeführt.
+    lead: Ein bewährtes Verfahren der Traditionellen Chinesischen Medizin, mit Zeit und ärztlicher Sorgfalt.
+    image: angebot-akupunktur.jpg
+    seo_title: Akupunktur in Sankt Englmar · Ärztin im Bayerischen Wald
+    seo_description: Akupunktur bei Ärztin Dr. med. Stefanie Klappenberger in Sankt Englmar. Feine Nadeln, sanfte Impulse zur Regulation und tiefe Entspannung im Bayerischen Wald.
+    intro:
+      - Akupunktur ist ein jahrtausendealtes Verfahren der Traditionellen Chinesischen Medizin. Feine Nadeln an ausgewählten Punkten geben deinem Körper sanfte Impulse zur Regulation und laden zu tiefer Entspannung ein.
+      - Dr. med. Stefanie Klappenberger behandelt Frauen und Männer in allen Lebensphasen. Vor der ersten Behandlung nehmt ihr euch Zeit für ein ausführliches Gespräch, damit die Akupunktur zu dir und deinem Anliegen passt.
+    points:
+      - Ärztlich durchgeführt, mit ausführlichem Vorgespräch
+      - Feinste Einmalnadeln
+      - Rund 30 bis 45 Minuten Ruhe pro Sitzung
+    faq:
+      - q: "Tut Akupunktur weh?"
+        a: "Die Nadeln sind sehr fein. Die meisten spüren beim Setzen nur einen kurzen Moment, danach überwiegt die Entspannung."
+      - q: "Wie viele Sitzungen sind sinnvoll?"
+        a: "Das hängt von deinem Anliegen ab. Oft sind mehrere Sitzungen im Abstand von einer Woche bewährt. Steffi bespricht das mit dir."
+      - q: "Ist Akupunktur auch in der Schwangerschaft möglich?"
+        a: "Ja, nach ärztlicher Rücksprache begleitet Steffi auch werdende Mütter achtsam mit Akupunktur."
+
+  - slug: sanfte-aesthetik
+    group: koerper
+    person: steffi
+    title: Sanfte Ästhetik
+    short: Natürlich frisch, behutsam und ärztlich, zum Beispiel mit Eigenblut.
+    lead: Natürlich frisch aussehen und dich in deiner Haut wohlfühlen.
+    image: angebot-aesthetik.jpg
+    seo_title: Sanfte Ästhetik in Sankt Englmar · Ärztliche Faltenbehandlung
+    seo_description: Sanfte ästhetische Medizin bei Ärztin Dr. med. Stefanie Klappenberger in Sankt Englmar, zum Beispiel Faltenunterspritzung mit Eigenblut. Natürlich und behutsam.
+    intro:
+      - Schönheit entsteht für uns dort, wo du dich wohlfühlst. Deshalb steht bei unserer ästhetischen Medizin ein natürliches Ergebnis im Mittelpunkt, das deinen Ausdruck bewahrt.
+      - Dr. med. Stefanie Klappenberger bietet ärztliche Faltenbehandlungen an, zum Beispiel die Faltenunterspritzung mit Eigenblut. Welche Methode zu dir passt, klärt ihr in Ruhe im persönlichen ärztlichen Gespräch.
+    points:
+      - Ausführliche ärztliche Beratung vor jeder Behandlung
+      - Behutsames Vorgehen mit Blick auf ein natürliches Ergebnis
+      - Ehrliche Einschätzung, was zu dir passt
+    faq:
+      - q: "Welche Methoden gibt es?"
+        a: "Das besprecht ihr im persönlichen ärztlichen Gespräch. Steffi berät dich ausführlich zu allen Möglichkeiten und zu dem, was zu dir passt."
+      - q: "Kann ich Ästhetik mit anderen Angeboten verbinden?"
+        a: "Sehr gern, zum Beispiel mit Microneedling mit Eigenblut oder IHHT."
+
+  - slug: microneedling
+    group: koerper
+    person: steffi
+    title: Microneedling mit Eigenblut
+    short: Feinste Nadeln und das Serum aus deinem eigenen Blut für ein frisches Hautbild.
+    lead: Feine Impulse für ein frisches, natürliches Hautbild, mit dem Serum aus deinem eigenen Blut.
+    image: angebot-microneedling.jpg
+    seo_title: Microneedling mit Eigenblut in Sankt Englmar · VanAtma
+    seo_description: Microneedling mit Eigenblutserum bei Ärztin Dr. med. Stefanie Klappenberger in Sankt Englmar im Bayerischen Wald. Für ein frisches, natürliches Hautbild.
+    intro:
+      - Beim Microneedling setzen feinste Nadeln sanfte Impulse in der Haut. Bei uns wird dabei das Serum eingearbeitet, das aus deinem eigenen Blut gewonnen wird.
+      - So verbindest du eine bewährte Methode der ästhetischen Medizin mit der Kraft deines eigenen Körpers. Die Behandlung führt Dr. med. Stefanie Klappenberger durch, mit Zeit für Beratung und Pflegetipps für die Tage danach.
+    points:
+      - Ärztlich durchgeführt, mit Vorgespräch
+      - Serum aus deinem eigenen Blut
+      - Pflegetipps für die Zeit nach der Behandlung
+    faq:
+      - q: "Wie lange dauert eine Behandlung?"
+        a: "Mit Vorbereitung, Blutentnahme und Behandlung solltest du rund eine Stunde einplanen."
+      - q: "Wie sieht die Haut danach aus?"
+        a: "Eine leichte Rötung ist in den ersten Stunden bis Tagen üblich. Steffi gibt dir passende Pflegetipps mit."
+
+  - slug: mikronaehrstoffe
+    group: koerper
+    person: steffi
+    title: Beratung zu Mikronährstoffen
+    short: Persönliche ärztliche Beratung, abgestimmt auf dich und deinen Alltag.
+    lead: Welche Mikronährstoffe dich sinnvoll unterstützen, ist so individuell wie du.
+    image: angebot-mikronaehrstoffe.jpg
+    seo_title: Beratung zu Mikronährstoffen in Sankt Englmar · VanAtma
+    seo_description: Ärztliche Beratung zu Mikronährstoffen bei Dr. med. Stefanie Klappenberger in Sankt Englmar. Persönlich abgestimmt auf deine Lebensweise und deine Ziele.
+    intro:
+      - Ernährung, Bewegung, Schlaf und Stress beeinflussen, was dein Körper braucht. In der persönlichen ärztlichen Beratung schaut Dr. med. Stefanie Klappenberger auf deine Lebensweise, deine Ziele und dein Wohlbefinden.
+      - Gemeinsam stellt ihr zusammen, was zu deinem Alltag passt, als Teil eines ganzheitlichen Blicks auf ein langes, gesundes Leben.
+    points:
+      - Persönliches ärztliches Gespräch
+      - Blick auf Lebensweise, Ziele und Alltag
+      - Abgestimmt auf weitere Angebote wie IHHT
+
+  - slug: schamanische-begleitung
+    group: seele
+    person: stephan
+    title: Schamanische Begleitung
+    short: Seelenrückholung, Bändertrennung, Trommelreisen und Rituale.
+    lead: Ein alter Weg zu innerer Verbundenheit und Ganzheit, getragen von der Stille des Waldes.
+    image: angebot-schamanisch.jpg
+    seo_title: Schamanische Begleitung in Sankt Englmar · Seelenrückholung
+    seo_description: Schamanische Begleitung mit Stephan Dietl in Sankt Englmar im Bayerischen Wald. Seelenrückholung, Bändertrennung, Trommelreisen, Rituale und Räucherungen.
+    intro:
+      - Schamanische Arbeit ist für uns ein Weg zurück zu dir selbst, mitten im Leben. Sie lädt dich ein, dich wieder mit deiner eigenen Kraft und mit der Natur zu verbinden.
+      - Stephan Dietl begleitet dich mit Trommelreisen, Ritualen und Räucherungen in einem geschützten Raum. Je nach Anliegen arbeitet er mit **Seelenrückholung**, bei der verlorene Seelenanteile zu dir zurückkehren dürfen, und mit **Bändertrennung**, bei der sich alte energetische Verbindungen lösen.
+    points:
+      - Seelenrückholung
+      - Bändertrennung
+      - Trommelreisen und Rituale
+      - Räucherungen im Rhythmus der Natur
+    steps:
+      - title: "Kennenlernen"
+        text: "Ein erstes Gespräch darüber, was dich zu uns führt und wonach deine Seele ruft."
+      - title: "Deine Sitzung"
+        text: "Ein geschützter Raum mit Trommel, Ritual und Stille, in dem du in deinem Tempo ankommen kannst."
+      - title: "Integration"
+        text: "Impulse für deinen Alltag, damit das Erlebte weiterwirkt."
+    faq:
+      - q: "Was ist eine Seelenrückholung?"
+        a: "Im schamanischen Verständnis können sich in belastenden Lebensphasen Anteile unserer Seele zurückziehen. In der Seelenrückholung werden sie eingeladen, zu dir zurückzukehren."
+      - q: "Was bedeutet Bändertrennung?"
+        a: "Zwischen Menschen entstehen energetische Verbindungen. Bei der Bändertrennung lösen sich Verbindungen, die dich heute eher Kraft kosten, damit du freier weitergehen kannst."
+    note: Schamanische Begleitung, Energiearbeit und Hypnose sind Angebote für dein Wohlbefinden und deine persönliche Entwicklung. Sie stellen keine Diagnosen und ersetzen keine ärztliche oder psychotherapeutische Behandlung.
+
+  - slug: reiki
+    group: seele
+    person: stephan
+    title: Feine Energiearbeit (Reiki)
+    short: Stille, sanfte Berührung und Raum zum Auftanken, mit Reiki-Meister Stephan.
+    lead: Im Stillwerden beginnt die Kraft von Reiki.
+    image: angebot-reiki.jpg
+    seo_title: Reiki in Sankt Englmar · Feine Energiearbeit im Bayerischen Wald
+    seo_description: Reiki und feine Energiearbeit mit Reiki-Meister Stephan Dietl in Sankt Englmar. Ein geschützter Raum zum Ankommen, Entspannen und Auftanken, ergänzt durch Pendel und Tensor.
+    intro:
+      - Reiki ist für uns weniger eine Technik als ein stiller Akt der Fürsorge. Durch sanftes Auflegen der Hände entsteht ein geschützter Raum, in dem dein System zur Ruhe kommt und du neue Kraft schöpfst.
+      - Viele erleben dabei Wärme, innere Bilder oder eine tiefe, nachklingende Ruhe. Stephan Dietl ist Reiki-Meister und ergänzt die Energiearbeit je nach Anliegen durch die Arbeit mit Pendel und Tensor.
+    points:
+      - Sanftes Auflegen der Hände, bekleidet und entspannt im Liegen
+      - Ergänzt durch Pendel und Tensor
+      - Gut kombinierbar mit anderen Angeboten der Praxis
+    faq:
+      - q: "Muss ich für Reiki etwas können?"
+        a: "Du darfst einfach da sein, liegen und geschehen lassen. Alles Weitere ergibt sich in der Sitzung."
+      - q: "Wie lange dauert eine Sitzung?"
+        a: "Rechne mit rund 60 Minuten inklusive Vor- und Nachgespräch."
+    note: Schamanische Begleitung, Energiearbeit und Hypnose sind Angebote für dein Wohlbefinden und deine persönliche Entwicklung. Sie stellen keine Diagnosen und ersetzen keine ärztliche oder psychotherapeutische Behandlung.
+
+  - slug: chakrenreinigung
+    group: seele
+    person: stephan
+    title: Chakrenreinigung
+    short: Reinigung und Ausgleich deiner Energiezentren mit Reiki, Pendel und Tensor.
+    lead: Damit deine Energie wieder frei fließen kann.
+    image: angebot-chakren.jpg
+    seo_title: Chakrenreinigung in Sankt Englmar · Energiearbeit mit Pendel
+    seo_description: Chakrenreinigung mit Stephan Dietl in Sankt Englmar. Reinigung und Ausgleich deiner Energiezentren mit Reiki, Pendel und Tensor, in Ruhe und Stille.
+    intro:
+      - Chakren gelten in vielen Traditionen als die Energiezentren des Körpers. In einer ruhigen Sitzung mit Reiki, Pendel und Tensor lädt Stephan Dietl sie zu Reinigung und Ausgleich ein.
+      - So entsteht ein Moment der Stille und Klarheit für Körper, Geist und Seele, aus dem du gestärkt in deinen Alltag zurückkehrst.
+    points:
+      - Energetische Arbeit mit Reiki, Pendel und Tensor
+      - Ruhige Sitzung im Liegen
+      - Impulse für deinen Alltag
+    note: Schamanische Begleitung, Energiearbeit und Hypnose sind Angebote für dein Wohlbefinden und deine persönliche Entwicklung. Sie stellen keine Diagnosen und ersetzen keine ärztliche oder psychotherapeutische Behandlung.
+
+  - slug: hypnose
+    group: seele
+    person: stephan
+    title: Hypnose
+    short: Die Kunst, nach innen zu lauschen, für neue Perspektiven und innere Ruhe.
+    lead: Eine bewusste Trance, in der du dir selbst begegnest.
+    image: angebot-hypnose.jpg
+    seo_title: Hypnose in Sankt Englmar · VanAtma im Bayerischen Wald
+    seo_description: Hypnose mit Stephan Dietl in Sankt Englmar. Eine bewusste Trance für persönliche Entwicklung, neue Perspektiven und innere Ruhe im Bayerischen Wald.
+    intro:
+      - Hypnose bedeutet für uns, die Welt draußen leiser werden zu lassen und der eigenen inneren Stimme zu lauschen. In einem entspannten, fokussierten Zustand zwischen Wachen und Schlafen öffnet sich der Zugang zu deinen inneren Ressourcen.
+      - Stephan Dietl arbeitet mit Stimme, Atem und inneren Bildern. Vertrauen steht dabei an erster Stelle, du behältst jederzeit die Kontrolle. Hypnose ist eine Einladung, du entscheidest, wie weit du gehst.
+    points:
+      - Ausführliches Vorgespräch zu deinem Anliegen
+      - Entspannte Trance mit Stimme, Atem und inneren Bildern
+      - Impulse für Morgen- und Abendroutinen im Alltag
+    faq:
+      - q: "Verliere ich in Hypnose die Kontrolle?"
+        a: "Du bleibst jederzeit wach für das, was geschieht, und kannst die Trance selbst beenden. Hypnose ist eine Einladung, die du jederzeit selbst gestaltest."
+      - q: "Wofür eignet sich Hypnose?"
+        a: "Zum Beispiel für tiefe Entspannung, mehr innere Ruhe, neue Perspektiven und persönliche Veränderungswünsche. Im Vorgespräch klärt ihr, ob sie zu deinem Anliegen passt."
+    note: Schamanische Begleitung, Energiearbeit und Hypnose sind Angebote für dein Wohlbefinden und deine persönliche Entwicklung. Sie stellen keine Diagnosen und ersetzen keine ärztliche oder psychotherapeutische Behandlung.
+
+  - slug: magnetfeld-biofrequenz
+    group: alltag
+    person: praxis
+    title: Magnetfeld und Biofrequenz
+    badge: Demnächst
+    soon: true
+    short: Sanfte Impulse für Regeneration und Entspannung.
+    lead: Sanfte Impulse für Regeneration und Entspannung, bald in unserer Praxis.
+    image: angebot-magnetfeld.jpg
+    seo_title: Magnetfeld und Biofrequenz in Sankt Englmar · VanAtma
+    seo_description: Magnetfeld- und Biofrequenzanwendungen in der Praxis VanAtma in Sankt Englmar, sanfte Impulse für Regeneration und Entspannung. Bald verfügbar.
+    intro:
+      - Mit Magnetfeld- und Biofrequenzanwendungen erweitern wir unser Angebot um sanfte Impulse für Regeneration und Entspannung. Die Geräte ziehen in Kürze bei uns ein.
+      - Schreib uns gern, wenn du informiert werden möchtest, sobald es losgeht.
+    points:
+      - Entspannte Anwendung im Liegen
+      - Gut kombinierbar mit IHHT und Energiearbeit
+
+  - slug: nahrungsergaenzung
+    group: alltag
+    person: stephan
+    title: Nahrungsergänzung
+    short: Ausgewählte Produkte in Zusammenarbeit mit der DGES, ohne Strukturvertrieb.
+    lead: Bewusst ausgewählte Nahrungsergänzung in hoher Qualität.
+    image: angebot-nahrungsergaenzung.jpg
+    seo_title: Nahrungsergänzung in Sankt Englmar · VanAtma
+    seo_description: Ausgewählte Nahrungsergänzung von Natugena, FormMed, PhysiCal und rubyni in Zusammenarbeit mit der DGES, erhältlich bei Stephan Dietl in Sankt Englmar.
+    intro:
+      - Wir arbeiten mit der DGES, der Deutschen Gesellschaft für Ernährung und Sport, zusammen und bieten ausgewählte Nahrungsergänzung in hoher Qualität an, zum Beispiel von Natugena, FormMed, PhysiCal und rubyni.
+      - Die Produkte sind bei Stephan Dietl in Sankt Englmar erhältlich. Bewusst ausgewählt und ohne Strukturvertrieb.
+    points:
+      - Marken wie Natugena, FormMed, PhysiCal und rubyni
+      - In Zusammenarbeit mit der DGES
+      - Erhältlich direkt bei uns in Sankt Englmar
+    note: Nahrungsergänzungsmittel sind kein Ersatz für eine ausgewogene, abwechslungsreiche Ernährung und eine gesunde Lebensweise.
+
+  - slug: retreats
+    group: alltag
+    person: beide
+    title: Retreats und Seminare
+    short: Tage der Stille im Bayerischen Wald, mit uns und Gastreferenten.
+    lead: Gemeinsam still werden, Kraft schöpfen und Neues entdecken.
+    image: angebot-retreats.jpg
+    link: /veranstaltungen/

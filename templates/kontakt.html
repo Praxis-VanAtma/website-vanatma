@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top contact-band" aria-labelledby="h1">
+  {{ m.pic("kontakt-garten.jpg") }}
+  <div class="wrap" style="padding-block:clamp(60px,8vw,110px) clamp(140px,16vw,220px)">
+    <div class="contact-card" id="formular">
+      <p class="eyebrow">Kontakt</p>
+      <h1 id="h1" style="font-size:var(--s-3)">Melde dich gern bei uns</h1>
+      <p class="lead">Schreib uns, worum es dir geht. Wir antworten persönlich. Termine nach Vereinbarung.</p>
+      {% if site.hubspot.portal_id and site.hubspot.contact_form_id %}
+      <div id="hs-contact"></div>
+      {% else %}
+      <form id="mail-form" data-to="{{ site.email }}" novalidate style="display:grid;gap:1rem">
+        <div class="two">
+          <div class="field"><label for="c-name">Name</label><input id="c-name" name="c-name" autocomplete="name" required></div>
+          <div class="field"><label for="c-mail">E-Mail</label><input id="c-mail" name="c-mail" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="c-phone">Telefon (optional)</label><input id="c-phone" name="c-phone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="c-topic">Worum geht es?</label>
+            <select id="c-topic" name="c-topic">
+              {% for o in offers if not o.link %}<option>{{ o.title }}</option>{% endfor %}
+              {% for e in upcoming %}<option>Anmeldung: {{ e.title }}</option>{% endfor %}
+              <option>Gutschein</option><option>Etwas anderes</option>
+            </select></div>
+        </div>
+        <div class="field"><label for="c-msg">Nachricht</label><textarea id="c-msg" name="c-msg" placeholder="Was führt dich zu uns?"></textarea></div>
+        <label class="check-line" for="c-ok"><input id="c-ok" name="c-ok" type="checkbox"><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden. Mehr dazu in der <a href="{{ url('/datenschutz/') }}">Datenschutzerklärung</a>. Gesundheitliche Details besprechen wir gern persönlich.</span></label>
+        <div class="btns"><button class="btn btn-primary" type="submit">Nachricht senden</button></div>
+        <p class="form-msg" id="c-out" aria-live="polite"></p>
+      </form>
+      {% endif %}
+      <dl class="contact-facts">
+        <div><dt>Praxis</dt><dd>{{ site.address.street }}<br>{{ site.address.zip }} {{ site.address.city }}</dd></div>
+        <div><dt>E-Mail</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+        {% for ph in site.phones %}<div><dt>{{ ph.label }}</dt><dd>{{ ph.person }}<br><a href="tel:{{ ph.tel }}">{{ ph.display }}</a></dd></div>{% endfor %}
+      </dl>
+      <p class="note">{{ site.billing_note }}</p>
+    </div>
+  </div>
+</section>
+<section class="sec"><div class="wrap split">
+  <div class="prose"><p class="eyebrow">Anfahrt</p><h2 style="margin-top:0">So findest du uns</h2><p>{{ site.reach_note }}</p><p><a href="https://www.google.com/maps/search/?api=1&query={{ (site.long_name ~ ', ' ~ site.address.street ~ ', ' ~ site.address.zip ~ ' ' ~ site.address.city)|urlencode }}" target="_blank" rel="noopener">Route in Google Maps öffnen →</a></p></div>
+  <div class="frame wide">{{ m.photo("anfahrt.jpg", "Praxis VanAtma in Sankt Englmar") }}</div>
+</div></section>
+{% endblock %}

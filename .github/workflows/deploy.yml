@@ -1,0 +1,53 @@
+name: Website bauen und veröffentlichen
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "15 3 * * *"   # täglich neu bauen, damit vergangene Termine verschwinden
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Python-Pakete
+        run: pip install -r requirements.txt
+      - name: Schriften lokal einbinden (DSGVO-freundlich)
+        run: |
+          npm install --no-save @fontsource/jost@5 @fontsource/mulish@5 @fontsource/cormorant-garamond@5
+          mkdir -p static/fonts
+          cp node_modules/@fontsource/jost/files/jost-latin-{300,400,500}-normal.woff2 static/fonts/
+          cp node_modules/@fontsource/mulish/files/mulish-latin-{400,600}-normal.woff2 static/fonts/
+          cp node_modules/@fontsource/mulish/files/mulish-latin-400-italic.woff2 static/fonts/
+          cp node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-{400,500}-italic.woff2 static/fonts/
+      - name: Website bauen
+        run: |
+          if [ -f CNAME ]; then export BASE_PATH=""; else export BASE_PATH="/${GITHUB_REPOSITORY#*/}"; fi
+          python build.py
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

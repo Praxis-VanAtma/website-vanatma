@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block main %}
+{% set g = groups[o.group] %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic(o.image) }}
+  <div class="wrap">
+    <p class="crumb"><a href="{{ url('/angebote/') }}">Angebote</a> / {{ o.title }}</p>
+    <h1 id="h1">{{ o.title }}</h1>
+    <p class="lead">{{ o.lead }}</p>
+    <div class="btns"><a class="btn btn-light" href="{{ url('/kontakt/') }}?thema={{ o.title|urlencode }}#formular">{% if person in ['steffi','beide'] %}Ärztliches Erstgespräch vereinbaren{% elif o.soon %}Informiert werden{% else %}Kennenlernen vereinbaren{% endif %}</a></div>
+  </div>
+</section>
+
+<section class="sec tight-top">
+  <div class="wrap split">
+    <div class="prose">
+      <p class="eyebrow">{{ g.title }}</p>
+      <h2 style="margin-top:0">Worum es geht</h2>
+      {% for t in o.intro %}<p>{{ md(t, inline=True) }}</p>{% endfor %}
+      {% if o.points %}
+      <ul class="check" style="padding:0;margin-top:.6rem">{% for pt in o.points %}<li>{{ m.icon('check') }}<span>{{ pt }}</span></li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    {% if o.chart == 'o2' %}
+    <figure class="o2" aria-labelledby="o2c">
+      <div class="o2-head"><span id="o2c">Sauerstoff in der Atemluft · Beispiel</span><span><i style="background:color-mix(in srgb,var(--olive) 60%,transparent)"></i>wenig O₂<i style="background:color-mix(in srgb,#d9a550 70%,transparent)"></i>viel O₂</span></div>
+      <div class="o2-scroll"><svg id="o2" viewBox="0 0 560 290" role="img" aria-label="Sauerstoffanteil über rund 40 Minuten: Phasen um 12 Prozent wechseln mit Phasen um 34 Prozent, Raumluft 21 Prozent."></svg></div>
+    </figure>
+    {% else %}
+    <div class="frame wide">{{ m.photo(o.image, o.title ~ " in der Praxis VanAtma") }}</div>
+    {% endif %}
+  </div>
+</section>
+
+{% for s in o.sections or [] %}
+<section class="sec sand"><div class="wrap split rev">
+  <div class="prose"><h2 style="margin-top:0">{{ s.title }}</h2>{% for t in s.text %}<p>{{ md(t, inline=True) }}</p>{% endfor %}</div>
+  <div class="frame wide">{{ m.photo("grafik-mitochondrien.jpg", "Mitochondrien, die Kraftwerke der Zelle") }}</div>
+</div></section>
+{% endfor %}
+
+<section class="sec{% if not o.sections %} sand{% endif %}">
+  <div class="wrap split">
+    <div>
+      <div class="head-row" style="margin-bottom:1.4rem"><p class="eyebrow">Ablauf</p><h2>So begleiten wir dich</h2></div>
+      {% set steps = o.steps or (
+        [{'title':'Ärztliches Gespräch','text':'Anamnese und ausführliche Beratung bei Steffi. Gemeinsam klärt ihr, was zu dir passt.'},{'title':'Deine Behandlung','text':'In ruhiger Atmosphäre, mit Zeit und Sorgfalt.'},{'title':'Nachgespräch','text':'Wir schauen gemeinsam auf deinen Verlauf und deine nächsten Schritte.'}]
+        if o.group == 'koerper' else
+        [{'title':'Kennenlernen','text':'Ein erstes Gespräch darüber, was dich zu uns führt und was du dir wünschst.'},{'title':'Deine Sitzung','text':'Ein geschützter Raum, in dem du in deinem Tempo ankommen kannst.'},{'title':'Integration','text':'Impulse für deinen Alltag, damit das Erlebte weiterwirkt.'}]) %}
+      <ol class="steps">{% for st in steps %}<li><div><h4>{{ st.title }}{% if st.who %} <span class="who">{{ st.who }}</span>{% endif %}</h4><p>{{ st.text }}</p></div></li>{% endfor %}</ol>
+    </div>
+    <div style="display:grid;gap:1rem">
+      <p class="eyebrow">Wer dich begleitet</p>
+      {% set ppl = ['steffi','stephan'] if person == 'beide' else ([person] if person in ['steffi','stephan'] else []) %}
+      {% for key in ppl %}{% set p = site.people[key] %}
+      <div class="who-card"><div class="av">{{ m.photo(p.image, "Porträt " ~ p.name) }}</div><div><p class="eyebrow" style="font-size:.7rem">{{ p.role }}</p><h3>{{ p.name }}</h3></div></div>
+      {% endfor %}
+      {% if not ppl %}<div class="who-card"><div class="av">{{ m.photo('team-beide.jpg', 'Steffi und Stephan') }}</div><div><p class="eyebrow" style="font-size:.7rem">Praxis VanAtma</p><h3>Steffi und Stephan</h3></div></div>{% endif %}
+      {% if o.note %}<p class="note">{{ o.note }}</p>{% endif %}
+    </div>
+  </div>
+</section>
+
+{% if o.faq %}
+<section class="sec{% if o.sections %} sand{% endif %}">
+  <div class="wrap">
+    <div class="head-row center"><p class="eyebrow">Gut zu wissen</p><h2>Häufige Fragen</h2></div>
+    {{ m.faq_list(o.faq) }}
+  </div>
+</section>
+{% endif %}
+
+<section class="fixed contact-band" aria-labelledby="h-c">
+  {{ m.pic("kontakt-praxis.jpg") }}
+  <div class="wrap"><div class="contact-card">
+    <p class="eyebrow">Dein erster Schritt</p>
+    <h2 id="h-c" style="font-size:var(--s-2)">{{ o.title }} bei VanAtma</h2>
+    <p class="lead">{% if person in ['steffi','beide'] %}Dein Weg beginnt mit einem persönlichen ärztlichen Gespräch bei Dr. med. Stefanie Klappenberger.{% else %}Schreib uns, worum es dir geht. Wir melden uns persönlich bei dir.{% endif %} {{ site.billing_note }}</p>
+    <div class="btns"><a class="btn btn-primary" href="{{ url('/kontakt/') }}?thema={{ o.title|urlencode }}#formular">Anfrage senden</a></div>
+  </div></div>
+</section>
+{% endblock %}

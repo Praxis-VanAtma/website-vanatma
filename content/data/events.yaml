@@ -1,0 +1,69 @@
+# Veranstaltungen. Vergangene Termine verschwinden automatisch von der Website.
+# Datum im Format JJJJ-MM-TT, Uhrzeiten optional.
+
+events:
+
+  - slug: waldstille-2026
+    title: Waldstille
+    subtitle: Eine Reise zu deiner Seele
+    kind: Retreat
+    start: 2026-11-06
+    end: 2026-11-08
+    when: Freitag bis Sonntag, 6. bis 8. November 2026
+    where: Praxis VanAtma, Bayerweg 57, Sankt Englmar
+    lead: Mit Steffi und Stephan
+    capacity: Kleine Gruppe mit maximal 8 Teilnehmenden
+    price: Energieausgleich 290 €
+    price_value: 290
+    price_note: Eröffnungspreis 240 € bei Anmeldung bis 25.10.2026
+    image: event-waldstille.jpg
+    description:
+      - Der November schenkt dem Bayerischen Wald eine besondere Ruhe. Diese Stille nutzen wir für drei Tage zum Durchatmen, Loslassen und Ankommen bei dir selbst, in der Praxis und draußen im Wald.
+      - Abends geht es für dich entspannt nach Hause.
+    includes:
+      - Stille Waldwege
+      - Meditationen
+      - Räucherrituale
+      - Impulse zu den universellen Gesetzen
+      - Gesundes Mittagessen und Nachmittagssnack
+
+  - slug: mitananda-2026
+    title: Mitananda
+    subtitle: Lagerfeuer und schöne Klänge
+    kind: Abend am Feuer
+    start: 2026-12-04
+    start_time: "17:00"
+    when: Freitag, 4. Dezember 2026, ab 17 Uhr
+    where: Praxisgarten, Bayerweg 57, Sankt Englmar
+    lead: Mit Atemraum Yoga
+    price: Energieausgleich 25 €
+    price_value: 25
+    image: event-mitananda.jpg
+    description:
+      - Gemeinsam mit Atemraum Yoga laden wir dich ans Feuer ein. Klänge, Wärme und Gemeinschaft im Advent, dazu selbstgemachter Chai-Tee und feines Gebäck.
+      - Ein Abend zum Ankommen, Zuhören und Mitsingen.
+    includes:
+      - Lagerfeuer im Praxisgarten
+      - Gemeinsames Mantra-Singen und Klänge
+      - Chai-Tee und Gebäck
+
+  - slug: mensday-2026
+    title: MensDAY
+    subtitle: Männerkreis in der Natur
+    kind: Männerkreis
+    start: 2026-12-06
+    start_time: "10:00"
+    end_time: "18:00"
+    when: Sonntag, 6. Dezember 2026, 10 bis ca. 18 Uhr
+    where: Sankt Englmar und Wald
+    lead: Mit Andreas Bruckschlegel und Stephan Dietl
+    price: Energieausgleich 69 €
+    price_value: 69
+    price_note: inklusive Brunch
+    image: event-mensday.jpg
+    description:
+      - Ein Tag unter Männern, mit der Natur verbunden. Wir gehen still durch den Wald, reflektieren, räuchern und feiern schamanische Rituale. Dazu gibt es einen gemeinsamen Brunch.
+    includes:
+      - Stiller Waldgang zur Reflexion
+      - Räucher- und schamanische Rituale
+      - Gemeinsamer Brunch

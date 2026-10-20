@@ -1,0 +1,70 @@
+# Zentrale Praxisdaten. Änderungen hier wirken auf allen Seiten.
+name: VanAtma
+long_name: VanAtma Praxis für Naturmedizin und Bewusstsein
+claim: Verwurzelt in der Natur und verbunden mit dir
+subline: Wo Körper, Geist, Seele und Erde sich begegnen.
+# Endgültige Adresse der Website (für Canonical-Links, Sitemap, Schema)
+url: https://vanatma.de
+language: de-DE
+
+address:
+  street: Bayerweg 57
+  zip: "94379"
+  city: Sankt Englmar
+  region: Bayern
+  country: DE
+  # Ungefähre Koordinaten von Sankt Englmar, bei Bedarf exakt nachtragen
+  lat: 49.0035
+  lng: 12.8265
+
+email: praxis@vanatma.de
+phones:
+  - label: Medizin und IHHT
+    person: Dr. med. Stefanie Klappenberger
+    display: 0171 7884966
+    tel: "+491717884966"
+  - label: Seele und Veranstaltungen
+    person: Stephan Dietl
+    display: 0151 51587429
+    tel: "+4915151587429"
+
+billing_note: Als Privatpraxis rechnen wir mit Privatversicherten und Selbstzahlern ab. Manche private Krankenversicherungen erstatten einzelne Leistungen, frag dazu gern vorab bei deiner Versicherung nach.
+
+reach_note: Sankt Englmar liegt als Luftkurort auf rund 900 Metern im Bayerischen Wald, mit kurzer Anfahrt aus Straubing, Bogen, Deggendorf, Regen und Cham.
+
+areas: [Sankt Englmar, Straubing, Bogen, Deggendorf, Regen, Cham, Bayerischer Wald]
+
+social:
+  youtube: https://www.youtube.com/@vanatma.evolve
+  instagram: https://www.instagram.com/vanatma.evolve/
+  telegram: ""   # Link eintragen, sobald der Kanal steht
+
+# HubSpot-Formulare. Sobald IDs eingetragen sind, werden Kontaktformular
+# und Newsletter automatisch über HubSpot ausgespielt.
+hubspot:
+  portal_id: ""
+  region: eu1
+  contact_form_id: ""
+  newsletter_form_id: ""
+
+people:
+  steffi:
+    name: Dr. med. Stefanie Klappenberger
+    short: Steffi
+    role: Ärztin · Körper und Medizin
+    bio: Steffi verantwortet alles Medizinische, von der ärztlichen Anamnese bis zur Behandlung. Ihr Herz schlägt für eine Medizin, die den ganzen Menschen sieht und moderne Erkenntnisse mit der Kraft der Natur verbindet.
+    image: team-steffi.jpg
+  stephan:
+    name: Stephan Dietl
+    short: Stephan
+    role: Seele und Bewusstsein
+    bio: Stephan begleitet Menschen mit schamanischer Arbeit, feiner Energiearbeit und Hypnose. Er ist Reiki-Meister, hat eine schamanische Ausbildung und ist NLP Master und Coach nach Richard Bandler. Außerdem begleitet er die IHHT-Sitzungen in der Praxis.
+    image: team-stephan.jpg
+
+nav:
+  - { title: Start, href: / , key: start }
+  - { title: Angebote, href: /angebote/, key: angebote }
+  - { title: Philosophie, href: /philosophie/, key: philosophie }
+  - { title: Veranstaltungen, href: /veranstaltungen/, key: veranstaltungen }
+  - { title: Blog, href: /blog/, key: blog }
+  - { title: Kontakt, href: /kontakt/, key: kontakt, cta: true }

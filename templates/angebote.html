@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("hero-angebote.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Unsere Angebote</p>
+    <h1 id="h1">Medizin für den Körper, Raum für die Seele</h1>
+    <p class="lead">Wähle, was dich gerade ruft. Jedes Angebot beginnt mit einem persönlichen Gespräch.</p>
+  </div>
+</section>
+<section class="sec tight-top"><div class="wrap">{{ m.tiles() }}
+  <p class="note" style="margin-top:2.5rem">{{ site.billing_note }}</p>
+</div></section>
+{% endblock %}

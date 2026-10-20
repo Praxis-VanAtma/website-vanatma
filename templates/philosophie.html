@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("hero-philosophie.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Unsere Philosophie</p>
+    <h1 id="h1">Gesund alt werden heißt ganz werden</h1>
+    <p class="lead">Longevity ist für uns mehr als ein Trend. Ein langes, gesundes Leben entsteht, wenn Körper, Geist und Seele miteinander im Einklang schwingen.</p>
+  </div>
+</section>
+
+<section class="sec tight-top">
+  <div class="wrap split">
+    <div class="prose">
+      <p class="eyebrow">Was Longevity für uns bedeutet</p>
+      <h2 style="margin-top:0">Mehr gesunde Jahre, mehr Lebendigkeit</h2>
+      <p>Die Lebenserwartung in Deutschland ist seit 1960 um mehr als elf Jahre gestiegen. Die entscheidende Frage ist, wie sich diese Jahre anfühlen: kraftvoll, klar und verbunden.</p>
+      <p>Moderne Longevity-Medizin schaut auf Zellenergie, Stoffwechsel, Schlaf, Stressregulation und Regeneration. Wir ergänzen diesen Blick um das, was oft zu kurz kommt: <strong>ein Nervensystem, das zur Ruhe findet, und eine Seele, die weiß, wohin sie will.</strong></p>
+      <p>Deshalb verbinden wir ärztliche Erfahrung mit schamanischer und energetischer Arbeit, mit Stille, Natur und bewusstem Atem. Wie zwei Hälften eines Ganzen.</p>
+    </div>
+    <div class="frame">{{ m.photo("philosophie-praxis.jpg", "Praxisraum VanAtma in Sankt Englmar") }}</div>
+  </div>
+</section>
+
+<section class="fixed statement" aria-label="Leitgedanke">
+  {{ m.pic("statement-licht.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Unsere Überzeugung</p>
+    <blockquote>Heilung beginnt, wenn ein Mensch sich gesehen und gehalten fühlt</blockquote>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head-row center"><p class="eyebrow">Der Name</p><h2>VanAtma, der Atem der Seele auf Reisen</h2>
+      <p class="lead" style="max-width:60ch">„Atma" stammt aus dem Sanskrit und steht für das innere Selbst. „Van" steht für Bewegung, Reise und Freiheit. In unserer Praxis begleiten wir Menschen dabei, die eigene innere Medizin und die Selbstheilungskraft wieder zu spüren.</p></div>
+    <div class="pillars">
+      <div class="pillar"><span class="sym">I</span><h3>Medizinische Kompetenz und feine Energiearbeit</h3><p>Ärztliche Sorgfalt und Seelenarbeit ergänzen sich, damit du dich als ganzer Mensch begleitet fühlst.</p></div>
+      <div class="pillar"><span class="sym">II</span><h3>Zeit, Achtsamkeit und ehrliche Begegnung</h3><p>Du kommst in deinem eigenen Tempo an. Die Motivation für deinen Weg kommt von dir selbst.</p></div>
+      <div class="pillar"><span class="sym">III</span><h3>Naturverbundene Praxis im Bayerischen Wald</h3><p>Wald, Stille und klare Höhenluft auf rund 900 Metern werden Teil jeder Begleitung.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sand">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Longevity bei VanAtma</p><h2>Bausteine für ein langes, gesundes Leben</h2></div>
+    <div class="tiles">{% for s in ['ihht','mikronaehrstoffe','reiki','retreats'] %}{{ m.tile(offers_by_slug[s]) }}{% endfor %}</div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,54 @@
+---
+title: Datenschutzerklärung
+---
+
+*Entwurf, bitte vor Veröffentlichung prüfen lassen. Stand: Oktober 2026*
+
+## 1. Verantwortliche
+
+Gemeinsam verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website sind:
+
+Dr. med. Stefanie Klappenberger und Stephan Dietl
+VanAtma Praxis für Naturmedizin und Bewusstsein
+Bayerweg 57, 94379 Sankt Englmar
+E-Mail: praxis@vanatma.de
+
+## 2. Grundsätze
+
+Wir verarbeiten personenbezogene Daten nur, soweit dies für den Betrieb dieser Website, die Beantwortung deiner Anfragen und die Durchführung unserer Angebote erforderlich ist oder du eingewilligt hast. Diese Website setzt keine Cookies zu Analyse- oder Werbezwecken und verwendet kein Tracking.
+
+## 3. Hosting
+
+Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. Beim Aufruf der Website verarbeitet GitHub technisch notwendige Daten wie deine IP-Adresse, Datum und Uhrzeit des Zugriffs sowie Browserinformationen in Server-Logfiles, um die Website auszuliefern und die Sicherheit zu gewährleisten.
+
+Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO). GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen findest du in der [Datenschutzerklärung von GitHub](https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement).
+
+## 4. Schriftarten
+
+Die Schriftarten dieser Website werden lokal von unserem Server geladen. Es findet keine Verbindung zu Servern von Google oder anderen Schriftanbietern statt.
+
+## 5. Kontakt per E-Mail, Telefon und Kontaktformular
+
+Wenn du uns kontaktierst, verarbeiten wir deine Angaben (zum Beispiel Name, E-Mail-Adresse, Telefonnummer und Nachricht), um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit deine Anfrage auf einen Termin oder eine Leistung gerichtet ist, im Übrigen unser berechtigtes Interesse an der Beantwortung (Art. 6 Abs. 1 lit. f DSGVO).
+
+Bitte teile uns über das Kontaktformular oder per E-Mail möglichst keine ausführlichen Gesundheitsdaten mit. Diese besprechen wir gern persönlich.
+
+[Abschnitt für HubSpot ergänzen, sobald Kontaktformular und Newsletter über HubSpot laufen: Anbieter HubSpot Inc., Datenverarbeitung in der EU, Auftragsverarbeitungsvertrag, Rechtsgrundlagen.]
+
+## 6. Newsletter
+
+Wenn du unseren Newsletter abonnierst, verwenden wir deine E-Mail-Adresse, um dir Informationen zu Veranstaltungen und Impulse aus unserer Praxis zu senden. Die Anmeldung erfolgt im Double-Opt-in-Verfahren. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du jederzeit über den Abmeldelink im Newsletter oder per E-Mail widerrufen kannst.
+
+## 7. Externe Links
+
+Unsere Website enthält Links zu YouTube und Instagram. Erst wenn du einen dieser Links anklickst, werden Daten an den jeweiligen Anbieter übertragen. Es gelten dann dessen Datenschutzbestimmungen.
+
+## 8. Speicherdauer
+
+Wir speichern personenbezogene Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist oder gesetzliche Aufbewahrungsfristen es verlangen. Für ärztliche Unterlagen gelten die berufsrechtlichen Aufbewahrungsfristen.
+
+## 9. Deine Rechte
+
+Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung (Art. 15 bis 21 DSGVO). Eine erteilte Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen. Schreib uns dazu einfach an praxis@vanatma.de.
+
+Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel beim Bayerischen Landesamt für Datenschutzaufsicht, Promenade 18, 91522 Ansbach.

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero" aria-labelledby="h1">
+  {{ m.pic("hero-start.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Praxis für Naturmedizin und Bewusstsein</p>
+    <h1 id="h1">{{ site.claim }}</h1>
+    <p class="lead">{{ site.subline }} Ärztliche Erfahrung, moderne Medizin für ein langes, gesundes Leben und feine Seelenarbeit, mitten im Bayerischen Wald.</p>
+    <div class="btns"><a class="btn btn-light" href="{{ url('/angebote/') }}">Angebote entdecken</a><a class="btn btn-ghost" href="{{ url('/kontakt/') }}">Melde dich gern</a></div>
+    <div class="meta"><span>Luftkurort Sankt Englmar</span><span>rund 900 m ü. NN</span><span>Bayerischer Wald</span></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-einheit">
+  <div class="wrap">
+    <div class="head-row center">
+      <p class="eyebrow">Unsere Haltung</p>
+      <h2 id="h-einheit">Körper, Geist und Seele als Einheit</h2>
+      <p class="lead" style="max-width:58ch">Wir glauben, dass Heilung in dem Moment beginnt, in dem ein Mensch sich gesehen und gehalten fühlt. Deshalb begleiten wir dich auf allen drei Ebenen.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><span class="sym">Körper</span><h3>Medizinische Kompetenz</h3><p>Ärztliche Anamnese, IHHT, Eigenbluttherapie, Akupunktur und sanfte Ästhetik, mit Zeit und Sorgfalt.</p></div>
+      <div class="pillar"><span class="sym">Geist</span><h3>Klarheit und Ausrichtung</h3><p>Hypnose und achtsame Begleitung für neue Perspektiven und bewusste Schritte in dein nächstes Kapitel.</p></div>
+      <div class="pillar"><span class="sym">Seele</span><h3>Feine Energiearbeit</h3><p>Schamanische Begleitung, Trommelreisen und Reiki, getragen von der Stille des Waldes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sand" aria-labelledby="h-angebote">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Unsere Angebote</p><h2 id="h-angebote">Was dich bei uns erwartet</h2></div>
+    {{ m.tiles() }}
+  </div>
+</section>
+
+<section class="fixed statement" aria-label="Leitgedanke">
+  {{ m.pic("statement-wald.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">VanAtma</p>
+    <blockquote>Der Atem der Seele auf Reisen</blockquote>
+    <p>Ärztliche Erfahrung, Intuition und die Kraft der Natur wirken bei uns Hand in Hand.</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-termine">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Veranstaltungen</p><h2 id="h-termine">Die nächsten Termine</h2></div>
+    {% if upcoming %}
+    <div class="events compact">{% for e in upcoming[:3] %}{{ m.event_card(e, compact=True) }}{% endfor %}</div>
+    {% else %}<p class="empty">Neue Termine folgen in Kürze. Trag dich gern in den Newsletter ein.</p>{% endif %}
+    <div class="btns" style="margin-top:1.6rem"><a class="btn btn-ghost" href="{{ url('/veranstaltungen/') }}">Alle Veranstaltungen</a></div>
+  </div>
+</section>
+
+<section class="sec sand" aria-labelledby="h-team">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Über uns</p><h2 id="h-team">Zwei Wege, ein Heilraum</h2></div>
+    <div class="team">
+      {% for key in ["steffi", "stephan"] %}{% set p = site.people[key] %}
+      <article class="person">
+        <div class="frame">{{ m.photo(p.image, "Porträt " ~ p.name) }}</div>
+        <p class="role">{{ p.role }}</p>
+        <h3>{{ p.name }}</h3>
+        <p>{{ p.bio }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-blog">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Heilraum Wissenswertes</p><h2 id="h-blog">Aus unserem Blog</h2></div>
+    <div class="posts">{% for p in posts[:3] %}{{ m.post_card(p) }}{% endfor %}</div>
+    <div class="btns" style="margin-top:1.6rem"><a class="btn btn-ghost" href="{{ url('/blog/') }}">Alle Beiträge</a></div>
+  </div>
+</section>
+
+<section class="fixed contact-band" aria-labelledby="h-kontakt">
+  {{ m.pic("kontakt-praxis.jpg") }}
+  <div class="wrap">
+    <div class="contact-card">
+      <p class="eyebrow">Kontakt</p>
+      <h2 id="h-kontakt" style="font-size:var(--s-2)">Melde dich gern bei uns</h2>
+      <p class="lead">Schreib uns, worum es dir geht. Wir antworten persönlich und finden gemeinsam deinen ersten Schritt. Termine nach Vereinbarung.</p>
+      <div class="btns"><a class="btn btn-primary" href="{{ url('/kontakt/') }}">Zum Kontakt</a></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

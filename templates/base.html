@@ -1,0 +1,97 @@
+{% import "_macros.html" as m %}<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+{% if noindex %}<meta name="robots" content="noindex, nofollow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
+<link rel="canonical" href="{{ canonical }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="{{ site.long_name }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ canonical }}">
+{% if image('og.jpg') %}<meta property="og:image" content="{{ abs_url('/assets/img/og.jpg') }}">{% endif %}
+<meta name="theme-color" content="#4a4920">
+<link rel="icon" href="{{ url('/assets/img/favicon.svg') }}" type="image/svg+xml">
+<link rel="preload" href="{{ url('/assets/fonts/jost-latin-300-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ url('/assets/css/style.css') }}">
+{{ schema|default('') }}
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+<header class="head">
+  <div class="wrap">
+    <a class="logo" href="{{ url('/') }}" aria-label="VanAtma Startseite">{{ m.mark() }}<span class="wm"><b>VanAtma</b><span>Naturmedizin und Bewusstsein</span></span></a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menü</button>
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      {% for n in site.nav %}<a href="{{ url(n.href) }}"{% if n.cta %} class="cta"{% endif %}{% if nav == n.key %} aria-current="page"{% endif %}>{{ n.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+{% block main %}{% endblock %}
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="brand">
+      {{ m.mark() }}
+      <p>{{ site.long_name }}<br>{{ site.address.street }} · {{ site.address.zip }} {{ site.address.city }}<br><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <div class="social">
+        <a href="{{ site.social.youtube }}" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2 27 27 0 0 0 2 12a27 27 0 0 0 .4 4.8 2.6 2.6 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8A27 27 0 0 0 22 12a27 27 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg></a>
+        <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        {% if site.social.telegram %}<a href="{{ site.social.telegram }}" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.3 18.4 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7 8.6-7.8c.4-.3-.1-.5-.6-.2L6.6 13 2 11.6c-1-.3-1-1 .2-1.5L20.2 3.2c.8-.3 1.6.2 1.3 1.1z"/></svg></a>{% endif %}
+      </div>
+    </div>
+    <div>
+      <h2>Angebote</h2>
+      <ul>{% for o in offers %}<li><a href="{{ url(offer_url(o)) }}">{{ o.title }}</a></li>{% endfor %}</ul>
+    </div>
+    <div>
+      <h2>Praxis</h2>
+      <ul>
+        <li><a href="{{ url('/philosophie/') }}">Philosophie und Longevity</a></li>
+        <li><a href="{{ url('/veranstaltungen/') }}">Veranstaltungen</a></li>
+        <li><a href="{{ url('/blog/') }}">Blog</a></li>
+        <li><a href="{{ url('/faq/') }}">Häufige Fragen</a></li>
+        <li><a href="{{ url('/kontakt/') }}">Kontakt</a></li>
+        <li><a href="{{ url('/impressum/') }}">Impressum</a></li>
+        <li><a href="{{ url('/datenschutz/') }}">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Newsletter</h2>
+      {% if site.hubspot.portal_id and site.hubspot.newsletter_form_id %}
+        <p>Neue Veranstaltungen und Impulse aus dem Heilraum, etwa einmal im Monat.</p>
+        <div id="hs-news"></div>
+      {% else %}
+      <form id="news-form" data-to="{{ site.email }}" novalidate>
+        <p>Neue Veranstaltungen und Impulse aus dem Heilraum, etwa einmal im Monat.</p>
+        <label for="n-mail" class="sr">E-Mail-Adresse</label>
+        <input id="n-mail" type="email" placeholder="Deine E-Mail-Adresse" autocomplete="email" required>
+        <label class="check-line" for="n-ok"><input id="n-ok" type="checkbox"><span>Ich möchte den Newsletter erhalten. Abmelden geht jederzeit, mehr in der <a href="{{ url('/datenschutz/') }}">Datenschutzerklärung</a>.</span></label>
+        <div><button class="btn btn-light" type="submit">Anmelden</button></div>
+        <p class="form-msg" id="n-out" aria-live="polite"></p>
+      </form>
+      {% endif %}
+    </div>
+    <div class="legal-row"><span>© {{ year }} {{ site.long_name }} in Sankt Englmar</span><span>{{ site.claim }}</span></div>
+  </div>
+</footer>
+<script src="{{ url('/assets/js/main.js') }}" defer></script>
+{% if site.hubspot.portal_id %}
+<script charset="utf-8" src="https://js-{{ site.hubspot.region }}.hsforms.net/forms/embed/v2.js"></script>
+<script>
+window.addEventListener('load',function(){if(!window.hbspt)return;
+{% if site.hubspot.contact_form_id %}if(document.getElementById('hs-contact'))hbspt.forms.create({region:"{{ site.hubspot.region }}",portalId:"{{ site.hubspot.portal_id }}",formId:"{{ site.hubspot.contact_form_id }}",target:"#hs-contact"});{% endif %}
+{% if site.hubspot.newsletter_form_id %}if(document.getElementById('hs-news'))hbspt.forms.create({region:"{{ site.hubspot.region }}",portalId:"{{ site.hubspot.portal_id }}",formId:"{{ site.hubspot.newsletter_form_id }}",target:"#hs-news"});{% endif %}
+});
+</script>
+{% endif %}
+</body>
+</html>

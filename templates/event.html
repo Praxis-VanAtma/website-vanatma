@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic(e.image) }}
+  <div class="wrap">
+    <p class="crumb"><a href="{{ url('/veranstaltungen/') }}">Veranstaltungen</a> / {{ e.title }}</p>
+    <h1 id="h1">{{ e.title }}</h1>
+    <p class="lead" style="font-family:var(--font-quote);font-style:italic;font-size:var(--s-2)">{{ e.subtitle }}</p>
+    <div class="meta"><span>{{ e.when }}</span></div>
+  </div>
+</section>
+<section class="sec tight-top">
+  <div class="wrap split" style="align-items:start">
+    <div class="prose">
+      <p class="eyebrow">{{ e.kind }}</p>
+      {% for t in e.description %}<p>{{ t }}</p>{% endfor %}
+      {% if e.includes %}<h3>Was dich erwartet</h3>
+      <ul class="check" style="padding:0">{% for i in e.includes %}<li>{{ m.icon('check') }}<span>{{ i }}</span></li>{% endfor %}</ul>{% endif %}
+    </div>
+    <article class="event stack">
+      <div class="date"><b>{{ e.day }}</b><span>{{ e.month }} {{ e.year }}</span></div>
+      <div>
+        <div class="facts" style="flex-direction:column;align-items:flex-start;margin-top:0">
+          <span>{{ m.icon('clock') }}{{ e.when }}</span>
+          <span>{{ m.icon('pin') }}{{ e.where }}</span>
+          <span>{{ m.icon('users') }}{{ e.lead }}</span>
+          {% if e.capacity %}<span>{{ m.icon('users') }}{{ e.capacity }}</span>{% endif %}
+        </div>
+        <div class="foot-row">
+          <span class="price">{{ e.price }}{% if e.price_note %}<small>{{ e.price_note }}</small>{% endif %}</span>
+          <a class="btn btn-primary" href="{{ url('/kontakt/') }}?thema={{ ('Anmeldung: ' ~ e.title)|urlencode }}#formular">Jetzt anmelden</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+{% endblock %}

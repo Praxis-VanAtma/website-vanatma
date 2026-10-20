@@ -1,0 +1,24 @@
+# {{ site.long_name }}
+
+> {{ site.claim }}. Praxis in {{ site.address.city }} im Bayerischen Wald, die ärztliche Longevity-Medizin mit schamanischer Begleitung, feiner Energiearbeit und Hypnose verbindet. Privatpraxis für Privatversicherte und Selbstzahler, Termine nach Vereinbarung.
+
+- Adresse: {{ site.address.street }}, {{ site.address.zip }} {{ site.address.city }}, Deutschland
+- E-Mail: {{ site.email }}
+{% for ph in site.phones %}- Telefon {{ ph.label }}: {{ ph.display }} ({{ ph.person }})
+{% endfor %}- Ärztin: Dr. med. Stefanie Klappenberger (medizinische Angebote, ärztliche Anamnese)
+- Stephan Dietl: schamanische Begleitung, Reiki, Hypnose, Begleitung der IHHT-Sitzungen
+- Gut erreichbar aus: {{ site.areas|join(", ") }}
+
+## Angebote
+{% for o in offers %}- [{{ o.title }}]({{ abs_url(offer_url(o)) }}): {{ o.short }}
+{% endfor %}
+## Veranstaltungen
+{% for e in upcoming %}- [{{ e.title }}: {{ e.subtitle }}]({{ abs_url('/veranstaltungen/' ~ e.slug ~ '/') }}): {{ e.when }}, {{ e.price }}
+{% endfor %}
+## Blog
+{% for p in posts %}- [{{ p.title }}]({{ abs_url('/blog/' ~ p.slug ~ '/') }}): {{ p.excerpt }}
+{% endfor %}
+## Weitere Seiten
+- [Philosophie und Longevity]({{ abs_url('/philosophie/') }})
+- [Häufige Fragen]({{ abs_url('/faq/') }})
+- [Kontakt]({{ abs_url('/kontakt/') }})

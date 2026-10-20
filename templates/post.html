@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic(p.image) }}
+  <div class="wrap">
+    <p class="crumb"><a href="{{ url('/blog/') }}">Blog</a> / {{ p.category }}</p>
+    <h1 id="h1" style="max-width:22ch">{{ p.title }}</h1>
+    <p class="lead">{{ p.excerpt }}</p>
+  </div>
+</section>
+<section class="sec tight-top">
+  <article class="wrap"><div class="article">
+    <div class="meta"><time datetime="{{ p.date }}">{{ date_de(p.date) }}</time><span>{{ p.minutes }} Min. Lesezeit</span><span>{{ p.category }}</span></div>
+    <div class="prose">{{ p.body }}</div>
+    {% if p.related and offers_by_slug.get(p.related) %}{% set o = offers_by_slug[p.related] %}
+    <p style="margin-top:1.6rem"><a class="btn btn-ghost" href="{{ url(offer_url(o)) }}">Mehr über {{ o.title }} →</a></p>{% endif %}
+    <div class="author"><div class="av">{{ m.photo(author.image, author.name) }}</div><div><strong>{{ author.name }}</strong><p>{{ author.role }}</p></div></div>
+  </div></article>
+</section>
+{% endblock %}

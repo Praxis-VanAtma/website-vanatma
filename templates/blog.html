@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("hero-blog.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Heilraum Wissenswertes</p>
+    <h1 id="h1">Blog</h1>
+    <p class="lead">Impulse, Hintergründe und neue Erkenntnisse aus Naturmedizin, Longevity und Seelenarbeit.</p>
+  </div>
+</section>
+<section class="sec tight-top"><div class="wrap"><div class="posts">{% for p in posts %}{{ m.post_card(p) }}{% endfor %}</div></div></section>
+{% endblock %}

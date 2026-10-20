@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("hero-faq.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Gut zu wissen</p>
+    <h1 id="h1">Häufige Fragen</h1>
+    <p class="lead">Alles Wichtige rund um Termine, Abrechnung und unsere Angebote.</p>
+  </div>
+</section>
+<section class="sec tight-top"><div class="wrap">{{ m.faq_list(faq) }}
+  <p class="muted" style="text-align:center;margin-top:2rem">Deine Frage ist offen geblieben? <a href="{{ url('/kontakt/') }}">Schreib uns gern.</a></p>
+</div></section>
+{% endblock %}
