@@ -41,6 +41,6 @@
 </section>
 <section class="sec"><div class="wrap split">
   <div class="prose"><p class="eyebrow">Anfahrt</p><h2 style="margin-top:0">So findest du uns</h2><p>{{ site.reach_note }}</p><p><a href="https://www.google.com/maps/search/?api=1&query={{ (site.long_name ~ ', ' ~ site.address.street ~ ', ' ~ site.address.zip ~ ' ' ~ site.address.city)|urlencode }}" target="_blank" rel="noopener">Route in Google Maps öffnen →</a></p></div>
-  <div class="frame wide">{{ m.photo("anfahrt.jpg", "Praxis VanAtma in Sankt Englmar") }}</div>
+  <figure style="margin:0;display:grid;gap:.5rem"><div class="frame wide">{{ m.photo("anfahrt.jpg", "Luftbild von Sankt Englmar im Bayerischen Wald") }}</div><figcaption class="muted" style="font-size:.8rem">Sankt Englmar im Bayerischen Wald · Foto: © Tourist-Info Sankt Englmar</figcaption></figure>
 </div></section>
 {% endblock %}

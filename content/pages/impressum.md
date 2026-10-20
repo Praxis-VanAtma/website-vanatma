@@ -41,6 +41,12 @@ Für alle weiteren Inhalte: Stephan Dietl, Anschrift wie oben
 
 Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
 
+## Bildnachweise
+
+Luftbild von Sankt Englmar (Kontaktseite): © Tourist-Info Sankt Englmar
+Porträts und Praxisfotos: VanAtma
+Weitere Fotos: Canva
+
 ## Hinweis zu unseren Angeboten
 
 Schamanische Begleitung, Energiearbeit und Hypnose sind Angebote für Wohlbefinden und persönliche Entwicklung. Sie stellen keine Diagnosen und ersetzen keine ärztliche oder psychotherapeutische Behandlung.
