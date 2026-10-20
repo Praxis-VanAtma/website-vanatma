@@ -1,0 +1,32 @@
+name: Bilder importieren
+
+on:
+  push:
+    branches: [main]
+    paths: ["import/images.json"]
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install Pillow
+      - run: python tools/import_images.py
+      - name: Bilder einchecken
+        run: |
+          git config user.name "VanAtma Website"
+          git config user.email "praxis@vanatma.de"
+          git add -A static/img import
+          git commit -m "Fotos aus Canva importiert" || echo "Keine Änderungen"
+          git push
+      - name: Website neu veröffentlichen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
