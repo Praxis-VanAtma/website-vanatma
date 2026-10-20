@@ -69,7 +69,7 @@
       <h2>Newsletter</h2>
       {% if site.hubspot.portal_id and site.hubspot.newsletter_form_id %}
         <p>Neue Veranstaltungen und Impulse aus dem Heilraum, etwa einmal im Monat.</p>
-        <div id="hs-news"></div>
+        <div class="hs-form-frame hs-wrap" data-region="{{ site.hubspot.region }}" data-form-id="{{ site.hubspot.newsletter_form_id }}" data-portal-id="{{ site.hubspot.portal_id }}"></div>
       {% else %}
       <form id="news-form" data-to="{{ site.email }}" novalidate>
         <p>Neue Veranstaltungen und Impulse aus dem Heilraum, etwa einmal im Monat.</p>
@@ -85,14 +85,8 @@
   </div>
 </footer>
 <script src="{{ url('/assets/js/main.js') }}" defer></script>
-{% if site.hubspot.portal_id %}
-<script charset="utf-8" src="https://js-{{ site.hubspot.region }}.hsforms.net/forms/embed/v2.js"></script>
-<script>
-window.addEventListener('load',function(){if(!window.hbspt)return;
-{% if site.hubspot.contact_form_id %}if(document.getElementById('hs-contact'))hbspt.forms.create({region:"{{ site.hubspot.region }}",portalId:"{{ site.hubspot.portal_id }}",formId:"{{ site.hubspot.contact_form_id }}",target:"#hs-contact"});{% endif %}
-{% if site.hubspot.newsletter_form_id %}if(document.getElementById('hs-news'))hbspt.forms.create({region:"{{ site.hubspot.region }}",portalId:"{{ site.hubspot.portal_id }}",formId:"{{ site.hubspot.newsletter_form_id }}",target:"#hs-news"});{% endif %}
-});
-</script>
+{% if site.hubspot.portal_id and (site.hubspot.newsletter_form_id or (nav == 'kontakt' and site.hubspot.contact_form_id)) %}
+<script src="https://js-{{ site.hubspot.region }}.hsforms.net/forms/embed/{{ site.hubspot.portal_id }}.js" defer></script>
 {% endif %}
 </body>
 </html>

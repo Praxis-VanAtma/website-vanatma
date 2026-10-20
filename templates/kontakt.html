@@ -8,7 +8,7 @@
       <h1 id="h1" style="font-size:var(--s-3)">Melde dich gern bei uns</h1>
       <p class="lead">Schreib uns, worum es dir geht. Wir antworten persönlich. Termine nach Vereinbarung.</p>
       {% if site.hubspot.portal_id and site.hubspot.contact_form_id %}
-      <div id="hs-contact"></div>
+      <div class="hs-form-frame hs-wrap" data-region="{{ site.hubspot.region }}" data-form-id="{{ site.hubspot.contact_form_id }}" data-portal-id="{{ site.hubspot.portal_id }}"></div>
       {% else %}
       <form id="mail-form" data-to="{{ site.email }}" novalidate style="display:grid;gap:1rem">
         <div class="two">

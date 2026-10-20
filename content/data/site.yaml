@@ -42,9 +42,9 @@ social:
 # HubSpot-Formulare. Sobald IDs eingetragen sind, werden Kontaktformular
 # und Newsletter automatisch über HubSpot ausgespielt.
 hubspot:
-  portal_id: ""
+  portal_id: "147344461"
   region: eu1
-  contact_form_id: ""
+  contact_form_id: "abb094cd-7326-4ab7-b91c-27a104710244"
   newsletter_form_id: ""
 
 people:

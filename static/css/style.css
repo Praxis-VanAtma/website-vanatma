@@ -291,3 +291,62 @@ a{color:inherit}
 .foot .social svg{width:17px;height:17px}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* HubSpot-Formulare (neuer Editor) im VanAtma-Stil */
+.hs-wrap, .hs-wrap [data-hsfc-id="Renderer"]{
+  --hsf-global__font-family:var(--font-body) !important;
+  --hsf-global__font-size:1rem !important;
+  --hsf-global__color:var(--ink) !important;
+  --hsf-background__background-color:transparent !important;
+  --hsf-background__padding:0 !important;
+  --hsf-background__border-width:0 !important;
+  --hsf-richtext__font-family:var(--font-body) !important;
+  --hsf-richtext__color:var(--muted) !important;
+  --hsf-richtext__font-size:.9rem !important;
+  --hsf-heading__font-family:var(--font-head) !important;
+  --hsf-heading__color:var(--ink) !important;
+  --hsf-field-label__font-family:var(--font-body) !important;
+  --hsf-field-label__font-size:.9rem !important;
+  --hsf-field-label__color:var(--ink) !important;
+  --hsf-field-label-requiredindicator__color:var(--olive) !important;
+  --hsf-field-input__font-family:var(--font-body) !important;
+  --hsf-field-input__color:var(--ink) !important;
+  --hsf-field-input__background-color:var(--bg) !important;
+  --hsf-field-input__border-color:var(--line) !important;
+  --hsf-field-input__border-width:1px !important;
+  --hsf-field-input__border-radius:10px !important;
+  --hsf-field-input__padding:.75rem .9rem !important;
+  --hsf-field-textarea__font-family:var(--font-body) !important;
+  --hsf-field-textarea__color:var(--ink) !important;
+  --hsf-field-textarea__background-color:var(--bg) !important;
+  --hsf-field-textarea__border-color:var(--line) !important;
+  --hsf-field-textarea__border-width:1px !important;
+  --hsf-field-textarea__border-radius:10px !important;
+  --hsf-field-textarea__padding:.75rem .9rem !important;
+  --hsf-field-checkbox__color:var(--olive) !important;
+  --hsf-field-checkbox__border-color:var(--line) !important;
+  --hsf-button__font-family:var(--font-head) !important;
+  --hsf-button__font-size:1rem !important;
+  --hsf-button__color:var(--on-olive) !important;
+  --hsf-button__background-color:var(--olive-dark) !important;
+  --hsf-button__border-radius:999px !important;
+  --hsf-button__padding:.85rem 1.6rem !important;
+  --hsf-button__box-shadow:none !important;
+  --hsf-row__vertical-spacing:1rem !important;
+}
+.hs-wrap{min-height:120px}
+.foot .hs-wrap, .foot .hs-wrap [data-hsfc-id="Renderer"]{
+  --hsf-global__color:#f6f1e1 !important;
+  --hsf-richtext__color:rgba(246,241,225,.75) !important;
+  --hsf-richtext__font-size:.8rem !important;
+  --hsf-field-label__color:#f6f1e1 !important;
+  --hsf-field-label-requiredindicator__color:#e9e1c0 !important;
+  --hsf-field-input__color:#f6f1e1 !important;
+  --hsf-field-input__background-color:rgba(0,0,0,.15) !important;
+  --hsf-field-input__border-color:rgba(246,241,225,.35) !important;
+  --hsf-field-input__placeholder-color:rgba(246,241,225,.6) !important;
+  --hsf-field-checkbox__border-color:rgba(246,241,225,.5) !important;
+  --hsf-button__color:var(--olive-dark) !important;
+  --hsf-button__background-color:#f6f1e1 !important;
+}
+.foot .hs-wrap a,.contact-card .hs-wrap a{color:inherit;text-decoration:underline}
