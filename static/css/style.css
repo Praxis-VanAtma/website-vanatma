@@ -329,7 +329,7 @@ a{color:inherit}
   --hsf-button__font-size:1rem !important;
   --hsf-button__color:var(--on-olive) !important;
   --hsf-button__background-color:var(--olive-dark) !important;
-  --hsf-button__border-radius:999px !important;
+  --hsf-button__border-radius:12px !important;
   --hsf-button__padding:.85rem 1.6rem !important;
   --hsf-button__box-shadow:none !important;
   --hsf-row__vertical-spacing:1rem !important;
@@ -370,3 +370,11 @@ a{color:inherit}
 .post-feature .meta{font-size:.88rem}
 .post-feature .more{font-family:var(--font-head);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--olive);margin-top:.4rem}
 @media (min-width:860px){.post-feature{grid-template-columns:1.4fr 1fr}.post-feature .pic{aspect-ratio:auto;min-height:440px}}
+/* Senden-Button direkt gestalten, unabhängig vom HubSpot-Theme */
+.hs-wrap button[type=submit],.hs-wrap input[type=submit],.hs-wrap .hsfc-Button,.hs-wrap .hs-button{
+  background:var(--olive-dark) !important;color:var(--on-olive) !important;border:1.5px solid var(--olive-dark) !important;
+  border-radius:12px !important;padding:.95rem 1.6rem !important;font-family:var(--font-head) !important;font-size:.86rem !important;
+  letter-spacing:.12em !important;text-transform:uppercase !important;font-weight:400 !important;cursor:pointer;opacity:1 !important;box-shadow:none !important}
+.hs-wrap button[type=submit]:hover,.hs-wrap input[type=submit]:hover,.hs-wrap .hsfc-Button:hover,.hs-wrap .hs-button:hover{filter:brightness(1.18)}
+.foot .hs-wrap button[type=submit],.foot .hs-wrap input[type=submit],.foot .hs-wrap .hsfc-Button,.foot .hs-wrap .hs-button{
+  background:#f6f1e1 !important;color:var(--olive-dark) !important;border-color:#f6f1e1 !important}
