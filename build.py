@@ -131,15 +131,6 @@ BLOG_THEMES = [{"slug": k, "title": v["title"], "count": sum(1 for p in POSTS if
 BLOG_THEMES = [t for t in BLOG_THEMES if t["count"]]
 
 
-def blog_archive(posts):
-    months = []
-    for p in posts:
-        label = f"{MONTHS[p['date'].month - 1]} {p['date'].year}"
-        if not months or months[-1]["label"] != label:
-            months.append({"label": label, "posts": []})
-        months[-1]["posts"].append(p)
-    return months
-
 PAGES = {}
 for p in (CONTENT / "pages").glob("*.md"):
     meta, body = read_front_matter(p)
@@ -265,11 +256,11 @@ def build():
 
     render("blog.html", "/blog/", nav="blog", title="Blog · Heilraum Wissenswertes · VanAtma",
            description="Impulse und neue Erkenntnisse aus Naturmedizin, Longevity und Seelenarbeit von der Praxis VanAtma in Sankt Englmar.",
-           themes=BLOG_THEMES, active="", list_posts=POSTS, archive=blog_archive(POSTS))
+           themes=BLOG_THEMES, active="", list_posts=POSTS)
     for t in BLOG_THEMES:
         tp = [p for p in POSTS if p["thema"] == t["slug"]]
         render("blog.html", f"/blog/thema/{t['slug']}/", nav="blog", themes=BLOG_THEMES, active=t["slug"],
-               list_posts=tp, archive=blog_archive(tp), theme=t,
+               list_posts=tp, theme=t,
                title=f"{t['title']} · Blog · VanAtma",
                description=f"Blogbeiträge zum Thema {t['title']} aus der Praxis VanAtma in Sankt Englmar.")
     for p in POSTS:

@@ -16,13 +16,5 @@
   </nav>
   {% if list_posts %}{{ m.post_feature(list_posts[0]) }}{% endif %}
   {% if list_posts|length > 1 %}<div class="posts">{% for p in list_posts[1:] %}{{ m.post_card(p) }}{% endfor %}</div>{% endif %}
-  {% if list_posts|length > 3 %}
-  <details class="archive">
-    <summary>Alle Beiträge nach Monat</summary>
-    <div class="months">{% for mo in archive %}
-      <div><h3>{{ mo.label }}</h3><ul>{% for p in mo.posts %}<li><a href="{{ url('/blog/' ~ p.slug ~ '/') }}">{{ p.title }}</a> <small>{{ p.category }}</small></li>{% endfor %}</ul></div>
-    {% endfor %}</div>
-  </details>
-  {% endif %}
 </div></section>
 {% endblock %}
