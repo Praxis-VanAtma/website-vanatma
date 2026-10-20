@@ -108,7 +108,7 @@ for p in sorted((CONTENT / "blog").glob("*.md")):
     d = meta.get("date")
     meta["date"] = d if isinstance(d, dt.date) else dt.date.fromisoformat(str(d))
     POSTS.append(meta)
-POSTS.sort(key=lambda x: x["date"], reverse=True)
+POSTS.sort(key=lambda x: (x["date"], str(x.get("time", ""))), reverse=True)  # time: "18:00" ordnet Beiträge vom selben Tag
 
 for e in EVENTS:
     for k in ("start", "end"):

@@ -1,8 +1,9 @@
 ---
 title: Lithium, das stille Spurenelement
 date: 2026-10-20
+time: "18:00"
 category: Mikronährstoffe und Longevity
-author: stephan
+author: steffi
 excerpt: Warum ein unscheinbares Spurenelement aus Stein und Wasser gerade so viel Aufmerksamkeit bekommt, was Dr. Michael Nehls darüber sagt und was die Forschung heute zeigt.
 image: blog-lithium.jpg
 related: mikronaehrstoffe
@@ -58,7 +59,7 @@ In der Medizin ist Lithium seit über siebzig Jahren bekannt. Als Medikament wir
 
 Wichtig für dich zu wissen: In der EU ist Lithium in Nahrungsergänzungsmitteln verboten. Das Bundesamt für Verbraucherschutz und Lebensmittelsicherheit hat kürzlich noch einmal ausdrücklich darauf hingewiesen, auch für Lithiumorotat. Bitte bestelle daher keine Lithiumpräparate auf eigene Faust im Internet.
 
-Wenn dich das Thema persönlich beschäftigt, sprich es gern in einer ärztlichen Beratung an. Dr. med. Stefanie Klappenberger nimmt sich Zeit für deine Fragen und schaut mit dir in Ruhe auf deine Lebensweise und deine Mikronährstoffe.
+Wenn dich das Thema persönlich beschäftigt, sprich es gern bei mir in der ärztlichen Beratung an. Ich nehme mir Zeit für deine Fragen und schaue mit dir in Ruhe auf deine Lebensweise und deine Mikronährstoffe.
 
 ## Was du ganz natürlich tun kannst
 

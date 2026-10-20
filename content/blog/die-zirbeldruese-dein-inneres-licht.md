@@ -1,6 +1,6 @@
 ---
 title: Die Zirbeldrüse, dein inneres Licht
-date: 2026-10-20
+date: 2026-10-18
 category: Bewusstsein
 author: stephan
 excerpt: Was die kleine Drüse in der Mitte deines Kopfes mit Licht, Schlaf und innerer Wahrnehmung verbindet und wie du sie im Alltag sanft aktivierst.
