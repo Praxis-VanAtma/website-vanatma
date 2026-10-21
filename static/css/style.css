@@ -460,3 +460,4 @@ a{color:inherit}
 .team-intro{max-width:68ch;display:grid;gap:.9rem;margin-top:.4rem}
 .team-intro p{margin:0;color:var(--muted)}
 .team-intro .lead{color:var(--ink)}
+.person-hero h1{font-size:clamp(1.9rem,3.6vw,3.1rem);overflow-wrap:break-word;hyphens:manual}
