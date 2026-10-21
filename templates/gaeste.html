@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("statement-wald.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Für Gäste in Sankt Englmar</p>
+    <h1 id="h1">Auszeit im Urlaub</h1>
+    <p class="lead">Du verbringst ein paar Tage im Bayerischen Wald? Dann schenk dir zwischen Skipiste, Waldspaziergang und Wellness eine Stunde nur für dich, bei uns in der Praxis VanAtma.</p>
+    <div class="btns"><a class="btn btn-light" href="{{ url('/kontakt/') }}#formular">Termin anfragen</a><a class="btn btn-ghost" href="#angebote">Angebote ansehen</a></div>
+  </div>
+</section>
+
+<section class="sec tight-top">
+  <div class="wrap split">
+    <div class="prose">
+      <p class="eyebrow">Urlaub für Körper, Geist und Seele</p>
+      <h2 style="margin-top:0">Ankommen, wo du gerade bist</h2>
+      <p>Urlaub ist die schönste Gelegenheit, wirklich zur Ruhe zu kommen. Der Alltag ist weit weg, der Wald ganz nah, und auf rund 900 Metern Höhe wird die Luft klarer und der Kopf freier.</p>
+      <p>Genau hier setzen wir an. In unserer Praxis am Bayerweg verbinden Dr. med. Stefanie Klappenberger und Stephan Dietl ärztliche Erfahrung mit feiner Energiearbeit und schamanischer Begleitung. Viele unserer Angebote passen wunderbar in einen Urlaub: eine einzelne Sitzung, ein Abend am Feuer oder ein ganzes Wochenende im Wald.</p>
+      <p>Wir nehmen uns Zeit für dich und stimmen den Termin gern auf deine Urlaubstage ab.</p>
+    </div>
+    <div class="frame">{{ m.photo("philosophie-praxis.jpg", "Praxisraum VanAtma in Sankt Englmar") }}</div>
+  </div>
+</section>
+
+<section class="sec sand" id="angebote">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Ideal für deinen Aufenthalt</p><h2>Eine Stunde nur für dich</h2>
+      <p class="lead" style="max-width:62ch">Diese Angebote lassen sich gut in ein paar Urlaubstage einbauen. Für IHHT und alle ärztlichen Leistungen beginnt alles mit einem persönlichen Gespräch bei Dr. med. Stefanie Klappenberger.</p></div>
+    <div class="tiles">{% for s in ['reiki','chakrenreinigung','schamanische-begleitung','hypnose','ihht','akupunktur'] %}{% if offers_by_slug[s] %}{{ m.tile(offers_by_slug[s]) }}{% endif %}{% endfor %}</div>
+  </div>
+</section>
+
+{% if upcoming %}
+<section class="sec">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Während deines Urlaubs</p><h2>Gemeinsam erleben</h2>
+      <p class="lead" style="max-width:60ch">Vielleicht fällt dein Aufenthalt auf einen unserer Termine. Gäste sind herzlich willkommen.</p></div>
+    <div class="events compact">{% for e in upcoming %}{{ m.event_card(e, compact=True) }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+
+<section class="sec sand">
+  <div class="wrap split" style="align-items:start">
+    <div class="prose">
+      <p class="eyebrow">Gut zu wissen</p>
+      <h2 style="margin-top:0">So einfach geht's</h2>
+      <ul class="check" style="padding:0">
+        <li>{{ m.icon('check') }}<span><strong>Termine nach Vereinbarung:</strong> Schreib uns oder ruf an, wir finden gemeinsam einen Termin während deines Aufenthalts.</span></li>
+        <li>{{ m.icon('check') }}<span><strong>Ruhige Lage:</strong> Unsere Praxis liegt am Bayerweg 57 in Sankt Englmar, mitten in der Natur.</span></li>
+        <li>{{ m.icon('check') }}<span><strong>Privatleistungen:</strong> {{ site.billing_note }}</span></li>
+        <li>{{ m.icon('check') }}<span><strong>Gutscheine:</strong> Eine Auszeit lässt sich auch wunderbar verschenken, an dich selbst oder an deine Reisebegleitung.</span></li>
+      </ul>
+      <div class="btns" style="margin-top:1.4rem"><a class="btn btn-primary" href="{{ url('/kontakt/') }}#formular">Termin anfragen</a></div>
+    </div>
+    <div class="prose">
+      <p class="eyebrow">Übernachten in Sankt Englmar</p>
+      <h2 style="margin-top:0">Gastgeber ganz in der Nähe</h2>
+      <p>Du suchst noch eine Unterkunft, zum Beispiel für ein Retreat-Wochenende? Diese Häuser in Sankt Englmar empfehlen wir gern:</p>
+      <div class="stays">
+        <a class="stay" href="https://www.angerhof.de" target="_blank" rel="noopener"><b>Hotel Angerhof</b><span>Sport- und Wellnesshotel mit großem Waldspa · Am Anger 38</span><em>angerhof.de →</em></a>
+        <a class="stay" href="https://www.gut-schmelmerhof.de" target="_blank" rel="noopener"><b>Hotel Gut Schmelmerhof</b><span>Familiengeführtes Hotel mit Spa und Tradition · Rettenbach 24</span><em>gut-schmelmerhof.de →</em></a>
+        <a class="stay" href="https://www.urlaubsregion-sankt-englmar.de/" target="_blank" rel="noopener"><b>Urlaubsregion Sankt Englmar</b><span>Weitere Gastgeber, Ferienwohnungen und Tipps der Tourist-Info</span><em>urlaubsregion-sankt-englmar.de →</em></a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

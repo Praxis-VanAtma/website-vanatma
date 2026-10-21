@@ -412,3 +412,12 @@ a{color:inherit}
 .flyer-page img{display:block;width:100%;aspect-ratio:1/1.414;object-fit:cover;border-radius:8px;box-shadow:0 14px 34px rgba(30,30,14,.22),0 1px 3px rgba(30,30,14,.18);transition:transform .3s}
 .flyer-page:hover img{transform:translateY(-4px)}
 .event.with-media>.emedia{align-self:stretch}
+
+/* Gäste-Seite: Unterkünfte */
+.stays{display:grid;gap:.9rem;margin-top:1rem}
+.stay{display:grid;gap:.25rem;padding:1.1rem 1.3rem;background:var(--card);border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s}
+.stay:hover{border-color:var(--olive);transform:translateY(-2px)}
+.stay b{font-family:var(--font-head);font-weight:400;font-size:1.15rem}
+.stay span{color:var(--muted);font-size:.93rem}
+.stay em{font-style:normal;font-family:var(--font-head);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--olive)}
+.prose .btn-primary,.prose .btn-primary:hover{color:var(--on-olive);text-decoration:none}

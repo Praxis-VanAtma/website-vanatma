@@ -273,6 +273,8 @@ def build():
                schema=jsonld(s, breadcrumb([("Start", "/"), ("Heilraum", "/blog/"), (p["title"], f"/blog/{p['slug']}/")])))
 
     faq = load_yaml("faq.yaml")["faq"]
+    render("gaeste.html", "/auszeit-im-urlaub/", nav="", title="Auszeit im Urlaub in Sankt Englmar · Reiki, IHHT und Retreats · VanAtma",
+           description="Urlaub in Sankt Englmar im Bayerischen Wald? Gönn dir eine Auszeit bei VanAtma: Reiki, Chakrenreinigung, schamanische Begleitung, IHHT und Retreats, Termine nach Vereinbarung.")
     render("faq.html", "/faq/", nav="", faq=faq, title="Häufige Fragen · VanAtma Sankt Englmar",
            description="Antworten auf häufige Fragen zur Praxis VanAtma in Sankt Englmar: Termine, Abrechnung, IHHT, Energiearbeit, Retreats und Gutscheine.",
            schema=jsonld(faq_schema(faq)))
