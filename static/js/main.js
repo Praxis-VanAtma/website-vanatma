@@ -10,8 +10,43 @@
   var topic = document.getElementById('c-topic');
   if (topic) {
     var t = new URLSearchParams(location.search).get('thema');
-    if (t) for (var i = 0; i < topic.options.length; i++) if (topic.options[i].text === t) topic.selectedIndex = i;
+    if (t) {
+      var norm = function (x) { return x.toLowerCase().replace(/[^a-zäöüß]/g, ''); }, nt = norm(t);
+      var isEvent = /^Anmeldung:/.test(t);
+      for (var i = 0; i < topic.options.length; i++) {
+        var o = topic.options[i];
+        if ((isEvent && o.value === 'Anmeldung zu einer Veranstaltung') || (!isEvent && o.value && (norm(o.text).indexOf(nt) === 0 || nt.indexOf(norm(o.text)) === 0)) || o.text === t) { topic.selectedIndex = i; break; }
+      }
+      var msgField = document.getElementById('h-msg');
+      if (isEvent && msgField && !msgField.value) msgField.value = t + '\n\n';
+    }
   }
+
+  // Kontaktformular: direkte Übermittlung an HubSpot
+  var hf = document.getElementById('hs-api-form');
+  if (hf) hf.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var out = document.getElementById('h-out'), btn = hf.querySelector('button[type=submit]');
+    var get = function (n) { var el = hf.elements[n]; return el ? el.value.trim() : ''; };
+    if (!get('firstname') || !get('lastname') || !get('email') || !get('message')) { out.textContent = 'Bitte füll Vorname, Nachname, E-Mail und Nachricht aus.'; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(get('email'))) { out.textContent = 'Bitte prüf deine E-Mail-Adresse.'; return; }
+    if (!document.getElementById('h-ok').checked) { out.textContent = 'Bitte bestätige kurz den Hinweis zum Datenschutz.'; return; }
+    var fields = ['firstname', 'lastname', 'email', 'phone', 'worum_geht_es_', 'message'].filter(function (n) { return get(n); })
+      .map(function (n) { return { objectTypeId: '0-1', name: n, value: get(n) }; });
+    var body = { fields: fields, context: { pageUri: location.href, pageName: document.title },
+      legalConsentOptions: { consent: { consentToProcess: true, text: document.getElementById('h-ok-text').textContent.trim() } } };
+    btn.disabled = true; out.textContent = 'Wird gesendet …';
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + hf.dataset.portal + '/' + hf.dataset.form,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { if (!r.ok) throw r; return r.json(); })
+      .then(function () {
+        hf.innerHTML = '<div class="form-done"><h3>Danke für deine Nachricht!</h3><p>Wir melden uns persönlich bei dir.</p></div>';
+      })
+      .catch(function () {
+        btn.disabled = false;
+        out.innerHTML = 'Beim Senden ist etwas schiefgegangen. Schreib uns bitte direkt an <a href="mailto:' + hf.dataset.to + '">' + hf.dataset.to + '</a>.';
+      });
+  });
 
   // Kontaktformular ohne HubSpot: öffnet das E-Mail-Programm mit vorbereiteter Nachricht
   var cf = document.getElementById('mail-form');

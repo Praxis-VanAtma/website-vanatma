@@ -421,3 +421,6 @@ a{color:inherit}
 .stay span{color:var(--muted);font-size:.93rem}
 .stay em{font-style:normal;font-family:var(--font-head);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--olive)}
 .prose .btn-primary,.prose .btn-primary:hover{color:var(--on-olive);text-decoration:none}
+.form-done{padding:1.4rem 1.2rem;border-radius:var(--r);background:var(--bg);border:1px solid var(--line)}
+.form-done h3{margin:0 0 .4rem;font-family:var(--font-head);font-weight:400}
+#hs-api-form select{font:inherit}

@@ -8,7 +8,26 @@
       <h1 id="h1" style="font-size:var(--s-3)">Melde dich gern bei uns</h1>
       <p class="lead">Schreib uns, worum es dir geht. Wir antworten persönlich. Termine nach Vereinbarung.</p>
       {% if site.hubspot.portal_id and site.hubspot.contact_form_id %}
-      <div class="hs-form-frame hs-wrap" data-region="{{ site.hubspot.region }}" data-form-id="{{ site.hubspot.contact_form_id }}" data-portal-id="{{ site.hubspot.portal_id }}"></div>
+      <form id="hs-api-form" data-portal="{{ site.hubspot.portal_id }}" data-form="{{ site.hubspot.contact_form_id }}" data-to="{{ site.email }}" novalidate style="display:grid;gap:1rem">
+        <div class="two">
+          <div class="field"><label for="h-first">Vorname</label><input id="h-first" name="firstname" autocomplete="given-name" required></div>
+          <div class="field"><label for="h-last">Nachname</label><input id="h-last" name="lastname" autocomplete="family-name" required></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="h-mail">E-Mail</label><input id="h-mail" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="h-phone">Telefon (optional)</label><input id="h-phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="c-topic">Worum geht es?</label>
+          <select id="c-topic" name="worum_geht_es_">
+            <option value="">Bitte wählen</option>
+            {% for t in ["IHHT Zelltraining","Eigenbluttherapie","Akupunktur","Sanfte Ästhetik","Microneedling mit Eigenblut","Schamanische Begleitung","Feine Energiearbeit ( Reiki )","Chakrenreinigung","Hypnose und Trance","Nahrungsergänzung","Magnetfeld und Biofrequenz","Anmeldung zu einer Veranstaltung","Gutschein"] %}<option value="{{ t }}">{{ t|replace('( Reiki )','(Reiki)') }}</option>{% endfor %}
+            <option value="">Etwas anderes</option>
+          </select></div>
+        <div class="field"><label for="h-msg">Nachricht</label><textarea id="h-msg" name="message" placeholder="Was führt dich zu uns?" required></textarea></div>
+        <label class="check-line" for="h-ok"><input id="h-ok" type="checkbox" required><span id="h-ok-text">Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden. Mehr dazu in der <a href="{{ url('/datenschutz/') }}">Datenschutzerklärung</a>. Gesundheitliche Details besprechen wir gern persönlich.</span></label>
+        <div class="btns"><button class="btn btn-primary" type="submit">Nachricht senden</button></div>
+        <p class="form-msg" id="h-out" aria-live="polite"></p>
+      </form>
       {% else %}
       <form id="mail-form" data-to="{{ site.email }}" novalidate style="display:grid;gap:1rem">
         <div class="two">

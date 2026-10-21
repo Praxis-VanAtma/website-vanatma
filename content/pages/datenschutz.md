@@ -37,7 +37,7 @@ Bitte teile uns über das Kontaktformular oder per E-Mail möglichst keine ausf�
 
 Für unser Kontaktformular und unseren Newsletter nutzen wir HubSpot. Vertragspartner ist die HubSpot Ireland Limited, 1 Sir John Rogerson's Quay, Dublin 2, Irland, eine Tochter der HubSpot Inc., 2 Canal Park, Cambridge, MA 02141, USA. Unser HubSpot-Konto wird im europäischen Rechenzentrum von HubSpot betrieben.
 
-Das Formular wird beim Aufruf der Seite von Servern von HubSpot geladen. Dabei wird deine IP-Adresse an HubSpot übermittelt. Wenn du das Formular absendest, speichert HubSpot deine Angaben in unserem Konto, damit wir deine Anfrage beantworten oder dir den Newsletter senden können. Den HubSpot-Tracking-Code setzen wir auf dieser Website bewusst nicht ein.
+Das Kontaktformular ist Teil dieser Website. Erst wenn du es absendest, werden deine Angaben und deine IP-Adresse an HubSpot übermittelt und in unserem Konto gespeichert, damit wir deine Anfrage beantworten können. Für den Newsletter gilt dasselbe, sobald du dich anmeldest. Den HubSpot-Tracking-Code setzen wir auf dieser Website bewusst nicht ein.
 
 Mit HubSpot haben wir einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO geschlossen. Für eine mögliche Übermittlung an die HubSpot Inc. in den USA gelten die Zertifizierung unter dem EU-US Data Privacy Framework sowie die Standardvertragsklauseln der EU-Kommission. Rechtsgrundlagen sind beim Kontaktformular Art. 6 Abs. 1 lit. b und f DSGVO, beim Newsletter deine Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO. Mehr erfährst du in der [Datenschutzerklärung von HubSpot](https://legal.hubspot.com/de/privacy-policy).
 

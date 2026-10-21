@@ -87,7 +87,7 @@
   </div>
 </footer>
 <script src="{{ url('/assets/js/main.js') }}" defer></script>
-{% if site.hubspot.portal_id and (site.hubspot.newsletter_form_id or (nav == 'kontakt' and site.hubspot.contact_form_id)) %}
+{% if site.hubspot.portal_id and site.hubspot.newsletter_form_id %}
 <script src="https://js-{{ site.hubspot.region }}.hsforms.net/forms/embed/{{ site.hubspot.portal_id }}.js" defer></script>
 {% endif %}
 </body>
