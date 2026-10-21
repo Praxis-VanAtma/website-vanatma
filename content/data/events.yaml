@@ -17,7 +17,7 @@ events:
     price: Energieausgleich 290 €
     price_value: 290
     price_note: Eröffnungspreis 240 € bei Anmeldung bis 25.10.2026
-    image: event-waldstille.jpg
+    image: event-waldstille-wald.jpg
     flyer:
       - flyer-waldstille-1.jpg
       - flyer-waldstille-2.jpg
@@ -74,7 +74,7 @@ events:
     lead: Mit Atemraum Yoga
     price: Energieausgleich 25 €
     price_value: 25
-    image: event-mitananda.jpg
+    image: event-mitananda-harmonium.jpg
     description:
       - Gemeinsam mit Atemraum Yoga laden wir dich ans Feuer ein. Klänge, Wärme und Gemeinschaft im Advent, dazu selbstgemachter Chai-Tee und feines Gebäck.
       - Ein Abend zum Ankommen, Zuhören und Mitsingen.
