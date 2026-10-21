@@ -23,9 +23,11 @@
   }
 
   // Kontaktformular: direkte Übermittlung an HubSpot
-  var hf = document.getElementById('hs-api-form');
+  var hf = document.getElementById('hs-api-form'), hfStart = Date.now();
   if (hf) hf.addEventListener('submit', function (e) {
     e.preventDefault();
+    // Spamschutz: verstecktes Feld und Mindestzeit
+    if (hf.elements['website'].value || Date.now() - hfStart < 3000) { hf.innerHTML = '<div class="form-done"><h3>Danke für deine Nachricht!</h3><p>Wir melden uns persönlich bei dir.</p></div>'; return; }
     var out = document.getElementById('h-out'), btn = hf.querySelector('button[type=submit]');
     var get = function (n) { var el = hf.elements[n]; return el ? el.value.trim() : ''; };
     if (!get('firstname') || !get('lastname') || !get('email') || !get('message')) { out.textContent = 'Bitte füll Vorname, Nachname, E-Mail und Nachricht aus.'; return; }

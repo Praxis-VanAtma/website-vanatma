@@ -25,6 +25,7 @@
           </select></div>
         <div class="field"><label for="h-msg">Nachricht</label><textarea id="h-msg" name="message" placeholder="Was führt dich zu uns?" required></textarea></div>
         <label class="check-line" for="h-ok"><input id="h-ok" type="checkbox" required><span id="h-ok-text">Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden. Mehr dazu in der <a href="{{ url('/datenschutz/') }}">Datenschutzerklärung</a>. Gesundheitliche Details besprechen wir gern persönlich.</span></label>
+        <div class="hp" aria-hidden="true"><label for="h-web">Website</label><input id="h-web" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="btns"><button class="btn btn-primary" type="submit">Nachricht senden</button></div>
         <p class="form-msg" id="h-out" aria-live="polite"></p>
       </form>
