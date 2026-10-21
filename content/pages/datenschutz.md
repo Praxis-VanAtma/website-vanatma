@@ -45,15 +45,19 @@ Mit HubSpot haben wir einen Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO 
 
 Wenn du unseren Newsletter abonnierst, verwenden wir deine E-Mail-Adresse, um dir Informationen zu Veranstaltungen und Impulse aus unserer Praxis zu senden. Die Anmeldung erfolgt im Double-Opt-in-Verfahren. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du jederzeit über den Abmeldelink im Newsletter oder per E-Mail widerrufen kannst.
 
-## 7. Externe Links
+## 7. YouTube-Videos
+
+Auf einigen Seiten zeigen wir Videos von unserem YouTube-Kanal. Zunächst siehst du nur ein Vorschaubild, das auf unserem eigenen Server liegt. Erst wenn du auf das Video klickst, wird es von YouTube geladen. Dabei werden Daten wie deine IP-Adresse an Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, übermittelt. Wir nutzen dafür den erweiterten Datenschutzmodus von YouTube (youtube-nocookie.com). Rechtsgrundlage ist deine Einwilligung durch den Klick (Art. 6 Abs. 1 lit. a DSGVO). Mehr erfährst du in der [Datenschutzerklärung von Google](https://policies.google.com/privacy).
+
+## 8. Externe Links
 
 Unsere Website enthält Links zu YouTube und Instagram. Erst wenn du einen dieser Links anklickst, werden Daten an den jeweiligen Anbieter übertragen. Es gelten dann dessen Datenschutzbestimmungen.
 
-## 8. Speicherdauer
+## 9. Speicherdauer
 
 Wir speichern personenbezogene Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist oder gesetzliche Aufbewahrungsfristen es verlangen. Für ärztliche Unterlagen gelten die berufsrechtlichen Aufbewahrungsfristen.
 
-## 9. Deine Rechte
+## 10. Deine Rechte
 
 Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung (Art. 15 bis 21 DSGVO). Eine erteilte Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen. Schreib uns dazu einfach an praxis@vanatma.de.
 

@@ -59,7 +59,7 @@
     {% if t.youtube_id %}
     <div class="yt" data-id="{{ t.youtube_id }}">
       <button type="button" class="yt-play" aria-label="Video abspielen">
-        <img src="https://i.ytimg.com/vi/{{ t.youtube_id }}/hqdefault.jpg" alt="" loading="lazy">
+        {% if image('yt-' ~ t.youtube_id ~ '.jpg') %}<img src="{{ image('yt-' ~ t.youtube_id ~ '.jpg') }}" alt="" loading="lazy">{% endif %}
         <span class="yt-btn">▶</span>
       </button>
       <p class="muted" style="font-size:.85rem">Mit dem Klick wird das Video von YouTube geladen. Dabei gelten die Datenschutzbestimmungen von YouTube.</p>
