@@ -48,4 +48,12 @@
   </div>
 </section>
 {% endif %}
+{% if e.flyer %}
+<section class="sec" id="flyer">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Flyer</p><h2>Zum Mitnehmen und Weitergeben</h2><p class="lead" style="max-width:60ch">Teile den Flyer gern mit Menschen, denen diese Tage guttun könnten.</p></div>
+    <div class="flyers">{% for f in e.flyer %}<a class="flyer-page" href="{{ image(f) }}" target="_blank" rel="noopener">{{ m.photo(f, 'Flyer ' ~ e.title ~ ', Seite ' ~ loop.index) }}<span>Seite {{ loop.index }} groß ansehen</span></a>{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
 {% endblock %}

@@ -18,6 +18,9 @@ events:
     price_value: 290
     price_note: Eröffnungspreis 240 € bei Anmeldung bis 25.10.2026
     image: event-waldstille.jpg
+    flyer:
+      - flyer-waldstille-1.jpg
+      - flyer-waldstille-2.jpg
     description:
       - "Der November schenkt dem Bayerischen Wald eine besondere Ruhe. Diese Stille nutzen wir für drei Tage zum Durchatmen, Loslassen und Ankommen bei dir selbst, in der Praxis und draußen im Wald."
       - "Durch das Wochenende zieht sich ein roter Faden, das Herzstück des VanAtma-Ansatzes: Statt zu wünschen und zu hoffen, übst du, bewusst zu wählen. Aus „Ich wünsche mir …“ wird „Ich wähle …“. Eine kleine Verschiebung mit großer Wirkung. Du begegnest deinem Leben leichter, klarer und mit mehr Vertrauen, und manches beginnt sich wie von selbst zu fügen."
