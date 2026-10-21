@@ -454,3 +454,5 @@ a{color:inherit}
   box-shadow:0 2px 4px rgba(20,18,6,.10),0 26px 44px -14px rgba(20,18,6,.5)}
 @media (max-width:900px){.snap{width:calc((100% - 2.4rem) / 3)}}
 @media (max-width:640px){.snaps{gap:1.4rem 1rem}.snap{width:calc(50% - .6rem);padding:.5rem .5rem 0}.snap figcaption{font-size:1rem}}
+.sec.snaps-sec{padding-bottom:0}
+.snaps-sec + .sec{padding-top:clamp(36px,4vw,56px)}
