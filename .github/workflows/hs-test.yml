@@ -1,0 +1,25 @@
+name: HubSpot Formular-Test
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validierung ohne Kontaktanlage
+        run: |
+          {
+          for host in api.hsforms.com; do
+            echo "== $host"
+            curl -s -o - -w "\nHTTP %{http_code}\n" -X POST "https://$host/submissions/v3/integration/submit/147344461/abb094cd-7326-4ab7-b91c-27a104710244" \
+              -H "Content-Type: application/json" -H "Origin: https://vanatma.de" \
+              -d '{"fields":[{"objectTypeId":"0-1","name":"firstname","value":"Test"},{"objectTypeId":"0-1","name":"lastname","value":"Test"},{"objectTypeId":"0-1","name":"email","value":"kein-gueltiger-wert"},{"objectTypeId":"0-1","name":"worum_geht_es_","value":"Gutschein"},{"objectTypeId":"0-1","name":"message","value":"Test"}],"legalConsentOptions":{"consent":{"consentToProcess":true,"text":"Test"}}}'
+            echo "-- CORS preflight"
+            curl -s -o /dev/null -D - -X OPTIONS "https://$host/submissions/v3/integration/submit/147344461/abb094cd-7326-4ab7-b91c-27a104710244" \
+              -H "Origin: https://vanatma.de" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: content-type" | grep -i -E "^HTTP|access-control" || true
+          done
+          } > result.txt 2>&1
+          cat result.txt
+          git init -q out && cd out && cp ../result.txt . && git checkout -q -b hs-test-result && git add result.txt
+          git -c user.name=bot -c user.email=bot@example.com commit -qm result
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" hs-test-result
