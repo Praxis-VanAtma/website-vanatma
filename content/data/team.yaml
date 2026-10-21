@@ -39,13 +39,14 @@ steffi:
   published: false
   image: team-steffi.jpg
   eyebrow: Ärztin für Körper und Medizin
-  quote: "Medizin beginnt mit Zuhören."
+  quote: "Für jeden Menschen gibt es einen passenden Weg."
   lead: Als Fachärztin verbinde ich die Sorgfalt der Schulmedizin mit Naturmedizin, Akupunktur und einem ganzheitlichen Blick auf ein langes, gesundes Leben.
   story:
     - Die Medizin begleitet mich mein ganzes Berufsleben. Studiert habe ich in Regensburg und München, und schon während des Studiums habe ich meine Ausbildung in Akupunktur begonnen. Meine Facharztausbildung begann mit zwei Jahren in der Chirurgie in München, danach folgten die Frauenheilkunde und Geburtshilfe am Caritas-Krankenhaus in Regensburg und in Starnberg.
     - Von Juli 2012 bis Ende 2025 hatte ich meine eigene Frauenarztpraxis in München. Über dreizehn Jahre durfte ich dort Frauen in allen Lebensphasen begleiten, bei Vorsorge, Kinderwunsch, Schwangerschaft und weit darüber hinaus.
     - Heute bin ich zurück im Bayerischen Wald. Dienstags und mittwochs bin ich weiterhin als Frauenärztin im MVZ in Viechtach für meine Patientinnen da, eine Arbeit, die mir viel Freude schenkt. In unserer Praxis VanAtma widme ich mich der Naturmedizin, der Akupunktur und der Longevity-Medizin, also allem, was ein langes, gesundes Leben unterstützt.
     - Inspiriert hat mich dabei vor allem Stephan mit seinem gesunden Lebensstil. Wir machen gemeinsam Yoga und führen viele spirituelle Gespräche, und so ist auch mein Blick auf die Medizin nach und nach weiter geworden.
+    - Ich helfe von Herzen gern und sehe das Glas immer halb voll. Ich glaube fest daran, dass wir vieles schaffen, wenn wir es wirklich möchten, und dass es für jede Herausforderung eine passende Lösung gibt. Mit dieser Zuversicht begleite ich dich, Schritt für Schritt.
   qualifications:
     - Fachärztin für Frauenheilkunde und Geburtshilfe
     - Über dreizehn Jahre eigene Frauenarztpraxis in München
@@ -53,7 +54,7 @@ steffi:
     - Ästhetische Medizin
   gallery_eyebrow: Ein bisschen privat
   gallery_title: Abseits der Praxis
-  gallery_text: Kraft schöpfe ich draußen, beim Wandern, Joggen, Golfen und Tennisspielen, und am liebsten mitten in der Natur des Bayerischen Waldes.
+  gallery_text: Kraft schöpfe ich draußen, beim Wandern, Joggen, Golfen und Tennisspielen. Besonders genieße ich die Reisen mit Stephan in unserer Atma und die Spaziergänge mit unserer jungen Hündin Josefine.
   gallery:
     - {file: stephan-wandern.jpg, caption: "Unterwegs im Wald", alt: "Steffi und Stephan auf einem Waldweg am Bach"}
     - {file: stephan-tracht.jpg, caption: "Daheim im Bayerischen Wald", alt: "Steffi und Stephan in Tracht"}
