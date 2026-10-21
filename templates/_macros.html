@@ -44,8 +44,7 @@
 
 {% macro event_card(e, compact=False) -%}
 <article class="event{% if not compact %} with-media{% endif %}">
-  {% if not compact %}<a class="emedia" href="{{ url('/veranstaltungen/' ~ e.slug ~ '/') }}" aria-label="{{ e.title }}: Details{% if e.flyer %} und Flyer{% endif %}">
-    {% if e.flyer %}<span class="eflyer">{{ photo(e.flyer[0], 'Flyer ' ~ e.title) }}</span>{% else %}<span class="eflyer is-photo">{{ photo(e.image, e.title) }}</span>{% endif %}
+  {% if not compact %}<a class="emedia" href="{{ url('/veranstaltungen/' ~ e.slug ~ '/') }}" aria-label="{{ e.title }}: Details">
     <span class="ephoto">{{ photo(e.image, e.title) }}</span>
   </a>{% endif %}
   <div class="date"><b>{{ e.day }}</b><span>{{ e.month }}{% if not compact %} {{ e.year }}{% endif %}</span></div>

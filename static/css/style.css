@@ -394,12 +394,7 @@ a{color:inherit}
 .event.with-media>div:last-child{grid-area:b}
 .emedia{display:block;position:relative;text-decoration:none}
 .emedia img,.emedia .img{display:block;width:100%;height:100%;object-fit:cover}
-/* Variante A: Flyer im A5-Hochformat */
-.v-flyer .ephoto{display:none}
-.v-flyer .eflyer{display:block;aspect-ratio:1/1.414;border-radius:8px;overflow:hidden;box-shadow:0 10px 26px rgba(30,30,14,.22),0 1px 3px rgba(30,30,14,.18);transform:rotate(-1.5deg);transition:transform .3s}
-.v-flyer .emedia:hover .eflyer{transform:rotate(0) scale(1.03)}
-/* Variante B: Fotostreifen am linken Rand */
-.v-photo .eflyer{display:none}
+/* Fotostreifen am linken Rand */
 .v-photo .event.with-media{grid-template-columns:25% 1fr;padding:0;overflow:hidden}
 .v-photo .event.with-media>.emedia{margin:0}
 .v-photo .ephoto{display:block;height:100%;min-height:100%}
@@ -417,4 +412,3 @@ a{color:inherit}
 .flyer-page img{display:block;width:100%;aspect-ratio:1/1.414;object-fit:cover;border-radius:8px;box-shadow:0 14px 34px rgba(30,30,14,.22),0 1px 3px rgba(30,30,14,.18);transition:transform .3s}
 .flyer-page:hover img{transform:translateY(-4px)}
 .event.with-media>.emedia{align-self:stretch}
-.v-flyer .event.with-media>.emedia{align-self:start}

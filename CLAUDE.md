@@ -10,3 +10,4 @@
 - IHHT: Erstgespräch und Anamnese immer bei Steffi, Sitzungen begleitet Stephan. Keine Preise auf der Website.
 - Neue Blogbeiträge: Markdown in `content/blog/`, Front Matter wie bei den bestehenden Beiträgen.
 - Nach Änderungen `python3 build.py` laufen lassen und prüfen.
+- Veranstaltungen: Foto (`image`) erscheint als Streifen in der Übersicht; Flyer-Seiten (A5, als JPG in static/img) über `flyer:` in events.yaml, sie erscheinen auf der Detailseite unter „Zum Mitnehmen und Weitergeben“.
