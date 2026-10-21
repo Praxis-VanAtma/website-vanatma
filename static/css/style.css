@@ -432,8 +432,25 @@ a{color:inherit}
 .pquote{font-family:var(--font-quote);font-style:italic;font-size:clamp(1.4rem,2.6vw,1.9rem);color:var(--olive);line-height:1.3;margin:.6rem 0 1rem}
 .person a.frame{display:block}
 .more-link{font-family:var(--font-head);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--olive);text-decoration:none}
-.yt{display:grid;gap:.6rem;max-width:860px;margin-bottom:1.4rem}
+.yt{display:grid;gap:.6rem;margin-bottom:1.4rem}
 .yt-play{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:var(--r);overflow:hidden;cursor:pointer;background:#111}
 .yt-play img{width:100%;height:100%;object-fit:cover;opacity:.88}
-.yt-btn{position:absolute;inset:0;margin:auto;width:76px;height:76px;border-radius:50%;background:rgba(74,73,32,.88);color:#f6f1e1;display:grid;place-items:center;font-size:1.8rem}
+.yt-btn{position:absolute;inset:0;margin:auto;width:88px;height:88px;border-radius:50%;background:rgba(74,73,32,.88);color:#f6f1e1;display:grid;place-items:center;font-size:1.8rem}
 .yt iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--r)}
+
+/* Fotos wie lose Abzüge: schräg, mit Schatten, richten sich beim Darüberfahren auf */
+.snaps{display:flex;flex-wrap:wrap;justify-content:center;gap:1.8rem 1.2rem;padding:1.2rem 0 1.6rem}
+.snap{--r:-3deg;--y:0px;position:relative;margin:0;width:min(226px,calc((100% - 4.8rem) / 5));padding:.7rem .7rem 0;background:var(--card);border-radius:3px;
+  box-shadow:0 1px 2px rgba(20,18,6,.10),0 16px 32px -12px rgba(20,18,6,.45);
+  transform:translateY(var(--y)) rotate(var(--r));transition:transform .7s cubic-bezier(.2,.8,.2,1),box-shadow .7s}
+.snap:nth-child(2){--r:3.5deg;--y:-10px}
+.snap:nth-child(3){--r:-1.8deg;--y:12px}
+.snap:nth-child(4){--r:4deg;--y:-4px}
+.snap:nth-child(5){--r:-3.4deg;--y:8px}
+.snap:nth-child(6){--r:2.4deg;--y:-8px}
+.snap img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:1px}
+.snap figcaption{font-family:var(--font-quote);font-style:italic;font-size:1.12rem;line-height:1.25;text-align:center;color:var(--ink);padding:.6rem .2rem .85rem}
+.snap:hover,.snap.is-straight{transform:translateY(-6px) rotate(0deg) scale(1.03);z-index:2;
+  box-shadow:0 2px 4px rgba(20,18,6,.10),0 26px 44px -14px rgba(20,18,6,.5)}
+@media (max-width:900px){.snap{width:calc((100% - 2.4rem) / 3)}}
+@media (max-width:640px){.snaps{gap:1.4rem 1rem}.snap{width:calc(50% - .6rem);padding:.5rem .5rem 0}.snap figcaption{font-size:1rem}}

@@ -29,6 +29,17 @@
   </div>
 </section>
 
+{% if t.gallery %}
+<section class="sec snaps-sec">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">{{ t.gallery_eyebrow }}</p><h2>{{ t.gallery_title }}</h2>{% if t.gallery_text %}<p class="lead" style="max-width:60ch">{{ t.gallery_text }}</p>{% endif %}</div>
+    <div class="snaps">{% for g in t.gallery %}{% if image(g.file) %}
+      <figure class="snap"><img src="{{ image(g.file) }}" alt="{{ g.alt }}" loading="lazy" decoding="async"><figcaption>{{ g.caption }}</figcaption></figure>
+    {% endif %}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+
 {% if my_offers %}
 <section class="sec">
   <div class="wrap">

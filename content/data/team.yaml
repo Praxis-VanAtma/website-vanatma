@@ -20,6 +20,15 @@ stephan:
     - Weiterbildungen in Potenzial- und Persönlichkeitsentwicklung
     - Ausbildung in Hypnose (laufend)
     - Ausbildung zum Rückführungsleiter (laufend)
+  gallery_eyebrow: Ein bisschen privat
+  gallery_title: Abseits der Praxis
+  gallery_text: Ein paar Momente aus meinem Leben, mit Musik, Natur, Reisen und den Menschen und Tieren, die mir am Herzen liegen.
+  gallery:
+    - {file: stephan-musik.jpg, caption: "Musik begleitet mich seit jeher", alt: "Stephan spielt E-Gitarre"}
+    - {file: stephan-wandern.jpg, caption: "Mit Steffi unterwegs im Wald", alt: "Stephan und Steffi auf einem Waldweg am Bach"}
+    - {file: stephan-van.jpg, caption: "Zuhause auf Rädern", alt: "Stephan genießt die Sonne vor dem VanAtma-Van"}
+    - {file: stephan-katze.jpg, caption: "Kleine Seelen, große Freude", alt: "Stephan mit einem kleinen Kätzchen"}
+    - {file: stephan-tracht.jpg, caption: "Daheim im Bayerischen Wald", alt: "Stephan und Steffi in Tracht"}
   video_title: Unterwegs mit VanAtma
   video_text: Auf unserem YouTube-Kanal VanAtma teilen Steffi und ich unsere Reisen und das Gefühl von Freiheit unterwegs. Nach und nach wächst der Kanal um Trommelreisen, Meditationen und Momente aus dem Bayerischen Wald.
   youtube_id: "mNzPysuxLfE"

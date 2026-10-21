@@ -104,3 +104,13 @@
     });
   });
 })();
+
+// Fotoabzüge: auf Touch-Geräten richtet sich das Bild auf, sobald es in die Bildmitte scrollt
+(function () {
+  var snaps = document.querySelectorAll('.snap');
+  if (!snaps.length || !('IntersectionObserver' in window) || !window.matchMedia('(hover: none)').matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { e.target.classList.toggle('is-straight', e.isIntersecting); });
+  }, { rootMargin: '-38% 0px -38% 0px' });
+  snaps.forEach(function (s) { io.observe(s); });
+})();
