@@ -56,6 +56,9 @@ steffi:
   gallery_title: Abseits der Praxis
   gallery_text: Kraft schöpfe ich draußen, beim Wandern, Joggen, Golfen und Tennisspielen. Besonders genieße ich die Reisen mit Stephan in unserer Atma und die Spaziergänge mit unserer jungen Hündin Josefine.
   gallery:
-    - {file: stephan-wandern.jpg, caption: "Unterwegs im Wald", alt: "Steffi und Stephan auf einem Waldweg am Bach"}
-    - {file: stephan-tracht.jpg, caption: "Daheim im Bayerischen Wald", alt: "Steffi und Stephan in Tracht"}
+    - {file: steffi-steg.jpg, caption: "Kraft schöpfen in der Natur", alt: "Steffi sitzt lachend auf einem Holzsteg im Grünen"}
+    - {file: steffi-josefine.jpg, caption: "Unterwegs mit Josefine", alt: "Steffi mit der jungen Hündin Josefine auf einem Waldweg"}
+    - {file: steffi-van.jpg, caption: "Bereit für die Reise mit unserer Atma", alt: "Steffi und Stephan vor ihrem Reisemobil"}
+    - {file: steffi-kajak.jpg, caption: "Mit dem Kajak auf dem See", alt: "Steffi im Kajak auf einem Waldsee"}
+    - {file: stephan-wandern.jpg, caption: "Mit Stephan im Wald", alt: "Steffi und Stephan auf einem Waldweg am Bach"}
   note: ""
