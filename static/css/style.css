@@ -456,3 +456,7 @@ a{color:inherit}
 @media (max-width:640px){.snaps{gap:1.4rem 1rem}.snap{width:calc(50% - .6rem);padding:.5rem .5rem 0}.snap figcaption{font-size:1rem}}
 .sec.snaps-sec{padding-bottom:0}
 .snaps-sec + .sec{padding-top:clamp(36px,4vw,56px)}
+
+.team-intro{max-width:68ch;display:grid;gap:.9rem;margin-top:.4rem}
+.team-intro p{margin:0;color:var(--muted)}
+.team-intro .lead{color:var(--ink)}

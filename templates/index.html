@@ -5,7 +5,7 @@
   <div class="wrap">
     <p class="eyebrow">Praxis für Naturmedizin und Bewusstsein</p>
     <h1 id="h1">{{ site.claim }}</h1>
-    <p class="lead">{{ site.subline }} Ärztliche Erfahrung, moderne Medizin für ein langes, gesundes Leben und feine Seelenarbeit, mitten im Bayerischen Wald.</p>
+    <p class="lead">{{ site.subline }} Ärztliche Erfahrung trifft altes Wissen: moderne Medizin für ein langes, gesundes Leben und feine Seelenarbeit, mitten im Bayerischen Wald.</p>
     <div class="btns"><a class="btn btn-light" href="{{ url('/angebote/') }}">Angebote entdecken</a><a class="btn btn-ghost" href="{{ url('/kontakt/') }}">Melde dich gern</a></div>
     <div class="meta"><span>Luftkurort Sankt Englmar</span><span>rund 900 m ü. NN</span><span>Bayerischer Wald</span></div>
   </div>
@@ -38,7 +38,7 @@
   <div class="wrap">
     <p class="eyebrow">VanAtma</p>
     <blockquote>Der Atem der Seele auf Reisen</blockquote>
-    <p>Ärztliche Erfahrung, Intuition und die Kraft der Natur wirken bei uns Hand in Hand.</p>
+    <p>Moderne Medizin und altes Wissen, ärztliche Erfahrung, Intuition und die Kraft der Natur wirken bei uns Hand in Hand.</p>
   </div>
 </section>
 
@@ -54,7 +54,12 @@
 
 <section class="sec sand" aria-labelledby="h-team">
   <div class="wrap">
-    <div class="head-row"><p class="eyebrow">Über uns</p><h2 id="h-team">Zwei Wege, ein Heilraum</h2></div>
+    <div class="head-row"><p class="eyebrow">Über uns</p><h2 id="h-team">Zwei Wege, ein Heilraum</h2>
+      <div class="team-intro">
+        <p class="lead">Bei uns begegnen sich zwei Welten, die du sonst selten unter einem Dach findest: die moderne Medizin und das alte Wissen überlieferter Kulturen.</p>
+        <p>Steffi bringt als Fachärztin die Sorgfalt der Schulmedizin mit, viele Jahre Erfahrung aus ihrer eigenen Praxis und einen offenen Blick für Naturmedizin und ein langes, gesundes Leben. Stephan bringt das überlieferte Wissen mit, aus schamanischer Arbeit, Reiki und Hypnose, und begleitet dich auf deinem Weg zu mehr Wohlbefinden und innerer Klarheit.</p>
+        <p>Jede Welt bleibt dabei in den Händen, in die sie gehört, und gerade im Zusammenspiel entsteht etwas Besonderes. Bei der IHHT beginnt alles mit Steffis ärztlichem Gespräch, die Sitzungen begleitet Stephan. Und an unseren Wochenenden im Wald fließen beide Welten ganz selbstverständlich zusammen.</p>
+      </div></div>
     <div class="team">
       {% for key in ["steffi", "stephan"] %}{% set p = site.people[key] %}
       {% set tp = team[key] if team and key in team else none %}
