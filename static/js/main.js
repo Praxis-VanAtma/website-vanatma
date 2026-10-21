@@ -33,8 +33,11 @@
     if (!get('firstname') || !get('lastname') || !get('email') || !get('message')) { out.textContent = 'Bitte füll Vorname, Nachname, E-Mail und Nachricht aus.'; return; }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(get('email'))) { out.textContent = 'Bitte prüf deine E-Mail-Adresse.'; return; }
     if (!document.getElementById('h-ok').checked) { out.textContent = 'Bitte bestätige kurz den Hinweis zum Datenschutz.'; return; }
-    var fields = ['firstname', 'lastname', 'email', 'phone', 'worum_geht_es_', 'message'].filter(function (n) { return get(n); })
-      .map(function (n) { return { objectTypeId: '0-1', name: n, value: get(n) }; });
+    // Feldnamen wie im HubSpot-Formular (Nachricht und Telefon sind eigene Eigenschaften)
+    var map = [['firstname', 'firstname'], ['lastname', 'lastname'], ['email', 'email'], ['phone', 'telefonnummer'], ['phone', 'phone'],
+      ['worum_geht_es_', 'worum_geht_es_'], ['message', 'nachricht'], ['message', 'message']];
+    var fields = map.filter(function (m) { return get(m[0]); })
+      .map(function (m) { return { objectTypeId: '0-1', name: m[1], value: get(m[0]) }; });
     var body = { fields: fields, context: { pageUri: location.href, pageName: document.title },
       legalConsentOptions: { consent: { consentToProcess: true, text: document.getElementById('h-ok-text').textContent.trim() } } };
     btn.disabled = true; out.textContent = 'Wird gesendet …';
@@ -44,7 +47,8 @@
       .then(function () {
         hf.innerHTML = '<div class="form-done"><h3>Danke für deine Nachricht!</h3><p>Wir melden uns persönlich bei dir.</p></div>';
       })
-      .catch(function () {
+      .catch(function (err) {
+        if (err && err.json) err.json().then(function (j) { console.warn('HubSpot', j); }).catch(function () {});
         btn.disabled = false;
         out.innerHTML = 'Beim Senden ist etwas schiefgegangen. Schreib uns bitte direkt an <a href="mailto:' + hf.dataset.to + '">' + hf.dataset.to + '</a>.';
       });
