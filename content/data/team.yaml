@@ -1,0 +1,49 @@
+# Persönliche Seiten unter /team/<slug>/
+# published: false = Entwurf, wird weder gebaut noch verlinkt
+
+stephan:
+  slug: stephan-dietl
+  published: true
+  image: team-stephan.jpg
+  eyebrow: Seele, Bewusstsein und Coaching
+  quote: "Das größte Abenteuer liegt in uns selbst."
+  lead: Ich begleite Menschen auf ihrer Reise zu sich selbst, mit schamanischer Arbeit, feiner Energiearbeit, Hypnose und Coaching, mitten in der Stille des Bayerischen Waldes.
+  story:
+    - Mein Weg war nie eine gerade Linie. Viele Jahre stand ich als Profimusiker auf großen Bühnen im ganzen deutschsprachigen Raum. Musik hat mich gelehrt, wie sehr Klang, Rhythmus und echte Begegnung Menschen berühren können.
+    - Danach habe ich über zwanzig Jahre in Vertrieb und Partnermanagement internationaler IT-Unternehmen gearbeitet. Dort durfte ich erleben, was Menschen in Zeiten von Veränderung brauchen, als Führungskraft, im Team und ganz persönlich. Kommunikation, Vertrauen und gute Beziehungen waren immer der Schlüssel.
+    - Parallel dazu hat mich ein anderer Weg gerufen, der Weg nach innen. Reiki, die schamanische Arbeit, NLP und Hypnose wurden zu meinen Begleitern. Die Natur, die Stille und das Trommeln sind für mich Quellen, aus denen ich selbst immer wieder Kraft schöpfe.
+    - Mit VanAtma haben Steffi und ich diese Wege zusammengeführt. „Van“ steht für Bewegung, Reise und Freiheit, „Atma“ für die Seele. Unsere Praxis ist ein Ort für diese Reise, und auf unserem YouTube-Kanal VanAtma nehmen wir dich mit in den Wald, zu Trommelreisen und Meditationen.
+  qualifications:
+    - Schamanische Ausbildung bei Klaus Ruhland, Home of the Spirit
+    - Reiki-Meister
+    - NLP Master und Coach nach Richard Bandler
+    - NLP-Trainer
+    - Weiterbildungen in Potenzial- und Persönlichkeitsentwicklung
+    - Ausbildung in Hypnose (laufend)
+    - Ausbildung zum Rückführungsleiter (laufend)
+  extra_title: Coaching für Menschen in Veränderung
+  extra:
+    - Aus meiner Zeit in der Wirtschaft bringe ich viel Erfahrung mit Führung, Vertrieb und Veränderung mit. Als Coach begleite ich Unternehmerinnen und Unternehmer, Führungskräfte und alle, die gerade an einem Wendepunkt stehen.
+    - Themen sind zum Beispiel Kommunikation, Beziehungsgestaltung mit Kunden und im Team, Vertrieb mit Herz und der Umgang mit Veränderung. Ich verbinde dabei klare Methoden aus NLP und Coaching mit der Ruhe der Natur.
+    - Ein erstes Kennenlerngespräch ist kostenfrei.
+  extra_topic: Coaching
+  video_title: Unterwegs mit VanAtma
+  video_text: Auf unserem YouTube-Kanal teilen Steffi und ich Trommelreisen, Meditationen und Momente aus dem Bayerischen Wald.
+  youtube_id: ""
+  note: Schamanische Begleitung, Energiearbeit, Hypnose und Coaching sind Angebote für Wohlbefinden und persönliche Entwicklung. Sie stellen keine Diagnosen und ersetzen keine ärztliche oder psychotherapeutische Behandlung.
+
+steffi:
+  slug: stefanie-klappenberger
+  published: false
+  image: team-steffi.jpg
+  eyebrow: Ärztin für Körper und Medizin
+  quote: ""
+  lead: Als Fachärztin verbinde ich die Sorgfalt der Schulmedizin mit Naturmedizin, Akupunktur und einem ganzheitlichen Blick auf ein langes, gesundes Leben.
+  story:
+    - Viele Jahre war ich als Frauenärztin in meiner eigenen Praxis in München für meine Patientinnen da, bei Vorsorge, Kinderwunsch, Schwangerschaft und in allen Lebensphasen.
+    - Heute bin ich zurück im Bayerischen Wald. Neben meiner Tätigkeit als Fachärztin im MVZ in Viechtach widme ich mich in der Praxis VanAtma der Naturmedizin, der Akupunktur und einer Medizin, die den ganzen Menschen sieht.
+  qualifications:
+    - Fachärztin für Gynäkologie und Geburtshilfe
+    - Akupunktur
+    - Ästhetische Medizin
+  note: ""

@@ -57,11 +57,13 @@
     <div class="head-row"><p class="eyebrow">Über uns</p><h2 id="h-team">Zwei Wege, ein Heilraum</h2></div>
     <div class="team">
       {% for key in ["steffi", "stephan"] %}{% set p = site.people[key] %}
+      {% set tp = team[key] if team and key in team else none %}
       <article class="person">
-        <div class="frame">{{ m.photo(p.image, "Porträt " ~ p.name) }}</div>
+        {% if tp and tp.published %}<a class="frame" href="{{ url('/team/' ~ tp.slug ~ '/') }}">{{ m.photo(p.image, "Porträt " ~ p.name) }}</a>{% else %}<div class="frame">{{ m.photo(p.image, "Porträt " ~ p.name) }}</div>{% endif %}
         <p class="role">{{ p.role }}</p>
-        <h3>{{ p.name }}</h3>
+        <h3>{% if tp and tp.published %}<a href="{{ url('/team/' ~ tp.slug ~ '/') }}" style="text-decoration:none">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</h3>
         <p>{{ p.bio }}</p>
+        {% if tp and tp.published %}<p><a class="more-link" href="{{ url('/team/' ~ tp.slug ~ '/') }}">Mehr über {{ p.short }} →</a></p>{% endif %}
       </article>
       {% endfor %}
     </div>

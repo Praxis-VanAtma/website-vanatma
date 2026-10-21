@@ -120,6 +120,7 @@ for e in EVENTS:
 UPCOMING = sorted([e for e in EVENTS if (e.get("end") or e["start"]) >= TODAY], key=lambda e: e["start"])
 
 OFFERS_BY_SLUG = {o["slug"]: o for o in OFFERS}
+TEAM = load_yaml("team.yaml")
 
 # Blog-Themen: abgeleitet aus dem verknüpften Angebot (related), überschreibbar mit "thema:" im Front Matter
 for p in POSTS:
@@ -183,7 +184,7 @@ def faq_schema(faq):
 env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]),
                   trim_blocks=True, lstrip_blocks=True)
 env.globals.update(site=SITE, url=url, abs_url=abs_url, image=image, md=md, date_de=date_de,
-                   offer_url=offer_url, groups=GROUPS, offers=OFFERS, offers_by_slug=OFFERS_BY_SLUG,
+                   offer_url=offer_url, team=TEAM, groups=GROUPS, offers=OFFERS, offers_by_slug=OFFERS_BY_SLUG,
                    upcoming=UPCOMING, posts=POSTS, noindex=NOINDEX, year=TODAY.year, base=BASE)
 
 SITEMAP = []
@@ -273,6 +274,16 @@ def build():
                schema=jsonld(s, breadcrumb([("Start", "/"), ("Heilraum", "/blog/"), (p["title"], f"/blog/{p['slug']}/")])))
 
     faq = load_yaml("faq.yaml")["faq"]
+    for key, t in TEAM.items():
+        if not t.get("published"):
+            continue
+        p = SITE["people"][key]
+        mine = [o for o in OFFERS if o.get("person") in (key, "beide") and not o.get("link")]
+        ps = {"@type": "Person", "name": p["name"], "jobTitle": t.get("eyebrow", ""), "image": abs_url("/assets/img/" + t["image"]),
+              "worksFor": {"@id": abs_url("/#praxis")}, "url": abs_url(f"/team/{t['slug']}/")}
+        render("team.html", f"/team/{t['slug']}/", nav="", t=t, p=p, my_offers=mine,
+               title=f"{p['name']} · {t.get('eyebrow', '')} · VanAtma Sankt Englmar", description=t.get("lead", "")[:155],
+               schema=jsonld(ps, breadcrumb([("Start", "/"), ("Über uns", "/"), (p["name"], f"/team/{t['slug']}/")])))
     render("gaeste.html", "/auszeit-im-urlaub/", nav="", title="Auszeit im Urlaub in Sankt Englmar · Reiki, IHHT und Retreats · VanAtma",
            description="Urlaub in Sankt Englmar im Bayerischen Wald? Gönn dir eine Auszeit bei VanAtma: Reiki, Chakrenreinigung, schamanische Begleitung, IHHT und Retreats, Termine nach Vereinbarung.")
     render("faq.html", "/faq/", nav="", faq=faq, title="Häufige Fragen · VanAtma Sankt Englmar",

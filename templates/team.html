@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="sec tight-top person-hero">
+  <div class="wrap split" style="align-items:center">
+    <div class="frame portrait">{{ m.photo(t.image, "Porträt " ~ p.name) }}</div>
+    <div class="prose">
+      <p class="crumb"><a href="{{ url('/') }}#h-team">Über uns</a> / {{ p.name }}</p>
+      <p class="eyebrow">{{ t.eyebrow }}</p>
+      <h1 id="h1" style="margin-top:.3rem">{{ p.name }}</h1>
+      {% if t.quote %}<p class="pquote">„{{ t.quote }}“</p>{% endif %}
+      <p class="lead">{{ t.lead }}</p>
+      <div class="btns"><a class="btn btn-primary" href="{{ url('/kontakt/') }}#formular">Kennenlernen vereinbaren</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sand">
+  <div class="wrap split" style="align-items:start">
+    <div class="prose">
+      <p class="eyebrow">Mein Weg</p>
+      <h2 style="margin-top:0">Wie ich hierher gefunden habe</h2>
+      {% for s in t.story %}<p>{{ s }}</p>{% endfor %}
+    </div>
+    <div class="prose">
+      <p class="eyebrow">Ausbildungen</p>
+      <h2 style="margin-top:0">Was ich mitbringe</h2>
+      <ul class="check" style="padding:0">{% for q in t.qualifications %}<li>{{ m.icon('check') }}<span>{{ q }}</span></li>{% endfor %}</ul>
+    </div>
+  </div>
+</section>
+
+{% if my_offers %}
+<section class="sec">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Angebote</p><h2>Wobei ich dich begleite</h2></div>
+    <div class="tiles">{% for o in my_offers %}{{ m.tile(o) }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+
+{% if t.extra %}
+<section class="sec sand">
+  <div class="wrap split" style="align-items:start">
+    <div class="prose">
+      <p class="eyebrow">{{ t.extra_topic }}</p>
+      <h2 style="margin-top:0">{{ t.extra_title }}</h2>
+      {% for s in t.extra %}<p>{{ s }}</p>{% endfor %}
+      <div class="btns" style="margin-top:1.2rem"><a class="btn btn-primary" href="{{ url('/kontakt/') }}#formular">Erstgespräch anfragen</a></div>
+    </div>
+    <div class="frame">{{ m.photo("statement-wald.jpg", "Stiller Wald im Bayerischen Wald") }}</div>
+  </div>
+</section>
+{% endif %}
+
+{% if t.video_title %}
+<section class="sec">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">YouTube</p><h2>{{ t.video_title }}</h2><p class="lead" style="max-width:60ch">{{ t.video_text }}</p></div>
+    {% if t.youtube_id %}
+    <div class="yt" data-id="{{ t.youtube_id }}">
+      <button type="button" class="yt-play" aria-label="Video abspielen">
+        <img src="https://i.ytimg.com/vi/{{ t.youtube_id }}/hqdefault.jpg" alt="" loading="lazy">
+        <span class="yt-btn">▶</span>
+      </button>
+      <p class="muted" style="font-size:.85rem">Mit dem Klick wird das Video von YouTube geladen. Dabei gelten die Datenschutzbestimmungen von YouTube.</p>
+    </div>
+    {% endif %}
+    <div class="btns"><a class="btn btn-ghost" style="color:var(--olive-dark)" href="{{ site.social.youtube }}" target="_blank" rel="noopener">Zum YouTube-Kanal VanAtma</a></div>
+  </div>
+</section>
+{% endif %}
+
+{% if t.note %}<section class="sec tight-top"><div class="wrap"><p class="note">{{ t.note }}</p></div></section>{% endif %}
+{% endblock %}

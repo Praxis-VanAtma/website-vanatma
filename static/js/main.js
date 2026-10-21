@@ -92,4 +92,15 @@
     el('text', { x: W - R + 8, y: y(21) + 4, 'class': 'ax' }, 'Raumluft 21 %'); el('text', { x: W - R + 8, y: y(34.5) + 4, 'class': 'ax' }, '≈ 30–40 %'); el('text', { x: W - R + 8, y: y(12) + 4, 'class': 'ax' }, '≈ 10–15 %');
     el('path', { d: 'M' + pts.map(function (p) { return x(p[0]).toFixed(1) + ' ' + y(p[1]).toFixed(1) }).join(' L '), 'class': 'ln' });
   }
+
+  // YouTube erst nach Klick laden (datensparsam)
+  document.querySelectorAll('.yt').forEach(function (box) {
+    var b = box.querySelector('.yt-play');
+    if (b) b.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true; f.title = 'YouTube-Video';
+      b.replaceWith(f);
+    });
+  });
 })();
