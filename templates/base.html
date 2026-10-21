@@ -19,7 +19,7 @@
 <link rel="icon" href="{{ url('/assets/img/favicon-48.png') }}" type="image/png" sizes="48x48">
 <link rel="apple-touch-icon" href="{{ url('/assets/img/apple-touch-icon.png') }}">
 <link rel="preload" href="{{ url('/assets/fonts/jost-latin-300-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{{ url('/assets/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
 {{ schema|default('') }}
 </head>
 <body>
@@ -86,7 +86,7 @@
     <div class="legal-row"><span>© {{ year }} {{ site.long_name }} in Sankt Englmar</span><span>{{ site.claim }}</span></div>
   </div>
 </footer>
-<script src="{{ url('/assets/js/main.js') }}" defer></script>
+<script src="{{ asset('/assets/js/main.js') }}" defer></script>
 {% if site.hubspot.portal_id and site.hubspot.newsletter_form_id %}
 <script src="https://js-{{ site.hubspot.region }}.hsforms.net/forms/embed/{{ site.hubspot.portal_id }}.js" defer></script>
 {% endif %}

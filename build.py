@@ -9,6 +9,7 @@ Umgebungsvariablen:
   NOINDEX     "1" setzt noindex für Testumgebungen.
 """
 import datetime as dt
+import hashlib
 import html
 import json
 import os
@@ -51,6 +52,13 @@ def url(path="/"):
     if path.startswith("http") or path.startswith("mailto:") or path.startswith("tel:") or path.startswith("#"):
         return path
     return f"{BASE}{path}"
+
+
+def asset(path):
+    """URL einer CSS/JS-Datei mit Versionskennung, damit Browser nach Änderungen die neue Fassung laden."""
+    src = STATIC / path.removeprefix("/assets/")
+    v = hashlib.md5(src.read_bytes()).hexdigest()[:8] if src.exists() else ""
+    return url(path) + (f"?v={v}" if v else "")
 
 
 def abs_url(path="/"):
@@ -183,7 +191,7 @@ def faq_schema(faq):
 # ---------- Rendern ----------
 env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]),
                   trim_blocks=True, lstrip_blocks=True)
-env.globals.update(site=SITE, url=url, abs_url=abs_url, image=image, md=md, date_de=date_de,
+env.globals.update(site=SITE, url=url, asset=asset, abs_url=abs_url, image=image, md=md, date_de=date_de,
                    offer_url=offer_url, team=TEAM, groups=GROUPS, offers=OFFERS, offers_by_slug=OFFERS_BY_SLUG,
                    upcoming=UPCOMING, posts=POSTS, noindex=NOINDEX, year=TODAY.year, base=BASE)
 
