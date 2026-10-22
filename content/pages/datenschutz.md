@@ -17,6 +17,10 @@ E-Mail: praxis@vanatma.de
 
 Wir verarbeiten personenbezogene Daten nur, soweit dies für den Betrieb dieser Website, die Beantwortung deiner Anfragen und die Durchführung unserer Angebote erforderlich ist oder du eingewilligt hast. Diese Website setzt keine Cookies zu Analyse- oder Werbezwecken und verwendet kein Tracking.
 
+### Lebensblume
+
+Die Lebensblume läuft vollständig in deinem Browser. Deine Einschätzungen, Antworten und dein Vorname werden lokal auf deinem Gerät gespeichert (im sogenannten Local Storage), damit du später weitermachen kannst. Auch das PDF entsteht direkt auf deinem Gerät. Wir erhalten diese Daten zu keinem Zeitpunkt. Über die Schaltfläche „Neu beginnen“ oder über die Einstellungen deines Browsers kannst du die gespeicherten Eingaben jederzeit löschen.
+
 ## 3. Hosting
 
 Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA. Beim Aufruf der Website verarbeitet GitHub technisch notwendige Daten wie deine IP-Adresse, Datum und Uhrzeit des Zugriffs sowie Browserinformationen in Server-Logfiles, um die Website auszuliefern und die Sicherheit zu gewährleisten.
