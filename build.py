@@ -294,6 +294,16 @@ def build():
                schema=jsonld(ps, breadcrumb([("Start", "/"), ("Über uns", "/"), (p["name"], f"/team/{t['slug']}/")])))
     render("gaeste.html", "/auszeit-im-urlaub/", nav="", title="Auszeit im Urlaub in Sankt Englmar · Reiki, IHHT und Retreats · VanAtma",
            description="Urlaub in Sankt Englmar im Bayerischen Wald? Gönn dir eine Auszeit bei VanAtma: Reiki, Chakrenreinigung, schamanische Begleitung, IHHT und Retreats, Termine nach Vereinbarung.")
+    lb = load_yaml("lebensblume.yaml")
+    lb_data = {"areas": lb["areas"],
+               "events": [{"title": e["title"], "subtitle": e.get("subtitle", ""), "when": e.get("when", ""), "where": e.get("where", ""),
+                           "url": abs_url(f"/veranstaltungen/{e['slug']}/")} for e in UPCOMING[:3]],
+               "contact": {"email": SITE["email"], "phones": [{"label": ph["label"], "person": ph["person"], "display": ph["display"]} for ph in SITE["phones"]],
+                           "web": "vanatma.de", "url": abs_url("/"), "kontakt": abs_url("/kontakt/"), "street": "Bayerweg 57", "city": "94379 Sankt Englmar"},
+               "logo": url("/assets/img/logo.png"), "jspdf": url("/assets/js/vendor/jspdf.umd.min.js")}
+    render("lebensblume.html", "/lebensblume/", nav="", lb_data=lb_data,
+           title="Lebensblume · Dein Werkzeug zur Selbstreflexion · VanAtma",
+           description="Deine Lebensblume: Schätze neun Bereiche deines Lebens ein, wähle deine Ziele und nimm dir deine persönliche Blume als PDF mit. Kostenlos von VanAtma aus Sankt Englmar.")
     render("faq.html", "/faq/", nav="", faq=faq, title="Häufige Fragen · VanAtma Sankt Englmar",
            description="Antworten auf häufige Fragen zur Praxis VanAtma in Sankt Englmar: Termine, Abrechnung, IHHT, Energiearbeit, Retreats und Gutscheine.",
            schema=jsonld(faq_schema(faq)))

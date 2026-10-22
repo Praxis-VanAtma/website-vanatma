@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("statement-licht.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Ein Werkzeug zur Selbstreflexion</p>
+    <h1 id="h1">Deine Lebensblume</h1>
+    <p class="lead">Neun Blütenblätter, neun Bereiche deines Lebens. Schau liebevoll hin, wo deine Blume schon voll blüht und wo sie wachsen möchte, und nimm dir deine persönliche Lebensblume als PDF mit.</p>
+    <div class="btns"><a class="btn btn-light" href="#blume">Jetzt starten</a></div>
+  </div>
+</section>
+
+<section class="sec tight-top">
+  <div class="wrap">
+    <ol class="lb-steps">
+      <li><b>Spüren</b><span>Schätze intuitiv ein, wo du heute in jedem Bereich stehst.</span></li>
+      <li><b>Wählen</b><span>Lege fest, wohin deine Blume wachsen darf.</span></li>
+      <li><b>Ausmalen</b><span>Beschreibe dein Ziel und deine nächsten Schritte.</span></li>
+      <li><b>Mitnehmen</b><span>Lade deine Lebensblume als PDF herunter.</span></li>
+    </ol>
+    <p class="muted lb-privacy">Alles, was du hier eingibst, bleibt auf deinem Gerät. Wir sehen deine Antworten erst, wenn du sie uns selbst zeigst.</p>
+  </div>
+</section>
+
+<section class="sec sand lb-sec" id="blume" aria-labelledby="h-blume">
+  <div class="wrap lb-grid">
+    <div class="lb-stage">
+      <h2 id="h-blume" class="sr">Deine Blume</h2>
+      <svg id="lb-svg" viewBox="-392 -322 784 644" role="img" aria-label="Deine Lebensblume mit neun Blütenblättern"></svg>
+      <p class="lb-legend"><span class="lg-fill"></span>Heute<span class="lg-line"></span>Dein Ziel</p>
+    </div>
+    <div class="lb-areas" id="lb-areas"></div>
+  </div>
+</section>
+
+<section class="sec lb-finish" aria-labelledby="h-mit">
+  <div class="wrap split" style="align-items:start">
+    <div class="prose">
+      <p class="eyebrow">Zum Mitnehmen</p>
+      <h2 id="h-mit" style="margin-top:0">Deine Lebensblume als PDF</h2>
+      <p>Mit deiner Blume, deinen Zielen und deinen nächsten Schritten. Druck sie aus, häng sie an einen schönen Platz und schau in ein paar Wochen wieder darauf.</p>
+      <label class="lb-name" for="lb-name">Dein Vorname für das PDF <small>(freiwillig)</small></label>
+      <input id="lb-name" type="text" autocomplete="given-name" placeholder="zum Beispiel Anna">
+      <div class="btns" style="margin-top:1rem"><button class="btn btn-primary" type="button" id="lb-pdf">PDF herunterladen</button><button class="btn btn-ghost lb-reset" type="button" id="lb-reset">Neu beginnen</button></div>
+      <p class="form-msg" id="lb-out" aria-live="polite"></p>
+    </div>
+    <div class="lb-invite">
+      <p class="eyebrow">Herzlich eingeladen</p>
+      <h3>Wachsen in Begleitung</h3>
+      <p>Wenn du dir für ein Blütenblatt Unterstützung wünschst, begleiten wir dich gern, im persönlichen Gespräch oder bei einer unserer Veranstaltungen.</p>
+      {% if upcoming %}<ul class="lb-events">{% for e in upcoming[:3] %}<li><a href="{{ url('/veranstaltungen/' ~ e.slug ~ '/') }}"><b>{{ e.title }}</b><span>{{ e.when }}</span></a></li>{% endfor %}</ul>{% endif %}
+      <div class="btns"><a class="btn btn-primary" href="{{ url('/kontakt/') }}#formular">Kennenlernen vereinbaren</a></div>
+      <p class="lb-news">Impulse für deine Blume und neue Termine bekommst du etwa einmal im Monat mit unserem <a href="#news-form">Newsletter</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec tight-top"><div class="wrap"><p class="note">Die Lebensblume ist eine Übung zur Selbstreflexion für dein Wohlbefinden und deine persönliche Entwicklung. Für gesundheitliche Fragen sind wir in der ärztlichen Sprechstunde gern für dich da.</p></div></section>
+
+<script id="lb-data" type="application/json">{{ lb_data | tojson }}</script>
+<script src="{{ asset('/assets/js/lebensblume.js') }}" defer></script>
+{% endblock %}

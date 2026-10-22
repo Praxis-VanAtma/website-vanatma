@@ -1,0 +1,11 @@
+# Die neun Blütenblätter der Lebensblume (Reihenfolge = im Uhrzeigersinn ab oben)
+areas:
+  - {key: koerper, name: Körperliche Gesundheit, short: Körper, color: "#5f7d3c", hint: "Energie, Schlaf, Bewegung, Ernährung und wie wohl du dich in deinem Körper fühlst."}
+  - {key: geist, name: Mentale Gesundheit, short: Geist, color: "#5f86a3", hint: "Innere Ruhe, Klarheit, Gelassenheit und Freude am Denken."}
+  - {key: liebe, name: Liebe und Partnerschaft, short: Liebe, color: "#b8697a", hint: "Nähe, Zärtlichkeit, Verbundenheit und gelebte Liebe."}
+  - {key: freunde, name: Soziale Beziehungen, short: Menschen, color: "#c47a4a", hint: "Familie, Freundschaften und Menschen, die dir guttun."}
+  - {key: zuhause, name: Wohnsituation, short: Zuhause, color: "#c4a05a", hint: "Ein Zuhause, in dem du auftankst und dich geborgen fühlst."}
+  - {key: beruf, name: Beruf und Karriere, short: Beruf, color: "#7f7b2f", hint: "Sinn, Freude und Entwicklung in deiner Arbeit."}
+  - {key: finanzen, name: Finanzen, short: Finanzen, color: "#4f8a80", hint: "Sicherheit, Freiheit und ein entspannter Umgang mit Geld."}
+  - {key: spirit, name: Spiritualität, short: Seele, color: "#86699a", hint: "Verbindung zu dir selbst, zur Natur und zu etwas Größerem."}
+  - {key: zeit, name: Zeit für dich, short: Zeit, color: "#8ea86f", hint: "Stille, Freude, Hobbys und Momente nur für dich."}
