@@ -4,7 +4,7 @@
   if (!dataEl) return;
   var D = JSON.parse(dataEl.textContent);
   var VALUES = D.values, PICK = D.pick, TOP = Math.min(D.top, D.pick);
-  var KEY = 'vanatma-wertesternbild', NS = 'http://www.w3.org/2000/svg';
+  var KEY = 'vanatma-wertesternbild-v2', NS = 'http://www.w3.org/2000/svg';
   var STAR = ['#fff4cf', '#fbeec4', '#f6e6b8', '#efdcaa', '#e8d39f', '#e0ca95', '#d8c18c'];
   var STONE = STAR;
 
@@ -110,6 +110,9 @@
     if (phCmp.hidden || !cur || /input|textarea/i.test((e.target.tagName || ''))) return;
     if (e.key === 'ArrowLeft') { e.preventDefault(); choose(cur[0]); }
     if (e.key === 'ArrowRight') { e.preventDefault(); choose(cur[1]); }
+  });
+  $('wf-new').addEventListener('click', function () {
+    state.ans = {}; state.hist = []; state.order = []; show('pick'); updPick(); save(); scrollTop();
   });
   $('wf-back').addEventListener('click', function () {
     if (!state.hist.length) { show('pick'); updPick(); return; }
