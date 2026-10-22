@@ -19,7 +19,7 @@ Wir verarbeiten personenbezogene Daten nur, soweit dies für den Betrieb dieser 
 
 ### Lebensblume
 
-Die Lebensblume läuft vollständig in deinem Browser. Deine Einschätzungen, Antworten und dein Vorname werden lokal auf deinem Gerät gespeichert (im sogenannten Local Storage), damit du später weitermachen kannst. Auch das PDF entsteht direkt auf deinem Gerät. Wir erhalten diese Daten zu keinem Zeitpunkt. Über die Schaltfläche „Neu beginnen“ oder über die Einstellungen deines Browsers kannst du die gespeicherten Eingaben jederzeit löschen.
+Die Lebensblume läuft vollständig in deinem Browser. Deine Einschätzungen, Antworten und dein Vorname werden lokal auf deinem Gerät gespeichert (im sogenannten Local Storage), damit du später weitermachen kannst. Auch das PDF entsteht direkt auf deinem Gerät. Eine Kopie erhalten wir nur, wenn du sie uns über „Lebensblume mit uns teilen“ ausdrücklich schickst. In diesem Fall werden dein Name, deine Kontaktdaten, deine Nachricht sowie die Werte und Antworten deiner Lebensblume über unser Kontaktformular an HubSpot übermittelt (siehe Abschnitt 5) und nur genutzt, um mit dir in Kontakt zu treten. Da deine Angaben Gesundheitsdaten enthalten können, ist Rechtsgrundlage deine ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a und Art. 9 Abs. 2 lit. a DSGVO), die du jederzeit per E-Mail an praxis@vanatma.de widerrufen kannst. Über die Schaltfläche „Neu beginnen“ oder über die Einstellungen deines Browsers kannst du die gespeicherten Eingaben jederzeit löschen.
 
 ## 3. Hosting
 

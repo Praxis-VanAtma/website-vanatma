@@ -301,7 +301,7 @@ def build():
                "contact": {"email": SITE["email"], "phones": [{"label": ph["label"], "person": ph["person"], "display": ph["display"]} for ph in SITE["phones"]],
                            "web": "vanatma.de", "url": abs_url("/"), "kontakt": abs_url("/kontakt/"), "street": "Bayerweg 57", "city": "94379 Sankt Englmar"},
                "logo": url("/assets/img/logo.png"), "jspdf": url("/assets/js/vendor/jspdf.umd.min.js")}
-    render("lebensblume.html", "/lebensblume/", nav="", lb_data=lb_data,
+    render("lebensblume.html", "/lebensblume/", nav="lebensblume", lb_data=lb_data,
            title="Lebensblume · Dein Werkzeug zur Selbstreflexion · VanAtma",
            description="Deine Lebensblume: Schätze neun Bereiche deines Lebens ein, wähle deine Ziele und nimm dir deine persönliche Blume als PDF mit. Kostenlos von VanAtma aus Sankt Englmar.")
     render("faq.html", "/faq/", nav="", faq=faq, title="Häufige Fragen · VanAtma Sankt Englmar",

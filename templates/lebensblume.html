@@ -18,7 +18,7 @@
       <li><b>Ausmalen</b><span>Beschreibe dein Ziel und deine nächsten Schritte.</span></li>
       <li><b>Mitnehmen</b><span>Lade deine Lebensblume als PDF herunter.</span></li>
     </ol>
-    <p class="muted lb-privacy">Alles, was du hier eingibst, bleibt auf deinem Gerät. Wir sehen deine Antworten erst, wenn du sie uns selbst zeigst.</p>
+    <div class="lb-privacy"><span class="lb-lock" aria-hidden="true">&#10047;</span><p><strong>Deine Lebensblume gehört ganz dir.</strong> Alle Eingaben werden ausschließlich auf deinem Gerät gespeichert, und auch das PDF entsteht direkt in deinem Browser. Eine Kopie erhalten wir nur, wenn du sie uns am Ende ausdrücklich und freiwillig schickst.</p></div>
   </div>
 </section>
 
@@ -50,6 +50,22 @@
       <p>Wenn du dir für ein Blütenblatt Unterstützung wünschst, begleiten wir dich gern, im persönlichen Gespräch oder bei einer unserer Veranstaltungen.</p>
       {% if upcoming %}<ul class="lb-events">{% for e in upcoming[:3] %}<li><a href="{{ url('/veranstaltungen/' ~ e.slug ~ '/') }}"><b>{{ e.title }}</b><span>{{ e.when }}</span></a></li>{% endfor %}</ul>{% endif %}
       <div class="btns"><a class="btn btn-primary" href="{{ url('/kontakt/') }}#formular">Kennenlernen vereinbaren</a></div>
+      <details class="lb-share" id="lb-share">
+        <summary>Lebensblume mit uns teilen</summary>
+        <p>Wenn du magst, schick uns eine Kopie deiner Lebensblume mit allen Werten und Antworten. Wir melden uns dann persönlich bei dir und schauen gemeinsam, was dein nächster Schritt sein kann.</p>
+        <form id="lb-send" data-portal="{{ site.hubspot.portal_id }}" data-form="{{ site.hubspot.contact_form_id }}" data-to="{{ site.email }}" novalidate>
+          <div class="lb-two"><div><label for="ls-first">Vorname</label><input id="ls-first" name="firstname" autocomplete="given-name" required></div>
+          <div><label for="ls-last">Nachname</label><input id="ls-last" name="lastname" autocomplete="family-name" required></div></div>
+          <div class="lb-two"><div><label for="ls-mail">E-Mail</label><input id="ls-mail" name="email" type="email" autocomplete="email" required></div>
+          <div><label for="ls-phone">Telefon <small>(freiwillig)</small></label><input id="ls-phone" name="phone" type="tel" autocomplete="tel"></div></div>
+          <label for="ls-msg">Möchtest du uns noch etwas sagen? <small>(freiwillig)</small></label>
+          <textarea id="ls-msg" name="message" rows="3"></textarea>
+          <div class="hp" aria-hidden="true"><label for="ls-web">Website</label><input id="ls-web" name="website" tabindex="-1" autocomplete="off"></div>
+          <label class="check-line" for="ls-ok"><input id="ls-ok" type="checkbox" required><span id="ls-ok-text">Ich möchte VanAtma meine Lebensblume mit allen Werten und Antworten schicken und bitte um Kontaktaufnahme. Dafür willige ich ausdrücklich ein, dass meine Angaben, auch solche zu meiner Gesundheit, zu diesem Zweck verarbeitet werden. Diese Einwilligung kann ich jederzeit widerrufen. Mehr dazu in der <a href="{{ url('/datenschutz/') }}">Datenschutzerklärung</a>.</span></label>
+          <div><button class="btn btn-primary" type="submit">Lebensblume senden</button></div>
+          <p class="form-msg" id="ls-out" aria-live="polite"></p>
+        </form>
+      </details>
       <p class="lb-news">Impulse für deine Blume und neue Termine bekommst du etwa einmal im Monat mit unserem <a href="#news-form">Newsletter</a>.</p>
     </div>
   </div>

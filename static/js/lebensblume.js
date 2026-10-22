@@ -129,6 +129,48 @@
     location.reload();
   });
 
+  // ---------- Freiwillig teilen ----------
+  var sf = document.getElementById('lb-send'), sfStart = Date.now();
+  var share = document.getElementById('lb-share');
+  if (share) share.addEventListener('toggle', function () { var fi = document.getElementById('ls-first'); if (share.open && !fi.value) fi.value = (state.name || '').trim(); });
+  function summary() {
+    var lines = ['Lebensblume' + ((state.name || '').trim() ? ' von ' + state.name.trim() : ''), ''];
+    AREAS.forEach(function (a) {
+      var s = state.v[a.key];
+      lines.push(a.name + ': heute ' + s.now + ' %, Ziel ' + s.goal + ' %');
+      if (s.vision.trim()) lines.push('  Ziel: ' + s.vision.trim());
+      s.steps.forEach(function (x, n) { if (x.trim()) lines.push('  Schritt ' + (n + 1) + ': ' + x.trim()); });
+      if (s.today.trim()) lines.push('  Heute: ' + s.today.trim());
+    });
+    return lines.join('\n');
+  }
+  if (sf) sf.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var o = document.getElementById('ls-out'), btn = sf.querySelector('button[type=submit]');
+    var get = function (n) { var el = sf.elements[n]; return el ? el.value.trim() : ''; };
+    var done = '<div class="form-done"><h3>Danke für dein Vertrauen!</h3><p>Deine Lebensblume ist bei uns angekommen. Wir melden uns persönlich bei dir.</p></div>';
+    if (get('website') || Date.now() - sfStart < 3000) { sf.innerHTML = done; return; }
+    if (!get('firstname') || !get('lastname') || !get('email')) { o.textContent = 'Bitte füll Vorname, Nachname und E-Mail aus.'; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(get('email'))) { o.textContent = 'Bitte prüf deine E-Mail-Adresse.'; return; }
+    if (!document.getElementById('ls-ok').checked) { o.textContent = 'Bitte bestätige kurz deine Einwilligung.'; return; }
+    var msg = (get('message') ? get('message') + '\n\n' : '') + 'Bitte um Kontaktaufnahme.\n\n' + summary();
+    var f = [['firstname', get('firstname')], ['lastname', get('lastname')], ['email', get('email')],
+      ['telefonnummer', get('phone')], ['phone', get('phone')], ['nachricht', msg], ['message', msg]]
+      .filter(function (x) { return x[1]; }).map(function (x) { return { objectTypeId: '0-1', name: x[0], value: x[1] }; });
+    var body = { fields: f, context: { pageUri: location.href, pageName: document.title },
+      legalConsentOptions: { consent: { consentToProcess: true, text: document.getElementById('ls-ok-text').textContent.trim() } } };
+    btn.disabled = true; o.textContent = 'Wird gesendet …';
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + sf.dataset.portal + '/' + sf.dataset.form,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { if (!r.ok) throw r; return r.json(); })
+      .then(function () { sf.innerHTML = done; })
+      .catch(function (err) {
+        if (err && err.json) err.json().then(function (j) { console.warn('HubSpot', j); }).catch(function () {});
+        btn.disabled = false;
+        o.innerHTML = 'Beim Senden ist etwas schiefgegangen. Schreib uns gern direkt an <a href="mailto:' + sf.dataset.to + '">' + sf.dataset.to + '</a>.';
+      });
+  });
+
   // ---------- PDF ----------
   var out = document.getElementById('lb-out');
   document.getElementById('lb-pdf').addEventListener('click', function () {
