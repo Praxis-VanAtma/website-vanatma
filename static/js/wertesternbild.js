@@ -17,20 +17,37 @@
   function hash(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
   function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 
-  // ---------- Abgleich: der Sieger tritt gegen jeden an, jede Antwort wird gemerkt ----------
-  var TOTAL = 0; for (var r = 0; r < TOP; r++) TOTAL += Math.max(0, PICK - 1 - r);
-  function run() {
-    var pool = state.order.slice(), ranked = [], steps = 0;
-    while (ranked.length < TOP && pool.length) {
-      var champ = pool[0];
-      for (var i = 1; i < pool.length; i++) {
-        var c = pool[i], k = pk(champ, c);
-        if (!(k in state.ans)) return { q: [champ, c], ranked: ranked, steps: steps };
-        champ = state.ans[k]; steps++;
-      }
-      ranked.push(champ); pool.splice(pool.indexOf(champ), 1);
+  // ---------- Abgleich: jeder Wert mit jedem, jede Paarung genau einmal ----------
+  // Reihenfolge der Paare nach dem Rundenturnier-Prinzip, damit sich die Werte abwechseln.
+  function schedule(list) {
+    var L = list.slice(); if (L.length % 2) L.push(null);
+    var n = L.length, out = [];
+    for (var r = 0; r < n - 1; r++) {
+      for (var i = 0; i < n / 2; i++) { var a = L[i], b = L[n - 1 - i]; if (a && b) out.push(r % 2 ? [b, a] : [a, b]); }
+      L.splice(1, 0, L.pop());
     }
-    return { done: true, ranked: ranked, rest: pool, steps: TOTAL };
+    return out;
+  }
+  var TOTAL = PICK * (PICK - 1) / 2;
+  function run() {
+    var pairs = schedule(state.order), done = 0;
+    for (var i = 0; i < pairs.length; i++) {
+      var k = pk(pairs[i][0], pairs[i][1]);
+      if (!(k in state.ans)) return { q: pairs[i], steps: done, ranked: [] };
+      done++;
+    }
+    // Rangfolge: meiste Siege zuerst; bei Gleichstand entscheidet der direkte Vergleich
+    var wins = {}; state.order.forEach(function (v) { wins[v] = 0; });
+    pairs.forEach(function (p) { wins[state.ans[pk(p[0], p[1])]]++; });
+    var sb = {}; state.order.forEach(function (v) { sb[v] = 0; });
+    pairs.forEach(function (p) { var w = state.ans[pk(p[0], p[1])], l = w === p[0] ? p[1] : p[0]; sb[w] += wins[l]; });
+    var ranked = state.order.slice().sort(function (x, y) {
+      if (wins[y] !== wins[x]) return wins[y] - wins[x];
+      var w = state.ans[pk(x, y)]; if (w) return w === x ? -1 : 1;
+      if (sb[y] !== sb[x]) return sb[y] - sb[x];
+      return state.order.indexOf(x) - state.order.indexOf(y);
+    });
+    return { done: true, ranked: ranked.slice(0, TOP), rest: [], steps: TOTAL, wins: wins };
   }
 
   // ---------- Elemente ----------
@@ -72,10 +89,11 @@
     var s = run();
     $('wf-fill').style.width = Math.round(100 * s.steps / Math.max(1, TOTAL)) + '%';
     var f = $('wf-found'); f.innerHTML = '';
-    for (var i = 0; i < TOP; i++) { var d = document.createElement('span'); d.textContent = '✦'; if (i < s.ranked.length) { d.className = 'on'; d.title = (i + 1) + '. ' + s.ranked[i]; } f.appendChild(d); }
+    var lit = Math.floor(TOP * s.steps / Math.max(1, TOTAL));
+    for (var i = 0; i < TOP; i++) { var d = document.createElement('span'); d.textContent = '✦'; if (i < lit) d.className = 'on'; f.appendChild(d); }
     if (s.done) { result(s); scrollTop(); return; }
     cur = s.q; var flip = hash(pk(cur[0], cur[1])) % 2 === 1; if (flip) cur = [cur[1], cur[0]];
-    $('wf-round').textContent = 'Stern ' + (s.ranked.length + 1) + ' von ' + TOP;
+    $('wf-round').textContent = 'Frage ' + (s.steps + 1) + ' von ' + TOTAL;
     duel.classList.remove('swap'); void duel.offsetWidth; duel.classList.add('swap');
     A.textContent = cur[0]; B.textContent = cur[1];
     [A, B].forEach(function (el) { var n = el.textContent.length; el.style.setProperty('--fit', Math.min(1, 11 / n).toFixed(2)); el.style.setProperty('--fitm', Math.min(1, 8.5 / n).toFixed(2)); });
