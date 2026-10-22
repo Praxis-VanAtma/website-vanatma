@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("statement-wald.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Was dich wirklich trägt</p>
+    <h1 id="h1">Dein Wertefundament</h1>
+    <p class="lead">Werte sind wie Steine, auf denen dein Leben ruht. Finde in wenigen Minuten heraus, welche fünf dir am wichtigsten sind, und nimm dir deinen persönlichen Steinturm als PDF mit.</p>
+    <div class="btns"><a class="btn btn-light" href="#werte">Jetzt starten</a></div>
+  </div>
+</section>
+
+<section class="sec tight-top">
+  <div class="wrap">
+    <ol class="lb-steps wf-steps">
+      <li><b>Wählen</b><span>Such dir aus 40 Werten die fünf aus, die dich am meisten ansprechen.</span></li>
+      <li><b>Abwägen</b><span>Entscheide jeweils aus dem Bauch heraus: Was ist dir wichtiger?</span></li>
+      <li><b>Mitnehmen</b><span>Deine fünf Werte stapeln sich in ihrer Reihenfolge zu deinem Steinturm.</span></li>
+    </ol>
+    <div class="lb-privacy"><span class="lb-lock" aria-hidden="true">&#10047;</span><p><strong>Dein Wertefundament gehört ganz dir.</strong> Alle Eingaben werden ausschließlich auf deinem Gerät gespeichert, und auch das PDF entsteht direkt in deinem Browser. Eine Kopie erhalten wir nur, wenn du sie uns am Ende ausdrücklich und freiwillig schickst.</p></div>
+  </div>
+</section>
+
+<section class="sec sand wf-sec" id="werte" aria-live="polite">
+  <div class="wrap">
+    <div class="wf-phase" id="wf-pick">
+      <div class="head-row center"><p class="eyebrow">Schritt 1</p><h2>Welche Werte sprechen dich an?</h2>
+        <p class="lead">Wähle fünf Werte aus, die sich für dich stimmig und kraftvoll anfühlen.</p></div>
+      <div class="wf-pebbles" id="wf-pebbles"></div>
+      <div class="wf-bar"><span class="wf-count" id="wf-count"></span><button class="btn btn-primary" type="button" id="wf-go" disabled>Weiter zum Abgleich</button></div>
+    </div>
+
+    <div class="wf-phase" id="wf-compare" hidden>
+      <div class="head-row center"><p class="eyebrow" id="wf-round"></p><h2>Was ist dir wichtiger?</h2></div>
+      <div class="wf-duel" id="wf-duel">
+        <button type="button" class="wf-stone" id="wf-a"></button>
+        <span class="wf-or">oder</span>
+        <button type="button" class="wf-stone" id="wf-b"></button>
+      </div>
+      <div class="wf-progress"><div class="wf-found" id="wf-found"></div><div class="wf-track"><span id="wf-fill"></span></div>
+        <button type="button" class="wf-back" id="wf-back">Zurück</button></div>
+      <p class="muted wf-tip">Hör auf dein erstes Gefühl. Jede Antwort ist richtig, denn sie kommt von dir.</p>
+    </div>
+
+    <div class="wf-phase" id="wf-result" hidden>
+      <div class="wf-res">
+        <div class="wf-cairn-wrap"><svg id="wf-cairn" viewBox="-235 150 470 345" role="img" aria-label="Dein Steinturm"></svg></div>
+        <div class="prose wf-res-text">
+          <p class="eyebrow">Dein Wertefundament</p>
+          <h2 style="margin-top:0">Das trägt dich</h2>
+          <ol class="wf-rank" id="wf-rank"></ol>
+          <p class="wf-more" id="wf-more"></p>
+          <label class="lb-name" for="wf-name">Dein Vorname für das PDF <small>(freiwillig)</small></label>
+          <input id="wf-name" type="text" autocomplete="given-name" placeholder="zum Beispiel Anna">
+          <div class="btns" style="margin-top:1rem"><button class="btn btn-primary" type="button" id="wf-pdf">PDF herunterladen</button><button class="btn btn-ghost lb-reset" type="button" id="wf-reset">Neu beginnen</button></div>
+          <p class="form-msg" id="wf-out" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec lb-finish" aria-labelledby="h-inv">
+  <div class="wrap split" style="align-items:start">
+    <div class="prose">
+      <p class="eyebrow">Mit deinen Werten leben</p>
+      <h2 id="h-inv" style="margin-top:0">Wenn Werte und Alltag zusammenfinden</h2>
+      <p>Werte, die wir leben, schenken Kraft, Klarheit und innere Ruhe. Werte, die im Alltag zu kurz kommen, melden sich oft als leises Unbehagen. Dein Steinturm zeigt dir, worauf du bauen kannst.</p>
+      <p>Im PDF findest du zu deinen drei wichtigsten Werten Fragen zum Nachspüren und Raum für deine eigenen Gedanken.</p>
+      <p class="muted" style="font-size:.95rem">Lust auf mehr? Schau auch, wie deine <a href="{{ url('/lebensblume/') }}">Lebensblume</a> gerade blüht.</p>
+    </div>
+    <div class="lb-invite">
+      <p class="eyebrow">Herzlich eingeladen</p>
+      <h3>Wachsen in Begleitung</h3>
+      <p>Wenn du deinen Werten mehr Raum in deinem Leben geben möchtest, begleiten wir dich gern, im persönlichen Gespräch oder bei einer unserer Veranstaltungen.</p>
+      {% if upcoming %}<ul class="lb-events">{% for e in upcoming[:3] %}<li><a href="{{ url('/veranstaltungen/' ~ e.slug ~ '/') }}"><b>{{ e.title }}</b><span>{{ e.when }}</span></a></li>{% endfor %}</ul>{% endif %}
+      <div class="btns"><a class="btn btn-primary" href="{{ url('/kontakt/') }}#formular">Kennenlernen vereinbaren</a></div>
+      <details class="lb-share" id="wf-share">
+        <summary>Wertefundament mit uns teilen</summary>
+        <p>Wenn du magst, schick uns deine Werte. Wir melden uns dann persönlich bei dir und schauen gemeinsam, was dein nächster Schritt sein kann.</p>
+        <form id="wf-send" data-portal="{{ site.hubspot.portal_id }}" data-form="{{ site.hubspot.contact_form_id }}" data-to="{{ site.email }}" novalidate>
+          <div class="lb-two"><div><label for="ws-first">Vorname</label><input id="ws-first" name="firstname" autocomplete="given-name" required></div>
+          <div><label for="ws-last">Nachname</label><input id="ws-last" name="lastname" autocomplete="family-name" required></div></div>
+          <div class="lb-two"><div><label for="ws-mail">E-Mail</label><input id="ws-mail" name="email" type="email" autocomplete="email" required></div>
+          <div><label for="ws-phone">Telefon <small>(freiwillig)</small></label><input id="ws-phone" name="phone" type="tel" autocomplete="tel"></div></div>
+          <label for="ws-msg">Möchtest du uns noch etwas sagen? <small>(freiwillig)</small></label>
+          <textarea id="ws-msg" name="message" rows="3"></textarea>
+          <div class="hp" aria-hidden="true"><label for="ws-web">Website</label><input id="ws-web" name="website" tabindex="-1" autocomplete="off"></div>
+          <label class="check-line" for="ws-ok"><input id="ws-ok" type="checkbox" required><span id="ws-ok-text">Ich möchte VanAtma mein Wertefundament schicken und bitte um Kontaktaufnahme. Ich willige ein, dass meine Angaben zu diesem Zweck verarbeitet werden. Diese Einwilligung kann ich jederzeit widerrufen. Mehr dazu in der <a href="{{ url('/datenschutz/') }}">Datenschutzerklärung</a>.</span></label>
+          <div><button class="btn btn-primary" type="submit">Wertefundament senden</button></div>
+          <p class="form-msg" id="ws-out" aria-live="polite"></p>
+        </form>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec tight-top"><div class="wrap"><p class="note">Das Wertefundament ist eine Übung zur Selbstreflexion für dein Wohlbefinden und deine persönliche Entwicklung.</p></div></section>
+
+<script id="wf-data" type="application/json">{{ wf_data | tojson }}</script>
+<script src="{{ asset('/assets/js/wertefundament.js') }}" defer></script>
+{% endblock %}
