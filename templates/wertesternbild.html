@@ -3,9 +3,9 @@
 <section class="fixed top hero sub" aria-labelledby="h1">
   {{ m.pic("statement-wald.jpg") }}
   <div class="wrap">
-    <p class="eyebrow">Was dich wirklich trägt</p>
-    <h1 id="h1">Dein Wertefundament</h1>
-    <p class="lead">Werte sind wie Steine, auf denen dein Leben ruht. Finde in wenigen Minuten heraus, welche fünf dir am wichtigsten sind, und nimm dir deinen persönlichen Steinturm als PDF mit.</p>
+    <p class="eyebrow">Was dich leuchten lässt</p>
+    <h1 id="h1">Dein Wertesternbild</h1>
+    <p class="lead">Deine Werte sind wie Sterne, die dir den Weg weisen. Finde in wenigen Minuten heraus, in welcher Reihenfolge deine sieben wichtigsten Werte leuchten, und entdecke, welches Sternbild sie für dich bilden.</p>
     <div class="btns"><a class="btn btn-light" href="#werte">Jetzt starten</a></div>
   </div>
 </section>
@@ -13,11 +13,11 @@
 <section class="sec tight-top">
   <div class="wrap">
     <ol class="lb-steps wf-steps">
-      <li><b>Wählen</b><span>Such dir aus 40 Werten die fünf aus, die dich am meisten ansprechen.</span></li>
+      <li><b>Wählen</b><span>Such dir aus 40 Werten die sieben aus, die dich am meisten ansprechen.</span></li>
       <li><b>Abwägen</b><span>Entscheide jeweils aus dem Bauch heraus: Was ist dir wichtiger?</span></li>
-      <li><b>Mitnehmen</b><span>Deine fünf Werte stapeln sich in ihrer Reihenfolge zu deinem Steinturm.</span></li>
+      <li><b>Leuchten</b><span>Deine Werte leuchten als Sterne, der wichtigste am hellsten.</span></li>
     </ol>
-    <div class="lb-privacy"><span class="lb-lock" aria-hidden="true">&#10047;</span><p><strong>Dein Wertefundament gehört ganz dir.</strong> Alle Eingaben werden ausschließlich auf deinem Gerät gespeichert, und auch das PDF entsteht direkt in deinem Browser. Eine Kopie erhalten wir nur, wenn du sie uns am Ende ausdrücklich und freiwillig schickst.</p></div>
+    <div class="lb-privacy"><span class="lb-lock" aria-hidden="true">&#10047;</span><p><strong>Dein Wertesternbild gehört ganz dir.</strong> Alle Eingaben werden ausschließlich auf deinem Gerät gespeichert, und auch das PDF entsteht direkt in deinem Browser. Eine Kopie erhalten wir nur, wenn du sie uns am Ende ausdrücklich und freiwillig schickst.</p></div>
   </div>
 </section>
 
@@ -25,7 +25,7 @@
   <div class="wrap">
     <div class="wf-phase" id="wf-pick">
       <div class="head-row center"><p class="eyebrow">Schritt 1</p><h2>Welche Werte sprechen dich an?</h2>
-        <p class="lead">Wähle fünf Werte aus, die sich für dich stimmig und kraftvoll anfühlen.</p></div>
+        <p class="lead">Wähle sieben Werte aus, die sich für dich stimmig und kraftvoll anfühlen.</p></div>
       <div class="wf-pebbles" id="wf-pebbles"></div>
       <div class="wf-bar"><span class="wf-count" id="wf-count"></span><button class="btn btn-primary" type="button" id="wf-go" disabled>Weiter zum Abgleich</button></div>
     </div>
@@ -44,10 +44,11 @@
 
     <div class="wf-phase" id="wf-result" hidden>
       <div class="wf-res">
-        <div class="wf-cairn-wrap"><svg id="wf-cairn" viewBox="-235 150 470 345" role="img" aria-label="Dein Steinturm"></svg></div>
+        <div class="wf-sky-wrap"><svg id="wf-sky" viewBox="0 0 640 460" role="img" aria-label="Dein Wertesternbild"></svg></div>
         <div class="prose wf-res-text">
-          <p class="eyebrow">Dein Wertefundament</p>
-          <h2 style="margin-top:0">Das trägt dich</h2>
+          <p class="eyebrow">Dein Wertesternbild</p>
+          <h2 style="margin-top:0" id="wf-cname">Deine Sterne</h2>
+          <p class="wf-cdesc" id="wf-cdesc"></p>
           <ol class="wf-rank" id="wf-rank"></ol>
           <p class="wf-more" id="wf-more"></p>
           <label class="lb-name" for="wf-name">Dein Vorname für das PDF <small>(freiwillig)</small></label>
@@ -65,7 +66,7 @@
     <div class="prose">
       <p class="eyebrow">Mit deinen Werten leben</p>
       <h2 id="h-inv" style="margin-top:0">Wenn Werte und Alltag zusammenfinden</h2>
-      <p>Werte, die wir leben, schenken Kraft, Klarheit und innere Ruhe. Werte, die im Alltag zu kurz kommen, melden sich oft als leises Unbehagen. Dein Steinturm zeigt dir, worauf du bauen kannst.</p>
+      <p>Werte, die wir leben, schenken Kraft, Klarheit und innere Ruhe. Werte, die im Alltag zu kurz kommen, melden sich oft als leises Unbehagen. Dein Sternbild zeigt dir, woran du dich ausrichten kannst.</p>
       <p>Im PDF findest du zu deinen drei wichtigsten Werten Fragen zum Nachspüren und Raum für deine eigenen Gedanken.</p>
       <p class="muted" style="font-size:.95rem">Lust auf mehr? Schau auch, wie deine <a href="{{ url('/lebensblume/') }}">Lebensblume</a> gerade blüht.</p>
     </div>
@@ -76,7 +77,7 @@
       {% if upcoming %}<ul class="lb-events">{% for e in upcoming[:3] %}<li><a href="{{ url('/veranstaltungen/' ~ e.slug ~ '/') }}"><b>{{ e.title }}</b><span>{{ e.when }}</span></a></li>{% endfor %}</ul>{% endif %}
       <div class="btns"><a class="btn btn-primary" href="{{ url('/kontakt/') }}#formular">Kennenlernen vereinbaren</a></div>
       <details class="lb-share" id="wf-share">
-        <summary>Wertefundament mit uns teilen</summary>
+        <summary>Wertesternbild mit uns teilen</summary>
         <p>Wenn du magst, schick uns deine Werte. Wir melden uns dann persönlich bei dir und schauen gemeinsam, was dein nächster Schritt sein kann.</p>
         <form id="wf-send" data-portal="{{ site.hubspot.portal_id }}" data-form="{{ site.hubspot.contact_form_id }}" data-to="{{ site.email }}" novalidate>
           <div class="lb-two"><div><label for="ws-first">Vorname</label><input id="ws-first" name="firstname" autocomplete="given-name" required></div>
@@ -86,8 +87,8 @@
           <label for="ws-msg">Möchtest du uns noch etwas sagen? <small>(freiwillig)</small></label>
           <textarea id="ws-msg" name="message" rows="3"></textarea>
           <div class="hp" aria-hidden="true"><label for="ws-web">Website</label><input id="ws-web" name="website" tabindex="-1" autocomplete="off"></div>
-          <label class="check-line" for="ws-ok"><input id="ws-ok" type="checkbox" required><span id="ws-ok-text">Ich möchte VanAtma mein Wertefundament schicken und bitte um Kontaktaufnahme. Ich willige ein, dass meine Angaben zu diesem Zweck verarbeitet werden. Diese Einwilligung kann ich jederzeit widerrufen. Mehr dazu in der <a href="{{ url('/datenschutz/') }}">Datenschutzerklärung</a>.</span></label>
-          <div><button class="btn btn-primary" type="submit">Wertefundament senden</button></div>
+          <label class="check-line" for="ws-ok"><input id="ws-ok" type="checkbox" required><span id="ws-ok-text">Ich möchte VanAtma mein Wertesternbild schicken und bitte um Kontaktaufnahme. Ich willige ein, dass meine Angaben zu diesem Zweck verarbeitet werden. Diese Einwilligung kann ich jederzeit widerrufen. Mehr dazu in der <a href="{{ url('/datenschutz/') }}">Datenschutzerklärung</a>.</span></label>
+          <div><button class="btn btn-primary" type="submit">Wertesternbild senden</button></div>
           <p class="form-msg" id="ws-out" aria-live="polite"></p>
         </form>
       </details>
@@ -95,8 +96,8 @@
   </div>
 </section>
 
-<section class="sec tight-top"><div class="wrap"><p class="note">Das Wertefundament ist eine Übung zur Selbstreflexion für dein Wohlbefinden und deine persönliche Entwicklung.</p></div></section>
+<section class="sec tight-top"><div class="wrap"><p class="note">Das Wertesternbild ist eine Übung zur Selbstreflexion für dein Wohlbefinden und deine persönliche Entwicklung.</p></div></section>
 
 <script id="wf-data" type="application/json">{{ wf_data | tojson }}</script>
-<script src="{{ asset('/assets/js/wertefundament.js') }}" defer></script>
+<script src="{{ asset('/assets/js/wertesternbild.js') }}" defer></script>
 {% endblock %}

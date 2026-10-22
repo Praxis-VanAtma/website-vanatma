@@ -304,12 +304,12 @@ def build():
     render("lebensblume.html", "/lebensblume/", nav="lebensblume", lb_data=lb_data,
            title="Lebensblume · Dein Werkzeug zur Selbstreflexion · VanAtma",
            description="Deine Lebensblume: Schätze neun Bereiche deines Lebens ein, wähle deine Ziele und nimm dir deine persönliche Blume als PDF mit. Kostenlos von VanAtma aus Sankt Englmar.")
-    wf = load_yaml("wertefundament.yaml")
+    wf = load_yaml("wertesternbild.yaml")
     wf_data = dict(lb_data, values=wf["values"], pick=wf["pick"], top=wf["top"])
     wf_data.pop("areas", None)
-    render("wertefundament.html", "/wertefundament/", nav="lebensblume", wf_data=wf_data,
-           title="Wertefundament · Finde deine fünf wichtigsten Werte · VanAtma",
-           description="Dein Wertefundament: Wähle aus 40 Werten, finde im Abgleich deine fünf wichtigsten und nimm dir deinen persönlichen Steinturm als PDF mit. Kostenlos von VanAtma.")
+    render("wertesternbild.html", "/wertesternbild/", nav="lebensblume", wf_data=wf_data,
+           title="Wertesternbild · Finde deine sieben wichtigsten Werte · VanAtma",
+           description="Dein Wertesternbild: Wähle aus 40 Werten deine sieben, bring sie im Abgleich in ihre Reihenfolge und entdecke, welches Sternbild sie bilden. Mit PDF zum Mitnehmen, kostenlos von VanAtma.")
     render("faq.html", "/faq/", nav="", faq=faq, title="Häufige Fragen · VanAtma Sankt Englmar",
            description="Antworten auf häufige Fragen zur Praxis VanAtma in Sankt Englmar: Termine, Abrechnung, IHHT, Energiearbeit, Retreats und Gutscheine.",
            schema=jsonld(faq_schema(faq)))

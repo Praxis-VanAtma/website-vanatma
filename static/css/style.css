@@ -572,3 +572,13 @@ a{color:inherit}
 @media (max-width:560px){.wf-duel{flex-direction:column}.wf-stone{width:100%;min-height:120px}.wf-or{margin:-.3rem 0}}
 #wf-name{width:100%;max-width:340px;box-sizing:border-box;font:inherit;font-size:.98rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.6rem .75rem;margin-top:.35rem}
 #wf-cairn{max-width:520px}
+/* Wertesternbild */
+.wf-sky-wrap{display:flex;justify-content:center}
+#wf-sky{width:100%;max-width:640px;height:auto;border-radius:18px;box-shadow:0 24px 50px -24px rgba(10,12,30,.6)}
+#wf-sky .wf-star{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.4);transition:opacity .8s,transform .9s cubic-bezier(.2,1.4,.4,1);transition-delay:calc(var(--i) * .35s + .2s)}
+#wf-sky .wf-ln{opacity:0;transition:opacity .8s;transition-delay:calc(2.8s + var(--k) * .12s)}
+#wf-sky.lit .wf-star{opacity:1;transform:none}
+#wf-sky.lit .wf-ln{opacity:1}
+.wf-cdesc{color:var(--muted);margin:.2rem 0 .6rem}
+.wf-sec .wf-rank .n{background:#2a2d45;color:#f6ecc8;transform:scale(var(--s,1))}
+.wf-sec .wf-res{align-items:start}
