@@ -1,0 +1,14 @@
+# Werkzeuge zur Selbstreflexion – Übersicht unter /werkzeuge/
+tools:
+  - slug: lebensblume
+    title: Lebensblume
+    eyebrow: Wo stehst du gerade?
+    text: Neun Blütenblätter, neun Bereiche deines Lebens. Schau, wo deine Blume schon voll blüht und wo sie wachsen möchte, und halte deine nächsten Schritte fest.
+    time: etwa 5 bis 10 Minuten
+    art: blume
+  - slug: wertesternbild
+    title: Wertesternbild
+    eyebrow: Was ist dir wirklich wichtig?
+    text: Wähle sieben Werte und entscheide im Abgleich, was dir wichtiger ist. Am Ende leuchten deine Werte als echtes Sternbild über dem Bayerischen Wald.
+    time: etwa 5 Minuten
+    art: sterne

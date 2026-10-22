@@ -68,7 +68,6 @@
       <h2 id="h-inv" style="margin-top:0">Wenn Werte und Alltag zusammenfinden</h2>
       <p>Werte, die wir leben, schenken Kraft, Klarheit und innere Ruhe. Werte, die im Alltag zu kurz kommen, melden sich oft als leises Unbehagen. Dein Sternbild zeigt dir, woran du dich ausrichten kannst.</p>
       <p>Im PDF findest du zu deinen drei wichtigsten Werten Fragen zum Nachspüren und Raum für deine eigenen Gedanken.</p>
-      <p class="muted" style="font-size:.95rem">Lust auf mehr? Schau auch, wie deine <a href="{{ url('/lebensblume/') }}">Lebensblume</a> gerade blüht.</p>
     </div>
     <div class="lb-invite">
       <p class="eyebrow">Herzlich eingeladen</p>
@@ -95,6 +94,16 @@
     </div>
   </div>
 </section>
+
+{% set other = tools | rejectattr("slug", "equalto", "wertesternbild") | list %}
+{% if other %}
+<section class="sec sand tool-more" aria-labelledby="h-more">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Noch mehr für dich</p><h2 id="h-more">Weitere Werkzeuge</h2></div>
+    <div class="tools">{% for t in other %}{{ m.tool_card(t) }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
 
 <section class="sec tight-top"><div class="wrap"><p class="note">Das Wertesternbild ist eine Übung zur Selbstreflexion für dein Wohlbefinden und deine persönliche Entwicklung.</p></div></section>
 

@@ -129,6 +129,7 @@ UPCOMING = sorted([e for e in EVENTS if (e.get("end") or e["start"]) >= TODAY], 
 
 OFFERS_BY_SLUG = {o["slug"]: o for o in OFFERS}
 TEAM = load_yaml("team.yaml")
+TOOLS = load_yaml("werkzeuge.yaml")["tools"]
 
 # Blog-Themen: abgeleitet aus dem verknüpften Angebot (related), überschreibbar mit "thema:" im Front Matter
 for p in POSTS:
@@ -191,7 +192,7 @@ def faq_schema(faq):
 # ---------- Rendern ----------
 env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]),
                   trim_blocks=True, lstrip_blocks=True)
-env.globals.update(site=SITE, url=url, asset=asset, abs_url=abs_url, image=image, md=md, date_de=date_de,
+env.globals.update(site=SITE, url=url, asset=asset, tools=TOOLS, abs_url=abs_url, image=image, md=md, date_de=date_de,
                    offer_url=offer_url, team=TEAM, groups=GROUPS, offers=OFFERS, offers_by_slug=OFFERS_BY_SLUG,
                    upcoming=UPCOMING, posts=POSTS, noindex=NOINDEX, year=TODAY.year, base=BASE)
 
@@ -301,15 +302,18 @@ def build():
                "contact": {"email": SITE["email"], "phones": [{"label": ph["label"], "person": ph["person"], "display": ph["display"]} for ph in SITE["phones"]],
                            "web": "vanatma.de", "url": abs_url("/"), "kontakt": abs_url("/kontakt/"), "street": "Bayerweg 57", "city": "94379 Sankt Englmar"},
                "logo": url("/assets/img/logo.png"), "jspdf": url("/assets/js/vendor/jspdf.umd.min.js")}
-    render("lebensblume.html", "/lebensblume/", nav="lebensblume", lb_data=lb_data,
+    render("lebensblume.html", "/lebensblume/", nav="werkzeuge", lb_data=lb_data,
            title="Lebensblume · Dein Werkzeug zur Selbstreflexion · VanAtma",
            description="Deine Lebensblume: Schätze neun Bereiche deines Lebens ein, wähle deine Ziele und nimm dir deine persönliche Blume als PDF mit. Kostenlos von VanAtma aus Sankt Englmar.")
     wf = load_yaml("wertesternbild.yaml")
     wf_data = dict(lb_data, values=wf["values"], pick=wf["pick"], top=wf["top"])
     wf_data.pop("areas", None)
-    render("wertesternbild.html", "/wertesternbild/", nav="lebensblume", wf_data=wf_data,
+    render("wertesternbild.html", "/wertesternbild/", nav="werkzeuge", wf_data=wf_data,
            title="Wertesternbild · Finde deine sieben wichtigsten Werte · VanAtma",
            description="Dein Wertesternbild: Wähle aus 40 Werten deine sieben, bring sie im Abgleich in ihre Reihenfolge und entdecke, welches Sternbild sie bilden. Mit PDF zum Mitnehmen, kostenlos von VanAtma.")
+    render("werkzeuge.html", "/werkzeuge/", nav="werkzeuge",
+           title="Werkzeuge zur Selbstreflexion · Lebensblume und Wertesternbild · VanAtma",
+           description="Kostenlose Werkzeuge zur Selbstreflexion von VanAtma: die Lebensblume für neun Lebensbereiche und das Wertesternbild für deine sieben wichtigsten Werte, jeweils mit PDF.")
     render("faq.html", "/faq/", nav="", faq=faq, title="Häufige Fragen · VanAtma Sankt Englmar",
            description="Antworten auf häufige Fragen zur Praxis VanAtma in Sankt Englmar: Termine, Abrechnung, IHHT, Energiearbeit, Retreats und Gutscheine.",
            schema=jsonld(faq_schema(faq)))

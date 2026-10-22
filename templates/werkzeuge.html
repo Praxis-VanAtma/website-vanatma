@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("statement-licht.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Selbstreflexion für dich</p>
+    <h1 id="h1">Werkzeuge</h1>
+    <p class="lead">Kleine Begleiter für deinen Weg nach innen. Nimm dir ein paar ruhige Minuten, schau ehrlich hin und nimm dir dein Ergebnis als schön gestaltetes PDF mit.</p>
+  </div>
+</section>
+
+<section class="sec tight-top">
+  <div class="wrap">
+    <div class="tools">{% for t in tools %}{{ m.tool_card(t) }}{% endfor %}</div>
+    <div class="lb-privacy" style="margin-top:1.6rem"><span class="lb-lock" aria-hidden="true">&#10047;</span><p><strong>Deine Antworten gehören ganz dir.</strong> Alle Eingaben werden ausschließlich auf deinem Gerät gespeichert, und auch die PDFs entstehen direkt in deinem Browser. Eine Kopie erhalten wir nur, wenn du sie uns am Ende ausdrücklich und freiwillig schickst.</p></div>
+  </div>
+</section>
+
+<section class="sec tight-top"><div class="wrap"><p class="note">Unsere Werkzeuge sind Übungen zur Selbstreflexion für dein Wohlbefinden und deine persönliche Entwicklung.</p></div></section>
+{% endblock %}

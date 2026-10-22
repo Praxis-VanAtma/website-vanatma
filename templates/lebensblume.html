@@ -71,6 +71,16 @@
   </div>
 </section>
 
+{% set other = tools | rejectattr("slug", "equalto", "lebensblume") | list %}
+{% if other %}
+<section class="sec sand tool-more" aria-labelledby="h-more">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Noch mehr für dich</p><h2 id="h-more">Weitere Werkzeuge</h2></div>
+    <div class="tools">{% for t in other %}{{ m.tool_card(t) }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+
 <section class="sec tight-top"><div class="wrap"><p class="note">Die Lebensblume ist eine Übung zur Selbstreflexion für dein Wohlbefinden und deine persönliche Entwicklung. Für gesundheitliche Fragen sind wir in der ärztlichen Sprechstunde gern für dich da.</p></div></section>
 
 <script id="lb-data" type="application/json">{{ lb_data | tojson }}</script>

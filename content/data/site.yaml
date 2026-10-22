@@ -67,5 +67,5 @@ nav:
   - { title: Philosophie, href: /philosophie/, key: philosophie }
   - { title: Veranstaltungen, href: /veranstaltungen/, key: veranstaltungen }
   - { title: Heilraum, href: /blog/, key: blog }
-  - { title: Lebensblume, href: /lebensblume/, key: lebensblume }
+  - { title: Werkzeuge, href: /werkzeuge/, key: werkzeuge }
   - { title: Kontakt, href: /kontakt/, key: kontakt, cta: true }
