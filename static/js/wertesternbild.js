@@ -38,12 +38,12 @@
   var phPick = $('wf-pick'), phCmp = $('wf-compare'), phRes = $('wf-result');
   function show(p) { state.phase = p; save(); phPick.hidden = p !== 'pick'; phCmp.hidden = p !== 'compare'; phRes.hidden = p !== 'result'; }
 
-  // ---------- Schritt 1: Kieselsteine ----------
+  // ---------- Schritt 1: Sternenhimmel ----------
   var peb = $('wf-pebbles'), cnt = $('wf-count'), go = $('wf-go');
   VALUES.forEach(function (v, i) {
     var b = document.createElement('button'); b.type = 'button'; b.className = 'wf-pebble'; b.textContent = v;
-    var R = rng(hash(v)); b.style.borderRadius = [0, 0, 0, 0].map(function () { return Math.round(38 + R() * 24) + '%'; }).join(' ') + ' / ' + [0, 0, 0, 0].map(function () { return Math.round(40 + R() * 20) + '%'; }).join(' ');
-    b.style.setProperty('--rot', ((R() - 0.5) * 4).toFixed(1) + 'deg');
+    var R = rng(hash(v));
+    b.style.setProperty('--y', Math.round((R() - 0.5) * 18) + 'px'); b.style.setProperty('--tw', (2.5 + R() * 3).toFixed(1) + 's'); b.style.setProperty('--td', (R() * 3).toFixed(1) + 's');
     b.setAttribute('aria-pressed', state.picked.indexOf(v) >= 0 ? 'true' : 'false');
     b.addEventListener('click', function () {
       var at = state.picked.indexOf(v);
@@ -72,13 +72,13 @@
     var s = run();
     $('wf-fill').style.width = Math.round(100 * s.steps / Math.max(1, TOTAL)) + '%';
     var f = $('wf-found'); f.innerHTML = '';
-    for (var i = 0; i < TOP; i++) { var d = document.createElement('span'); if (i < s.ranked.length) { d.className = 'on'; d.title = (i + 1) + '. ' + s.ranked[i]; } f.appendChild(d); }
+    for (var i = 0; i < TOP; i++) { var d = document.createElement('span'); d.textContent = '✦'; if (i < s.ranked.length) { d.className = 'on'; d.title = (i + 1) + '. ' + s.ranked[i]; } f.appendChild(d); }
     if (s.done) { result(s); scrollTop(); return; }
     cur = s.q; var flip = hash(pk(cur[0], cur[1])) % 2 === 1; if (flip) cur = [cur[1], cur[0]];
     $('wf-round').textContent = 'Stern ' + (s.ranked.length + 1) + ' von ' + TOP;
     duel.classList.remove('swap'); void duel.offsetWidth; duel.classList.add('swap');
     A.textContent = cur[0]; B.textContent = cur[1];
-    [A, B].forEach(function (el) { el.style.setProperty('--fit', Math.min(1, 11 / el.textContent.length).toFixed(2)); });
+    [A, B].forEach(function (el) { var n = el.textContent.length; el.style.setProperty('--fit', Math.min(1, 11 / n).toFixed(2)); el.style.setProperty('--fitm', Math.min(1, 8.5 / n).toFixed(2)); });
   }
   function choose(w) {
     if (!cur) return; var k = pk(cur[0], cur[1]);
