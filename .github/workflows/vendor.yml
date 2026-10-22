@@ -1,0 +1,38 @@
+name: Bibliotheken holen
+
+on:
+  push:
+    branches: [main]
+    paths: ["vendor/packages.txt"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Pakete laden und ablegen
+        run: |
+          mkdir -p static/js/vendor
+          while read -r pkg file; do
+            [ -z "$pkg" ] && continue
+            npm pack "$pkg" --silent
+            tgz=$(ls -t *.tgz | head -1)
+            mkdir -p x && tar -xzf "$tgz" -C x
+            cp "x/package/$file" static/js/vendor/
+            rm -rf x "$tgz"
+          done < vendor/packages.txt
+          ls -la static/js/vendor
+      - name: Einchecken
+        run: |
+          git config user.name "VanAtma Website"
+          git config user.email "praxis@vanatma.de"
+          git add static/js/vendor
+          git commit -m "Bibliotheken aktualisiert" || echo "Keine Änderungen"
+          git push
