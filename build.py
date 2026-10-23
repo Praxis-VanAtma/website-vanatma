@@ -340,6 +340,8 @@ def build():
     else:
         robots = "User-agent: *\nAllow: /\n\n# KI-Suchdienste ausdrücklich willkommen\nUser-agent: GPTBot\nAllow: /\nUser-agent: OAI-SearchBot\nAllow: /\nUser-agent: ClaudeBot\nAllow: /\nUser-agent: PerplexityBot\nAllow: /\nUser-agent: Google-Extended\nAllow: /\n\n" + f"Sitemap: {abs_url('/sitemap.xml')}\n"
     (OUT / "robots.txt").write_text(robots, encoding="utf-8")
+    if (STATIC / "img" / "favicon.ico").exists():
+        shutil.copy(STATIC / "img" / "favicon.ico", OUT / "favicon.ico")
     (OUT / "llms.txt").write_text(env.get_template("llms.txt").render(), encoding="utf-8")
     (OUT / ".nojekyll").write_text("")
     if (ROOT / "CNAME").exists():
