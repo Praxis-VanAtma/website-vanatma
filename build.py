@@ -314,6 +314,10 @@ def build():
     render("werkzeuge.html", "/werkzeuge/", nav="werkzeuge",
            title="Werkzeuge zur Selbstreflexion · Lebensblume und Wertesternbild · VanAtma",
            description="Kostenlose Werkzeuge zur Selbstreflexion von VanAtma: die Lebensblume für neun Lebensbereiche und das Wertesternbild für deine sieben wichtigsten Werte, jeweils mit PDF.")
+    # Abschiedsseite für die Weiterleitung von gyn-einstein.de: ohne Menü, ohne Sitemap, noindex
+    render("einstein.html", "/einstein/", title="Danke für Ihr Vertrauen · Dr. med. Stefanie Klappenberger",
+           description="Dank an die Patientinnen der Gynäkologie in der Einsteinstraße München und Hinweise, wo Dr. med. Stefanie Klappenberger heute zu finden ist.",
+           sitemap=False)
     render("faq.html", "/faq/", nav="", faq=faq, title="Häufige Fragen · VanAtma Sankt Englmar",
            description="Antworten auf häufige Fragen zur Praxis VanAtma in Sankt Englmar: Termine, Abrechnung, IHHT, Energiearbeit, Retreats und Gutscheine.",
            schema=jsonld(faq_schema(faq)))
