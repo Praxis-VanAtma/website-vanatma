@@ -317,7 +317,7 @@ def build():
         txt = " ".join([e.get("title", ""), e.get("subtitle", ""), e.get("lead", "")] + list(e.get("description") or []) + list(e.get("includes") or []))
         return "archetyp" in txt.lower()
     ak_events = [e for e in UPCOMING if about_archetypes(e)][:3]
-    ak_data = dict(lb_data, archetypes=ak["archetypes"], questions=ak["questions"],
+    ak_data = dict(lb_data, archetypes=ak["archetypes"], questions=ak["questions"], phases=ak["phases"],
                    events=[{"title": e["title"], "subtitle": e.get("subtitle", ""), "when": e.get("when", ""), "where": e.get("where", ""),
                             "url": abs_url(f"/veranstaltungen/{e['slug']}/")} for e in ak_events],
                    offer=abs_url("/angebote/hypnose/"))

@@ -1,4 +1,4 @@
-/* Archetypen-Kreis – 18 Situationen, Auswertung, Schritt „Spüren“, Ergebnis als Perlenkreis und PDF. Alles bleibt im Browser. */
+/* Archetypen-Kreis – 18 Situationen, Auswertung, Schritt „Spüren“, Ergebnis als sanftes Rad mit Symbolen und PDF. Alles bleibt im Browser. */
 (function () {
   var dataEl = document.getElementById('ak-data');
   if (!dataEl) return;
@@ -32,54 +32,79 @@
   function quietOf(sc, chosen) { for (var i = sc.ranked.length - 1; i >= 0; i--) if (chosen.indexOf(sc.ranked[i]) < 0) return sc.ranked[i]; return null; }
   function chosenSorted(sc) { return state.chosen.slice().sort(function (a, b) { return sc.ranked.indexOf(a) - sc.ranked.indexOf(b); }); }
 
-  // ---------- Perlenkreis ----------
-  // opts: { p: id-Präfix, top: [], chosen: [], quiet: id, s: Punkte, pdf: true }
-  var R = 200;
-  function pos(i, r) { var t = (i * 30 - 90) * Math.PI / 180; return [Math.cos(t) * r, Math.sin(t) * r]; }
+  // ---------- Symbole (eigene Linienzeichnungen, 24er Raster) ----------
+  var ICON = {
+    sun: '<circle cx="12" cy="12" r="4"/>' + [0, 45, 90, 135, 180, 225, 270, 315].map(function (d) { var t = d * Math.PI / 180; return '<line x1="' + r1(12 + Math.cos(t) * 6.8) + '" y1="' + r1(12 + Math.sin(t) * 6.8) + '" x2="' + r1(12 + Math.cos(t) * 9.6) + '" y2="' + r1(12 + Math.sin(t) * 9.6) + '"/>'; }).join(''),
+    rings: '<circle cx="9" cy="12" r="5.2"/><circle cx="15" cy="12" r="5.2"/>',
+    shield: '<path d="M12 3 L19 6 V11 C19 16 15.5 19.5 12 21 C8.5 19.5 5 16 5 11 V6 Z"/><path d="M12 6.5 V17.5"/>',
+    bowl: '<path d="M12 9.6 C10.6 7.4 7.4 8.4 8.6 10.9 L12 14 L15.4 10.9 C16.6 8.4 13.4 7.4 12 9.6Z"/><path d="M3.5 14.5 H20.5 C20.2 18.4 16.6 20.8 12 20.8 C7.4 20.8 3.8 18.4 3.5 14.5Z"/>',
+    compass: '<circle cx="12" cy="12" r="9"/><path d="M12 5.5 L14.3 12 L12 18.5 L9.7 12Z"/><circle cx="12" cy="12" r=".9"/>',
+    bolt: '<path d="M13.5 2.5 L5.5 13.5 H11 L10 21.5 L18.5 10 H13 Z"/>',
+    heart: '<path d="M12 20 C5 15 3 11.5 3 8.5 C3 5.5 5.5 3.5 8 3.5 C10 3.5 11.3 4.8 12 6 C12.7 4.8 14 3.5 16 3.5 C18.5 3.5 21 5.5 21 8.5 C21 11.5 19 15 12 20Z"/>',
+    spiral: '<path d="M12 12 C12 11 13.5 11 13.5 12.2 C13.5 14 11 14.5 10 13 C8.5 11 10 8.5 12.5 8.5 C15.5 8.5 17.5 11 17 14 C16.5 17.5 13 19 10 18.3 C6.5 17.5 4.5 14 5 10.5 C5.6 6.5 9 4 13 4.3"/>',
+    crown: '<path d="M3.5 17 L4.5 7.5 L9 11.5 L12 5 L15 11.5 L19.5 7.5 L20.5 17 Z"/><path d="M3.5 20 H20.5"/>',
+    spark: '<path d="M11 3 C11.7 8.6 14.4 11.3 20 12 C14.4 12.7 11.7 15.4 11 21 C10.3 15.4 7.6 12.7 2 12 C7.6 11.3 10.3 8.6 11 3Z"/><path d="M18.5 2.5 V7.5 M16 5 H21"/>',
+    owl: '<path d="M6 9.5 C6 6 7.5 3.5 7.5 3.5 L10 6.2 C11.3 5.9 12.7 5.9 14 6.2 L16.5 3.5 C16.5 3.5 18 6 18 9.5 V14 C18 18 15.2 21 12 21 C8.8 21 6 18 6 14 Z"/><circle cx="9.6" cy="11" r="1.9"/><circle cx="14.4" cy="11" r="1.9"/><path d="M11.2 13.6 L12 15.2 L12.8 13.6"/>',
+    jester: '<circle cx="12" cy="12" r="9"/><path d="M7.6 10 Q9 8.4 10.4 10 M13.6 10 Q15 8.4 16.4 10"/><path d="M7.2 13.2 Q12 19.6 16.8 13.2 Z"/><path d="M5.5 5.5 L3 3 M18.5 5.5 L21 3"/>'
+  };
+  function icon(k, x, y, sz, col, w) { return '<g transform="translate(' + r1(x - sz / 2) + ',' + r1(y - sz / 2) + ') scale(' + r1(sz / 24 * 100) / 100 + ')" fill="none" stroke="' + col + '" stroke-width="' + (w || 1.6) + '" stroke-linecap="round" stroke-linejoin="round">' + ICON[k] + '</g>'; }
+  function iconSVG(a, sz) { return '<svg class="ak-ic" viewBox="0 0 48 48" width="' + sz + '" height="' + sz + '" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#f3e6c8" stroke="' + a.color + '" stroke-width="2.5"/>' + icon(a.icon, 24, 24, 28, '#3b2e1d', 1.7) + '</svg>'; }
+
+  // ---------- Das sanfte Rad ----------
+  // opts: { p: Präfix, top: [], chosen: [], quiet: id, s: Punkte, feel, click, pdf, compact }
+  var R0 = 136, R1 = 300, PHS = D.phases || [];
+  function ang(i) { return (i * 30 - 90) * Math.PI / 180; }
+  function P(a, r) { return r1(Math.cos(a) * r) + ',' + r1(Math.sin(a) * r); }
+  function pt(a, r) { return [r1(Math.cos(a) * r), r1(Math.sin(a) * r)]; }
+  function arc(r, a0, a1, rev) { return 'M' + P(rev ? a1 : a0, r) + ' A' + r + ',' + r + ' 0 0 ' + (rev ? 0 : 1) + ' ' + P(rev ? a0 : a1, r); }
+  function sector(ra, rb, a0, a1) { return 'M' + P(a0, ra) + ' L' + P(a0, rb) + ' A' + rb + ',' + rb + ' 0 0 1 ' + P(a1, rb) + ' L' + P(a1, ra) + (ra ? ' A' + ra + ',' + ra + ' 0 0 0 ' + P(a0, ra) : '') + 'Z'; }
+  function soft(ra, rb, a0, a1, fill) { var g = 7; return '<path d="' + sector(ra + g, Math.max(ra + g + 1, rb - g), a0 + g / rb, a1 - g / rb) + '" fill="' + fill + '" stroke="' + fill + '" stroke-width="' + 2 * g + '" stroke-linejoin="round"/>'; }
+  function box(o) { return o.compact ? '-372 -372 744 744' : '-620 -440 1240 880'; }
   function ringSVG(o) {
     o = o || {}; var p = o.p || 'ak', pdf = !!o.pdf;
-    var top = o.top || [], ch = o.chosen || [], focus = o.feel ? top : ch.length ? ch : top, res = ch.length && !o.feel;
-    var ink = pdf ? '#2c2b19' : 'var(--ink)', muted = pdf ? '#6b6748' : 'var(--muted)', gold = '#b39a5a';
-    var out = '<defs>' +
-      '<radialGradient id="' + p + '-moss" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f4f2e3" class="ak-m1"/><stop offset=".72" stop-color="#e3e6cb" class="ak-m2"/><stop offset="1" stop-color="#e3e6cb" stop-opacity="0" class="ak-m2"/></radialGradient>' +
-      '<radialGradient id="' + p + '-shine" cx=".34" cy=".3" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".8"/><stop offset=".32" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></radialGradient>' +
-      '<radialGradient id="' + p + '-halo"><stop offset="0" stop-color="#fff3c4" stop-opacity=".95"/><stop offset=".45" stop-color="#f6dd92" stop-opacity=".45"/><stop offset="1" stop-color="#f6dd92" stop-opacity="0"/></radialGradient></defs>';
-    if (pdf) out += '<rect x="-440" y="-300" width="880" height="600" fill="#ffffff"/>';
-    out += '<circle r="292" fill="url(#' + p + '-moss)"/>';
-    // Phasen: Bögen und Namen im Inneren
-    [['Vorbereitung', 0], ['Reise', 4], ['Rückkehr', 8]].forEach(function (ph) {
-      var a0 = (ph[1] * 30 - 90 - 12) * Math.PI / 180, a1 = ((ph[1] + 3) * 30 - 90 + 12) * Math.PI / 180, rr = 150;
-      out += '<path d="M' + r1(Math.cos(a0) * rr) + ',' + r1(Math.sin(a0) * rr) + ' A' + rr + ',' + rr + ' 0 0 1 ' + r1(Math.cos(a1) * rr) + ',' + r1(Math.sin(a1) * rr) + '" fill="none" stroke="' + gold + '" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="2 5"/>';
-      var m = pos(ph[1] + 1.5, 112);
-      out += '<text x="' + r1(m[0]) + '" y="' + r1(m[1] + 4) + '" text-anchor="middle" font-family="Jost, Futura, \'Century Gothic\', sans-serif" font-size="12.5" letter-spacing="2.4" style="fill:' + muted + '" fill-opacity=".85">' + ph[0].toUpperCase() + '</text>';
-    });
-    // Faden und Zwischenperlen
-    out += '<circle r="' + R + '" fill="none" stroke="' + gold + '" stroke-width="2.2"/>';
-    for (var k = 0; k < 12; k++) { var q = pos(k + 0.5, R); out += '<circle cx="' + r1(q[0]) + '" cy="' + r1(q[1]) + '" r="4.2" fill="' + gold + '"/>'; }
-    // Mitte
-    out += '<circle r="9" fill="' + gold + '"/><circle r="9" fill="url(#' + p + '-shine)"/>';
-    var mx = 1; if (o.s) ARC.forEach(function (a) { mx = Math.max(mx, o.s[a.id]); });
+    var top = o.top || [], ch = o.chosen || [], res = ch.length && !o.feel;
+    var ink = pdf ? '#2c2b19' : 'var(--ink)', muted = pdf ? '#5f5c43' : 'var(--muted)', card = pdf ? '#fbf8ef' : 'var(--card)';
+    var len = {}, sc = o.s;
+    if (sc) { var vals = ARC.map(function (a) { return sc[a.id]; }), mn = Math.min.apply(0, vals), mx = Math.max.apply(0, vals);
+      ARC.forEach(function (a) { len[a.id] = 0.14 + 0.86 * (mx > mn ? (sc[a.id] - mn) / (mx - mn) : 0.5); }); }
+    else ARC.forEach(function (a, i) { len[a.id] = [0.78, 0.62, 0.7, 0.86, 0.66, 0.74, 0.82, 0.6, 0.72, 0.88, 0.64, 0.76][i]; });
+    var out = '<defs><radialGradient id="' + p + '-glow"><stop offset="0" stop-color="#fff3c4" stop-opacity=".95"/><stop offset=".5" stop-color="#f6dd92" stop-opacity=".45"/><stop offset="1" stop-color="#f6dd92" stop-opacity="0"/></radialGradient></defs>';
+    if (pdf) out += '<rect x="-620" y="-440" width="1240" height="880" fill="#ffffff"/>';
+    out += '<circle r="' + (R1 + 62) + '" style="fill:' + (pdf ? '#f1ecdb' : 'var(--ak-wheel)') + '"/>';
     ARC.forEach(function (a, i) {
-      var c = pos(i, R), isC = ch.indexOf(a.id) >= 0, isT = top.indexOf(a.id) >= 0, dim = focus.length && focus.indexOf(a.id) < 0;
-      var lit = isT && !res, rad = isC ? 33 : lit ? 27 : 21;
-      if (o.s && !isC && res) rad = 15 + 7 * Math.max(0, o.s[a.id]) / mx;
-      var cls = 'ak-bead' + (isC ? ' is-c' : '') + (isT ? ' is-t' : '') + (dim ? ' is-dim' : '') + (o.quiet === a.id ? ' is-q' : '');
-      out += '<g class="' + cls + '" data-id="' + a.id + '" style="--i:' + i + '"' + (o.click && isT ? ' role="button" tabindex="0" aria-label="' + esc(full(a)) + '"' : '') + '>';
-      if (isC || lit) out += '<circle class="ak-halo' + (isC ? ' big' : '') + '" cx="' + r1(c[0]) + '" cy="' + r1(c[1]) + '" r="' + (isC ? 66 : 50) + '" fill="url(#' + p + '-halo)"/>';
-      out += '<circle cx="' + r1(c[0]) + '" cy="' + r1(c[1]) + '" r="' + r1(rad) + '" fill="' + a.color + '"' + (dim ? ' fill-opacity=".55"' : '') + '/>';
-      out += '<circle cx="' + r1(c[0]) + '" cy="' + r1(c[1]) + '" r="' + r1(rad) + '" fill="url(#' + p + '-shine)"/>';
-      if (o.quiet === a.id) out += '<circle cx="' + r1(c[0]) + '" cy="' + r1(c[1]) + '" r="' + r1(rad + 7) + '" fill="none" stroke="' + gold + '" stroke-width="1.6" stroke-dasharray="3 4"/>';
-      // Beschriftung außen
-      var L = pos(i, R + rad + 16), cs = Math.cos((i * 30 - 90) * Math.PI / 180), anc = Math.abs(cs) < 0.2 ? 'middle' : cs > 0 ? 'start' : 'end';
-      var sn = Math.sin((i * 30 - 90) * Math.PI / 180), y = L[1] + (sn > 0.5 ? 14 : sn < -0.5 ? -8 : 5);
-      var strong = isC || lit, fs = strong ? 17 : 14.5;
-      if (pdf) fs *= 0.88;
-      out += '<text x="' + r1(L[0]) + '" y="' + r1(y) + '" text-anchor="' + anc + '" font-family="Jost, Futura, \'Century Gothic\', sans-serif" font-size="' + fs + '" letter-spacing="' + r1(fs * .12) + '" font-weight="' + (strong ? 500 : 400) + '" style="fill:' + ink + '"' + (dim ? ' fill-opacity=".5"' : '') + '>' + esc(a.name.toUpperCase()) + '</text>';
-      if (a.alt) out += '<text x="' + r1(L[0]) + '" y="' + r1(y + fs * 1.05) + '" text-anchor="' + anc + '" font-family="Mulish, \'Segoe UI\', sans-serif" font-size="11.5" font-style="italic" style="fill:' + muted + '"' + (dim ? ' fill-opacity=".5"' : '') + '>(' + esc(a.alt) + ')</text>';
+      var a0 = ang(i) - 13 * Math.PI / 180, a1 = ang(i) + 13 * Math.PI / 180, isC = ch.indexOf(a.id) >= 0, isT = top.indexOf(a.id) >= 0;
+      var rr = R0 + (R1 - R0) * len[a.id], op = !sc ? 0.62 : o.feel ? (isC ? 1 : isT ? 0.85 : 0.3) : res ? (isC ? 1 : o.quiet === a.id ? 0.38 : 0.6) : 0.7;
+      var glow = isC || (o.feel && isT && !ch.length);
+      out += '<g class="ak-seg' + (isT ? ' is-t' : '') + (isC ? ' is-c' : '') + '" data-id="' + a.id + '" style="--i:' + i + '"' + (o.click && isT ? ' role="button" tabindex="0" aria-label="' + esc(a.name) + '" aria-pressed="' + (isC ? 'true' : 'false') + '"' : '') + '>';
+      out += '<g opacity=".14">' + soft(R0, R1, a0, a1, a.color) + '</g>';
+      if (glow) { var m = pt(ang(i), rr - 24); out += '<circle class="ak-halo" cx="' + m[0] + '" cy="' + m[1] + '" r="104" fill="url(#' + p + '-glow)"/>'; }
+      out += '<g class="ak-fill" opacity="' + op + '">' + soft(R0, rr, a0, a1, a.color) + '</g>';
+      if (res && o.quiet === a.id) out += '<path d="' + sector(R0 + 2, R1 - 2, a0 + .01, a1 - .01) + '" fill="none" stroke="#7f7b2f" stroke-width="1.6" stroke-dasharray="4 6" stroke-linejoin="round"/>';
+      var mc = pt(ang(i), R1 + 32), big = isC || (o.feel && isT);
+      out += '<circle cx="' + mc[0] + '" cy="' + mc[1] + '" r="' + (big ? 27 : 23) + '" fill="#f3e6c8" stroke="' + a.color + '" stroke-width="' + (big ? 3.2 : 2.2) + '"/>' + icon(a.icon, mc[0], mc[1], big ? 32 : 28, '#3b2e1d', 1.7);
+      if (!o.compact) {
+        var t = ang(i), c = Math.cos(t), sn = Math.sin(t), anc = Math.abs(c) < .2 ? 'middle' : c > 0 ? 'start' : 'end', L = pt(t, R1 + 80), y = L[1] + (sn > .5 ? 24 : sn < -.5 ? -24 : 2);
+        var strong = isC || (o.feel && isT), fs = (strong ? 27 : 23) * (pdf ? 0.84 : 1), ms = 23 * (pdf ? 0.88 : 1), dim = sc && !strong && o.quiet !== a.id;
+        out += '<text x="' + L[0] + '" y="' + r1(y) + '" text-anchor="' + anc + '" font-family="Jost, Futura, \'Century Gothic\', sans-serif" font-size="' + fs + '" font-weight="' + (strong ? 500 : 400) + '" letter-spacing="2" style="fill:' + ink + '"' + (dim ? ' fill-opacity=".65"' : '') + '>' + esc(a.name.toUpperCase()) + '</text>';
+        out += '<text x="' + L[0] + '" y="' + r1(y + ms * 1.15) + '" text-anchor="' + anc + '" font-family="\'Cormorant Garamond\', Georgia, serif" font-style="italic" font-size="' + r1(ms) + '" style="fill:' + muted + '">' + (res && o.quiet === a.id ? 'leise · ' : '') + esc(a.motto) + '</text>';
+      }
       out += '</g>';
     });
+    // Mitte mit den drei Phasen
+    out += '<circle r="' + (R0 - 6) + '" style="fill:' + card + '"/>';
+    PHS.forEach(function (ph, k) {
+      var r = R0 - 12, a0 = ang(4 * k) - 15 * Math.PI / 180 + .02, a1 = ang(4 * k + 3) + 15 * Math.PI / 180 - .02, rev = Math.sin((a0 + a1) / 2) > .2;
+      out += '<path d="' + sector(0, r, a0, a1) + '" fill="' + ph.color + '" fill-opacity=".4" style="stroke:' + card + '" stroke-width="3"/>';
+      out += '<path id="' + p + 'n' + k + '" d="' + arc(r - (rev ? 50 : 22), a0 + .12, a1 - .12, rev) + '" fill="none"/><path id="' + p + 'd' + k + '" d="' + arc(r - (rev ? 26 : 46), a0 + .12, a1 - .12, rev) + '" fill="none"/>';
+      out += '<text font-family="Jost, Futura, sans-serif" font-size="' + (o.compact ? 19 : 17) + '" letter-spacing="' + (o.compact ? 1.6 : 3) + '" style="fill:' + ink + '"><textPath href="#' + p + 'n' + k + '" startOffset="50%" text-anchor="middle">' + esc(ph.name.toUpperCase()) + '</textPath></text>';
+      out += '<text font-family="\'Cormorant Garamond\', Georgia, serif" font-style="italic" font-size="' + (o.compact ? 19.5 : 19) + '" style="fill:' + muted + '"><textPath href="#' + p + 'd' + k + '" startOffset="50%" text-anchor="middle">' + esc(ph.motto) + '</textPath></text>';
+    });
+    out += '<circle r="28" fill="#fbf8ef" stroke="#d8cfae"/><path d="M-12,0 C-12,-9 -2,-9 0,0 C2,9 12,9 12,0 C12,-9 2,-9 0,0 C-2,9 -12,9 -12,0Z" fill="none" stroke="#7f7b2f" stroke-width="2"/>';
     return out;
   }
+  var mqS = window.matchMedia ? window.matchMedia('(max-width: 640px)') : { matches: false };
+  function draw(id, o) { var el = document.getElementById(id); o.compact = mqS.matches; el.setAttribute('viewBox', box(o)); el.innerHTML = ringSVG(o); el._o = o; return el; }
+  if (mqS.addEventListener) mqS.addEventListener('change', function () { ['ak-ring-i', 'ak-ring-f', 'ak-ring-r'].forEach(function (id) { var el = document.getElementById(id); if (el._o) draw(id, el._o); }); });
 
   // ---------- Elemente ----------
   var $ = function (id) { return document.getElementById(id); };
@@ -87,7 +112,8 @@
   function show(p) { state.phase = p; save(); Object.keys(PH).forEach(function (k) { PH[k].hidden = k !== p; }); }
   function scrollTop() { $('kreis').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 
-  $('ak-ring-i').innerHTML = ringSVG({ p: 'aki' });
+  draw('ak-ring-i', { p: 'aki' });
+  document.querySelectorAll('[data-ak]').forEach(function (el) { var a = BY[el.dataset.ak]; if (a) el.innerHTML = iconSVG(a, 44); });
   $('ak-start').addEventListener('click', function () { if (state.ans.length >= N) { feel(); } else { show('q'); ask(); } scrollTop(); });
 
   // ---------- Situationen ----------
@@ -142,7 +168,7 @@
     sc.top.forEach(function (id) {
       var a = BY[id], b = document.createElement('button'); b.type = 'button'; b.className = 'ak-pick'; b.dataset.id = id;
       b.style.setProperty('--c', a.color);
-      b.innerHTML = '<span class="ak-dot"></span><span><b>' + esc(a.name) + (a.alt ? ' <small>(' + esc(a.alt) + ')</small>' : '') + '</b><span class="ak-ess">' + esc(a.essence) + '</span></span>';
+      b.innerHTML = '<span class="ak-ico">' + iconSVG(a, 46) + '</span><span><span class="ak-motto">' + esc(a.motto) + '</span><b>' + esc(a.name) + (a.alt ? ' <small>(' + esc(a.alt) + ')</small>' : '') + '</b><span class="ak-ess">' + esc(a.essence) + '</span></span>';
       b.addEventListener('click', function () { toggle(id); });
       topEl.appendChild(b);
     });
@@ -160,25 +186,25 @@
     topEl.classList.toggle('full', state.chosen.length === PICK);
     pc.innerHTML = '<b>' + state.chosen.length + '</b> von ' + PICK + ' gewählt';
     conf.disabled = state.chosen.length !== PICK;
-    $('ak-ring-f').innerHTML = ringSVG({ p: 'akf', top: sc.top, chosen: state.chosen, click: true, feel: true });
+    draw('ak-ring-f', { p: 'akf', top: sc.top, chosen: state.chosen, click: true, feel: true, s: sc.s });
   }
-  $('ak-ring-f').addEventListener('click', function (e) { var g = e.target.closest && e.target.closest('.ak-bead.is-t'); if (g) toggle(g.dataset.id); });
-  $('ak-ring-f').addEventListener('keydown', function (e) { var g = e.target.closest && e.target.closest('.ak-bead.is-t'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); toggle(g.dataset.id); } });
+  $('ak-ring-f').addEventListener('click', function (e) { var g = e.target.closest && e.target.closest('.ak-seg.is-t'); if (g) toggle(g.dataset.id); });
+  $('ak-ring-f').addEventListener('keydown', function (e) { var g = e.target.closest && e.target.closest('.ak-seg.is-t'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); toggle(g.dataset.id); } });
   conf.addEventListener('click', function () { result(); scrollTop(); });
 
   // ---------- Ergebnis ----------
   function result() {
     var sc = scores(), ch = chosenSorted(sc), qu = quietOf(sc, ch);
     show('res');
-    var ring = $('ak-ring-r'); ring.innerHTML = ringSVG({ p: 'akr', chosen: ch, quiet: qu, s: sc.s });
+    var ring = draw('ak-ring-r', { p: 'akr', chosen: ch, quiet: qu, s: sc.s });
     ring.classList.remove('lit'); void ring.getBoundingClientRect(); requestAnimationFrame(function () { ring.classList.add('lit'); });
     $('ak-three').innerHTML = ch.map(function (id, n) {
       var a = BY[id];
-      return '<article class="ak-arc" style="--c:' + a.color + ';--n:' + n + '"><header><span class="ak-dot"></span><div><h3>' + esc(a.name) + (a.alt ? ' <small>(' + esc(a.alt) + ')</small>' : '') + '</h3><p class="ak-ess">' + esc(a.essence) + '</p></div></header>' +
+      return '<article class="ak-arc" style="--c:' + a.color + ';--n:' + n + '"><header><span class="ak-ico">' + iconSVG(a, 54) + '</span><div><span class="ak-motto">' + esc(a.motto) + '</span><h3>' + esc(a.name) + (a.alt ? ' <small>(' + esc(a.alt) + ')</small>' : '') + '</h3><p class="ak-ess">' + esc(a.essence) + '</p></div></header>' +
         '<dl><div><dt>Grundantrieb</dt><dd>' + esc(a.drive) + '</dd></div><div><dt>Deine Gabe</dt><dd>' + esc(a.gift) + '</dd></div><div><dt>Im Schatten</dt><dd>' + esc(a.shadow) + '</dd></div><div><dt>Zum Nachspüren</dt><dd class="ak-qq">' + esc(a.question) + '</dd></div></dl></article>';
     }).join('');
     var q = BY[qu];
-    $('ak-quiet').innerHTML = q ? '<span class="ak-dot" style="--c:' + q.color + '"></span><div><p class="eyebrow">Dein leiser Archetyp</p><h3>' + esc(full(q)) + '</h3><p>Diese Kraft ist bei dir gerade leise und darf wachsen. ' + esc(q.invite) + '</p></div>' : '';
+    $('ak-quiet').innerHTML = q ? '<span class="ak-ico">' + iconSVG(q, 46) + '</span><div><p class="eyebrow">Dein leiser Archetyp</p><h3>' + esc(full(q)) + ' <small>· ' + esc(q.motto) + '</small></h3><p>Diese Kraft ist bei dir gerade leise und darf wachsen. ' + esc(q.invite) + '</p></div>' : '';
   }
   $('ak-change').addEventListener('click', function () { feel(); scrollTop(); });
   var nm = $('ak-name'); nm.value = state.name || ''; nm.addEventListener('input', function () { state.name = nm.value; save(); });
@@ -234,7 +260,7 @@
   function loadScript(src) { return new Promise(function (res, rej) { if (window.jspdf) return res(); var s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
   function toDataURL(src) { return fetch(src).then(function (r) { return r.blob(); }).then(function (b) { return new Promise(function (res) { var fr = new FileReader(); fr.onload = function () { res(fr.result); }; fr.readAsDataURL(b); }); }); }
   function ringJPG(o, px) {
-    var h = Math.round(px * 600 / 880), s = '<svg xmlns="' + NS + '" viewBox="-440 -300 880 600" width="' + px + '" height="' + h + '">' + ringSVG(o) + '</svg>';
+    var h = Math.round(px * 880 / 1240), s = '<svg xmlns="' + NS + '" viewBox="-620 -440 1240 880" width="' + px + '" height="' + h + '">' + ringSVG(o) + '</svg>';
     return new Promise(function (res, rej) {
       var img = new Image();
       img.onload = function () { var c = document.createElement('canvas'); c.width = px; c.height = h; var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, px, h); g.drawImage(img, 0, 0, px, h); res(c.toDataURL('image/jpeg', 0.9)); };
@@ -268,13 +294,14 @@
       doc.setTextColor.apply(doc, DARK); doc.setFontSize(24);
       doc.text(name ? 'Der Archetypen-Kreis von ' + name : 'Mein Archetypen-Kreis', W / 2, 45, { align: 'center' });
       doc.setFontSize(9.5); doc.setTextColor.apply(doc, MUTED); doc.text('Erstellt am ' + today, W / 2, 51.5, { align: 'center' });
-      var iw = 160, ih = iw * 600 / 880; doc.addImage(img, 'JPEG', (W - iw) / 2, 55, iw, ih);
+      var iw = 160, ih = iw * 880 / 1240; doc.addImage(img, 'JPEG', (W - iw) / 2, 55, iw, ih);
       var y = 55 + ih + 6;
       doc.setFontSize(8); doc.setTextColor.apply(doc, OLIVE); doc.setCharSpace(0.6); doc.text('DEINE DREI ARCHETYPEN', M, y); doc.setCharSpace(0); y += 7;
       ch.forEach(function (id) {
         var a = BY[id];
         dot(a, M + 3, y - 1.5, 3);
-        doc.setFontSize(13.5); doc.setTextColor.apply(doc, INK); doc.text(full(a), M + 9, y); y += 5.2;
+        doc.setFontSize(13.5); doc.setTextColor.apply(doc, INK); doc.text(full(a), M + 9, y);
+        var nw = doc.getTextWidth(full(a)); doc.setFontSize(10); doc.setTextColor.apply(doc, OLIVE); doc.text('·  ' + a.motto, M + 9 + nw + 3, y); y += 5.2;
         y = para(a.essence, M + 9, y, TW - 9, 10, MUTED) + 1.2;
         y = para('Deine Gabe: ' + a.gift, M + 9, y, TW - 9, 9.5, INK) + 0.6;
         y = para('Im Schatten: ' + a.shadow, M + 9, y, TW - 9, 9.5, INK) + 5;

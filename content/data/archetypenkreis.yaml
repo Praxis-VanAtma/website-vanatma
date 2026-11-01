@@ -1,9 +1,22 @@
 # Archetypen-Kreis – zwölf Archetypen nach Carol S. Pearson, eigene Situationen.
 # Auswertung: „am ehesten“ +2, „am wenigsten“ −1. Jeder Archetyp kommt genau sechsmal vor.
-# Reihenfolge der Archetypen = Reihenfolge der Perlen im Kreis (Vorbereitung, Reise, Rückkehr).
+# Reihenfolge der Archetypen = Reihenfolge im Rad (je vier pro Phase: Vorbereitung, Reise, Rückkehr).
+
+phases:
+  - name: Vorbereitung
+    motto: Wurzeln schlagen
+    color: "#c9b48a"
+  - name: Reise
+    motto: Dich selbst finden
+    color: "#8fae8a"
+  - name: Rückkehr
+    motto: Dein Licht teilen
+    color: "#a99bc4"
 
 archetypes:
   - id: unschuldiger
+    motto: Vertrauen ins Leben
+    icon: sun
     name: Unschuldiger
     phase: Vorbereitung
     stone: Bergkristall
@@ -15,6 +28,8 @@ archetypes:
     question: Wo darf ich heute einfach vertrauen?
     invite: Schenk dir jeden Tag einen Moment kindlicher Freude und Zuversicht.
   - id: weggefaehrte
+    motto: Gemeinsam stark
+    icon: rings
     name: Weggefährte
     alt: Waise
     phase: Vorbereitung
@@ -27,6 +42,8 @@ archetypes:
     question: Wer geht meinen Weg mit mir?
     invite: Bitte jemanden um Unterstützung und genieße das Miteinander.
   - id: krieger
+    motto: Mutig einstehen
+    icon: shield
     name: Krieger
     alt: Held
     phase: Vorbereitung
@@ -39,6 +56,8 @@ archetypes:
     question: Wofür lohnt es sich für mich einzustehen?
     invite: Setz dir ein kleines, klares Ziel und geh es heute entschlossen an.
   - id: fuersorgender
+    motto: Für andere da sein
+    icon: bowl
     name: Fürsorgender
     phase: Vorbereitung
     stone: Rosenquarz
@@ -50,6 +69,8 @@ archetypes:
     question: Wie sorge ich heute auch für mich?
     invite: Schenk heute jemandem bewusst eine kleine Freundlichkeit, und dir selbst ebenso.
   - id: entdecker
+    motto: Neugierig aufbrechen
+    icon: compass
     name: Entdecker
     alt: Suchender
     phase: Reise
@@ -62,6 +83,8 @@ archetypes:
     question: Wonach sehnt sich meine Seele gerade?
     invite: Geh einen ganz neuen Weg, mit offenen Sinnen und frei im Herzen.
   - id: rebell
+    motto: Altes loslassen
+    icon: bolt
     name: Rebell
     alt: Zerstörer
     phase: Reise
@@ -74,6 +97,8 @@ archetypes:
     question: Was darf in meinem Leben gehen?
     invite: Verabschiede bewusst eine Sache, die ausgedient hat.
   - id: liebender
+    motto: Mit Hingabe leben
+    icon: heart
     name: Liebender
     phase: Reise
     stone: Granat
@@ -85,6 +110,8 @@ archetypes:
     question: Wem oder was schenke ich mein Herz?
     invite: Genieße heute etwas mit allen Sinnen, Musik, Essen, Natur oder einen lieben Menschen.
   - id: schoepfer
+    motto: Neues erschaffen
+    icon: spiral
     name: Schöpfer
     phase: Reise
     stone: Citrin
@@ -96,6 +123,8 @@ archetypes:
     question: Was möchte durch mich in die Welt?
     invite: Erschaffe etwas Kleines mit deinen Händen, einfach aus Freude.
   - id: herrscher
+    motto: Verantwortung tragen
+    icon: crown
     name: Herrscher
     phase: Rückkehr
     stone: Lapislazuli
@@ -107,6 +136,8 @@ archetypes:
     question: Wo darf ich führen, wo darf ich vertrauen?
     invite: Bring einen Bereich deines Lebens in Ordnung und triff eine klare Entscheidung.
   - id: magier
+    motto: Wandlung bewirken
+    icon: spark
     name: Magier
     phase: Rückkehr
     stone: Amethyst
@@ -118,6 +149,8 @@ archetypes:
     question: Welche Sichtweise verwandelt meine Lage?
     invite: Betrachte eine festgefahrene Situation heute bewusst aus einem neuen Blickwinkel.
   - id: weiser
+    motto: Wahrheit erkennen
+    icon: owl
     name: Weiser
     phase: Rückkehr
     stone: Jade
@@ -129,6 +162,8 @@ archetypes:
     question: Was weiß ich tief in mir schon längst?
     invite: Nimm dir eine stille Viertelstunde und lausche deiner inneren Stimme.
   - id: narr
+    motto: Leicht durchs Leben
+    icon: jester
     name: Narr
     phase: Rückkehr
     stone: Sonnenstein
