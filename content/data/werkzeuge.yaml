@@ -12,3 +12,9 @@ tools:
     text: Wähle sieben Werte und entscheide im Abgleich, was dir wichtiger ist. Am Ende leuchten deine Werte als echtes Sternbild über dem Bayerischen Wald.
     time: etwa 5 Minuten
     art: sterne
+  - slug: archetypen-kreis
+    title: Archetypen-Kreis
+    eyebrow: Welche Kräfte wirken in dir?
+    text: Zwölf Archetypen, aufgereiht wie Perlen. In 18 kleinen Alltagsszenen entdeckst du, welche drei in dir am stärksten leuchten.
+    time: etwa 5 bis 7 Minuten
+    art: perlen

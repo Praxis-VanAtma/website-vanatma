@@ -311,9 +311,23 @@ def build():
     render("wertesternbild.html", "/wertesternbild/", nav="werkzeuge", wf_data=wf_data,
            title="Wertesternbild · Finde deine sieben wichtigsten Werte · VanAtma",
            description="Dein Wertesternbild: Wähle aus 40 Werten deine sieben, bring sie im Abgleich in ihre Reihenfolge und entdecke, welches Sternbild sie bilden. Mit PDF zum Mitnehmen, kostenlos von VanAtma.")
+    ak = load_yaml("archetypenkreis.yaml")
+    # Veranstaltungen nur, wenn sie zu den Archetypen passen
+    def about_archetypes(e):
+        txt = " ".join([e.get("title", ""), e.get("subtitle", ""), e.get("lead", "")] + list(e.get("description") or []) + list(e.get("includes") or []))
+        return "archetyp" in txt.lower()
+    ak_events = [e for e in UPCOMING if about_archetypes(e)][:3]
+    ak_data = dict(lb_data, archetypes=ak["archetypes"], questions=ak["questions"],
+                   events=[{"title": e["title"], "subtitle": e.get("subtitle", ""), "when": e.get("when", ""), "where": e.get("where", ""),
+                            "url": abs_url(f"/veranstaltungen/{e['slug']}/")} for e in ak_events],
+                   offer=abs_url("/angebote/hypnose/"))
+    ak_data.pop("areas", None)
+    render("archetypenkreis.html", "/archetypen-kreis/", nav="werkzeuge", ak_data=ak_data, ak=ak, ak_events=ak_events,
+           title="Archetypen-Kreis · Entdecke deine drei Archetypen · VanAtma",
+           description="Dein Archetypen-Kreis: 18 kleine Alltagsszenen zeigen dir, welche drei der zwölf Archetypen nach Carol S. Pearson in dir am stärksten wirken. Mit PDF zum Mitnehmen, kostenlos von VanAtma.")
     render("werkzeuge.html", "/werkzeuge/", nav="werkzeuge",
-           title="Werkzeuge zur Selbstreflexion · Lebensblume und Wertesternbild · VanAtma",
-           description="Kostenlose Werkzeuge zur Selbstreflexion von VanAtma: die Lebensblume für neun Lebensbereiche und das Wertesternbild für deine sieben wichtigsten Werte, jeweils mit PDF.")
+           title="Werkzeuge zur Selbstreflexion · Lebensblume, Wertesternbild und Archetypen-Kreis · VanAtma",
+           description="Kostenlose Werkzeuge zur Selbstreflexion von VanAtma: die Lebensblume für neun Lebensbereiche, das Wertesternbild für deine sieben wichtigsten Werte und der Archetypen-Kreis, jeweils mit PDF.")
     # Abschiedsseite für die Weiterleitung von gyn-einstein.de: ohne Menü, ohne Sitemap, noindex
     render("einstein.html", "/einstein/", title="Danke für Ihr Vertrauen · Dr. med. Stefanie Klappenberger",
            description="Dank an die Patientinnen der Gynäkologie in der Einsteinstraße München und Hinweise, wo Dr. med. Stefanie Klappenberger heute zu finden ist.",

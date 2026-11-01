@@ -101,6 +101,21 @@
   {%- endfor -%}
   <circle r="16" fill="#fbf8ef"/>
 </svg>
+{%- elif kind == 'perlen' -%}
+<svg class="tool-art perlen" viewBox="-110 -110 220 220" aria-hidden="true">
+  <defs><radialGradient id="tool-moss" cx=".5" cy=".45" r=".6"><stop offset="0" stop-color="#eef0dc"/><stop offset="1" stop-color="#c9d1ac"/></radialGradient>
+  <radialGradient id="tool-shine" cx=".35" cy=".3" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset=".35" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></radialGradient>
+  <radialGradient id="tool-halo"><stop offset="0" stop-color="#fff6d0" stop-opacity=".95"/><stop offset="1" stop-color="#fff6d0" stop-opacity="0"/></radialGradient></defs>
+  <circle r="104" fill="url(#tool-moss)"/>
+  <circle r="70" fill="none" stroke="#b39a5a" stroke-width="1.6"/>
+  {%- set cols = ['#cfd8dc','#a07a52','#c0532f','#e2a6ad','#3e9c96','#3b3a3f','#8e2a3c','#e0b23c','#2f4f8f','#8a5aa8','#5f8f64','#e07b39'] -%}
+  {%- set P = [[0,-70],[35,-60.6],[60.6,-35],[70,0],[60.6,35],[35,60.6],[0,70],[-35,60.6],[-60.6,35],[-70,0],[-60.6,-35],[-35,-60.6]] -%}
+  {%- for c in cols -%}{%- set p = P[loop.index0] -%}{%- set lit = loop.index0 in [2,7,10] -%}
+  {%- if lit %}<circle cx="{{ p[0] }}" cy="{{ p[1] }}" r="30" fill="url(#tool-halo)"/>{% endif -%}
+  <circle cx="{{ p[0] }}" cy="{{ p[1] }}" r="{{ 15 if lit else 11.5 }}" fill="{{ c }}"/><circle cx="{{ p[0] }}" cy="{{ p[1] }}" r="{{ 15 if lit else 11.5 }}" fill="url(#tool-shine)"/>
+  {%- endfor -%}
+  <circle r="5" fill="#b39a5a"/>
+</svg>
 {%- else -%}
 <svg class="tool-art sterne" viewBox="0 0 220 220" aria-hidden="true">
   <defs><radialGradient id="tool-glow"><stop offset="0" stop-color="#f6dd92" stop-opacity=".75"/><stop offset="1" stop-color="#f6dd92" stop-opacity="0"/></radialGradient></defs><rect width="220" height="220" rx="18" fill="#1d2236"/>

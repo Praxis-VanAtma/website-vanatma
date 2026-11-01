@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="fixed top hero sub" aria-labelledby="h1">
+  {{ m.pic("statement-wald.jpg") }}
+  <div class="wrap">
+    <p class="eyebrow">Die zwölf Kräfte in dir</p>
+    <h1 id="h1">Dein Archetypen-Kreis</h1>
+    <p class="lead">Zwölf Archetypen, aufgereiht wie Perlen auf einer Kette. In 18 kleinen Alltagsszenen entdeckst du, welche drei Kräfte in dir gerade am stärksten leuchten, und nimmst dir deinen Kreis als PDF mit.</p>
+    <div class="btns"><a class="btn btn-light" href="#kreis">Jetzt starten</a></div>
+  </div>
+</section>
+
+<section class="sec tight-top">
+  <div class="wrap">
+    <ol class="lb-steps wf-steps">
+      <li><b>Erleben</b><span>18 Situationen aus dem Alltag. Wähle jeweils, was am ehesten und was am wenigsten zu dir passt.</span></li>
+      <li><b>Spüren</b><span>Fünf Archetypen leuchten auf. Du wählst die drei, die in dir am stärksten anklingen.</span></li>
+      <li><b>Mitnehmen</b><span>Deine drei Archetypen mit Gabe, Schatten und Fragen zum Nachspüren als PDF.</span></li>
+    </ol>
+    <div class="lb-privacy"><span class="lb-lock" aria-hidden="true">&#10047;</span><p><strong>Dein Archetypen-Kreis gehört ganz dir.</strong> Alle Antworten werden ausschließlich auf deinem Gerät gespeichert, und auch das PDF entsteht direkt in deinem Browser. Eine Kopie erhalten wir nur, wenn du sie uns am Ende ausdrücklich und freiwillig schickst.</p></div>
+  </div>
+</section>
+
+<section class="sec sand ak-sec" id="kreis" aria-live="polite">
+  <div class="wrap">
+    <div class="ak-phase ak-two" id="ak-intro">
+      <div class="ak-ring-wrap"><svg class="ak-ring" id="ak-ring-i" viewBox="-440 -300 880 600" role="img" aria-label="Der Archetypen-Kreis mit zwölf Perlen"></svg></div>
+      <div class="prose">
+        <p class="eyebrow">Zwölf Perlen, zwölf Kräfte</p>
+        <h2 style="margin-top:0">Welche Archetypen wirken in dir?</h2>
+        <p>Archetypen sind Urbilder, die in allen Kulturen und Geschichten auftauchen: der Krieger, der Liebende, der Weise, der Narr. Carol S. Pearson beschreibt zwölf von ihnen als Begleiter auf der Reise unseres Lebens, von der Vorbereitung über die Reise bis zur Rückkehr.</p>
+        <p>Jeder Mensch trägt alle zwölf in sich. Einige leuchten gerade hell, andere ruhen still und warten auf ihre Zeit. Dein Kreis zeigt dir, welche Kräfte dich in dieser Lebensphase tragen.</p>
+        <p><strong>So geht es:</strong> Zu jeder Situation gibt es vier Antworten. Wähle zuerst, was <em>am ehesten</em> zu dir passt, dann, was <em>am wenigsten</em> passt. Folge dabei deinem ersten Gefühl.</p>
+        <div class="btns"><button class="btn btn-primary" type="button" id="ak-start">Los geht’s</button></div>
+      </div>
+    </div>
+
+    <div class="ak-phase" id="ak-q" hidden>
+      <div class="ak-card">
+        <div class="ak-qhead"><p class="eyebrow" id="ak-count"></p><div class="ak-prog" id="ak-prog" aria-hidden="true"></div></div>
+        <h2 class="ak-scene" id="ak-scene"></h2>
+        <p class="ak-ask" id="ak-ask"></p>
+        <div class="ak-answers" id="ak-ans"></div>
+        <div class="ak-foot"><button type="button" class="wf-back" id="ak-back">Zurück</button><span class="muted ak-tip">Jede Antwort ist richtig, denn sie kommt von dir.</span></div>
+      </div>
+    </div>
+
+    <div class="ak-phase ak-two" id="ak-feel" hidden>
+      <div class="ak-ring-wrap"><svg class="ak-ring" id="ak-ring-f" viewBox="-440 -300 880 600" role="img" aria-label="Dein Archetypen-Kreis mit den fünf stärksten Perlen"></svg></div>
+      <div>
+        <p class="eyebrow">Spüren</p>
+        <h2 style="margin-top:0">Welche drei klingen in dir an?</h2>
+        <p class="muted">Diese fünf Perlen leuchten in deinem Kreis am hellsten. Lies sie in Ruhe, atme durch und wähle die drei, die sich für dich am stimmigsten anfühlen.</p>
+        <div class="ak-top" id="ak-top"></div>
+        <div class="wf-bar ak-bar"><span class="wf-count" id="ak-pcount"></span><button class="btn btn-primary" type="button" id="ak-confirm" disabled>Meine drei Archetypen</button></div>
+      </div>
+    </div>
+
+    <div class="ak-phase ak-two" id="ak-res" hidden>
+      <div class="ak-ring-wrap ak-sticky"><svg class="ak-ring" id="ak-ring-r" viewBox="-440 -300 880 600" role="img" aria-label="Dein Archetypen-Kreis mit deinen drei Archetypen"></svg></div>
+      <div>
+        <p class="eyebrow">Dein Archetypen-Kreis</p>
+        <h2 style="margin-top:0" id="ak-rtitle">Deine drei Archetypen</h2>
+        <div class="ak-three" id="ak-three"></div>
+        <div class="ak-quiet" id="ak-quiet"></div>
+        <p><button type="button" class="wf-back" id="ak-change">Auswahl noch einmal spüren</button></p>
+        <label class="lb-name" for="ak-name">Dein Vorname für das PDF <small>(freiwillig)</small></label>
+        <input id="ak-name" type="text" autocomplete="given-name" placeholder="zum Beispiel Anna">
+        <div class="btns" style="margin-top:1rem"><button class="btn btn-primary" type="button" id="ak-pdf">PDF herunterladen</button><button class="btn btn-ghost lb-reset" type="button" id="ak-reset">Neu beginnen</button></div>
+        <p class="form-msg" id="ak-out" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec lb-finish" aria-labelledby="h-inv">
+  <div class="wrap split" style="align-items:start">
+    <div class="prose">
+      <p class="eyebrow">Von innen erleben</p>
+      <h2 id="h-inv" style="margin-top:0">Deinen Archetypen begegnen</h2>
+      <p>Ein Fragebogen zeigt dir, welche Kräfte in dir wirken. Noch tiefer wird es, wenn du ihnen selbst begegnest. In einer Trance oder Hypnose betrittst du deinen inneren Archetypen-Kreis, eine Lichtung im Wald, auf der deine Kräfte dich erwarten.</p>
+      <p>Dort darfst du mit ihnen sprechen, ihre Gaben empfangen und spüren, welche Kraft dich auf deinem nächsten Wegstück begleiten möchte.</p>
+    </div>
+    <div class="lb-invite">
+      <p class="eyebrow">Herzlich eingeladen</p>
+      <h3>Archetypen-Kreis in Trance</h3>
+      <p>In einer Einzelsitzung begleitet dich Stephan Dietl in einer Trance oder Hypnose zu deinem inneren Archetypen-Kreis, ganz in deinem Tempo und für dein Wohlbefinden und deine persönliche Entwicklung.</p>
+      {% if ak_events %}<ul class="lb-events">{% for e in ak_events %}<li><a href="{{ url('/veranstaltungen/' ~ e.slug ~ '/') }}"><b>{{ e.title }}</b><span>{{ e.when }}</span></a></li>{% endfor %}</ul>{% endif %}
+      <div class="btns"><a class="btn btn-primary" href="{{ url('/kontakt/') }}#formular">Einzelsitzung anfragen</a><a class="btn btn-ghost" href="{{ url('/angebote/hypnose/') }}">Mehr über Hypnose</a></div>
+      <details class="lb-share" id="ak-share">
+        <summary>Archetypen-Kreis mit uns teilen</summary>
+        <p>Wenn du magst, schick uns deine drei Archetypen. Wir melden uns dann persönlich bei dir und schauen gemeinsam, wie du ihnen begegnen kannst.</p>
+        <form id="ak-send" data-portal="{{ site.hubspot.portal_id }}" data-form="{{ site.hubspot.contact_form_id }}" data-to="{{ site.email }}" novalidate>
+          <div class="lb-two"><div><label for="as-first">Vorname</label><input id="as-first" name="firstname" autocomplete="given-name" required></div>
+          <div><label for="as-last">Nachname</label><input id="as-last" name="lastname" autocomplete="family-name" required></div></div>
+          <div class="lb-two"><div><label for="as-mail">E-Mail</label><input id="as-mail" name="email" type="email" autocomplete="email" required></div>
+          <div><label for="as-phone">Telefon <small>(freiwillig)</small></label><input id="as-phone" name="phone" type="tel" autocomplete="tel"></div></div>
+          <label for="as-msg">Möchtest du uns noch etwas sagen? <small>(freiwillig)</small></label>
+          <textarea id="as-msg" name="message" rows="3"></textarea>
+          <div class="hp" aria-hidden="true"><label for="as-web">Website</label><input id="as-web" name="website" tabindex="-1" autocomplete="off"></div>
+          <label class="check-line" for="as-ok"><input id="as-ok" type="checkbox" required><span id="as-ok-text">Ich möchte VanAtma meinen Archetypen-Kreis schicken und bitte um Kontaktaufnahme. Ich willige ein, dass meine Angaben zu diesem Zweck verarbeitet werden. Diese Einwilligung kann ich jederzeit widerrufen. Mehr dazu in der <a href="{{ url('/datenschutz/') }}">Datenschutzerklärung</a>.</span></label>
+          <div><button class="btn btn-primary" type="submit">Archetypen-Kreis senden</button></div>
+          <p class="form-msg" id="as-out" aria-live="polite"></p>
+        </form>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec sand" aria-labelledby="h-all">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Die Perlen im Überblick</p><h2 id="h-all">Die zwölf Archetypen</h2></div>
+    {% for ph in ["Vorbereitung", "Reise", "Rückkehr"] %}
+    <h3 class="ak-ph">{{ ph }}</h3>
+    <div class="ak-all">{% for a in ak.archetypes if a.phase == ph %}
+      <div class="ak-mini"><span class="ak-dot" style="--c:{{ a.color }}"></span><div><b>{{ a.name }}{% if a.alt %} <small>({{ a.alt }})</small>{% endif %}</b><p>{{ a.essence }}</p></div></div>
+    {% endfor %}</div>
+    {% endfor %}
+  </div>
+</section>
+
+{% set other = tools | rejectattr("slug", "equalto", "archetypen-kreis") | list %}
+{% if other %}
+<section class="sec tool-more" aria-labelledby="h-more">
+  <div class="wrap">
+    <div class="head-row"><p class="eyebrow">Noch mehr für dich</p><h2 id="h-more">Weitere Werkzeuge</h2></div>
+    <div class="tools">{% for t in other %}{{ m.tool_card(t) }}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+
+<section class="sec tight-top"><div class="wrap"><p class="note">Der Archetypen-Kreis ist eine Übung zur Selbstreflexion für dein Wohlbefinden und deine persönliche Entwicklung, angelehnt an das Modell der zwölf Archetypen von Carol S. Pearson.</p></div></section>
+
+<script id="ak-data" type="application/json">{{ ak_data | tojson }}</script>
+<script src="{{ asset('/assets/js/archetypenkreis.js') }}" defer></script>
+{% endblock %}
