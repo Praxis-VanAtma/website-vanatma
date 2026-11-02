@@ -1,14 +1,15 @@
-/* Archetypen-Kreis – 18 Situationen, Auswertung, Schritt „Spüren“, Ergebnis als sanftes Rad mit Symbolen und PDF. Alles bleibt im Browser. */
+/* Archetypen-Kreis – 18 Fragen „So bin ich“, 6 Sehnsuchtsfragen, Schritt „Spüren“, Ergebnis als sanftes Rad mit Symbolen,
+   rufendem Archetyp und Phase der Reise, dazu ein PDF. Alles bleibt im Browser. */
 (function () {
   var dataEl = document.getElementById('ak-data');
   if (!dataEl) return;
   var D = JSON.parse(dataEl.textContent);
   var ARC = D.archetypes, QS = D.questions, N = QS.length, PICK = 3, TOPN = 5;
   var BY = {}; ARC.forEach(function (a, i) { a.i = i; BY[a.id] = a; });
-  var KEY = 'vanatma-archetypenkreis-v1', NS = 'http://www.w3.org/2000/svg';
+  var KEY = 'vanatma-archetypenkreis-v2', NS = 'http://www.w3.org/2000/svg';
 
   // ---------- Zustand ----------
-  function fresh(name) { return { phase: 'intro', seed: (Math.random() * 1e9) | 0, ans: [], sel: null, chosen: [], name: name || '' }; }
+  function fresh(name) { return { phase: 'intro', seed: (Math.random() * 1e9) | 0, ans: [], sel: null, chosen: [], p2: false, name: name || '' }; }
   var state = fresh();
   try { var sv = JSON.parse(localStorage.getItem(KEY) || 'null'); if (sv && sv.phase && Array.isArray(sv.ans)) state = sv; } catch (e) {}
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
@@ -19,17 +20,28 @@
 
   // ---------- Auswertung ----------
   function scores() {
-    var s = {}, best = {}, worst = {};
-    ARC.forEach(function (a) { s[a.id] = 0; best[a.id] = 0; worst[a.id] = 0; });
-    state.ans.forEach(function (x) { s[x.b] += 2; best[x.b]++; s[x.w] -= 1; worst[x.w]++; });
+    var s = {}, best = {}, worst = {}, ls = {}, ph = [0, 0, 0];
+    ARC.forEach(function (a) { s[a.id] = 0; best[a.id] = 0; worst[a.id] = 0; ls[a.id] = 0; });
+    state.ans.forEach(function (x, i) {
+      if (QS[i] && QS[i].part === 'sehnsucht') { ls[x.b] += 2; ls[x.w] -= 1; return; }
+      s[x.b] += 2; best[x.b]++; s[x.w] -= 1; worst[x.w]++;
+    });
+    ARC.forEach(function (a) { ph[Math.floor(a.i / 4)] += s[a.id]; });
+    var phase = ph.indexOf(Math.max.apply(0, ph));
     var ranked = ARC.map(function (a) { return a.id; }).sort(function (x, y) {
       return (s[y] - s[x]) || (best[y] - best[x]) || (worst[x] - worst[y]) || (BY[x].i - BY[y].i);
     });
     var top = ranked.slice(0, TOPN), cut = s[ranked[TOPN - 1]];
     for (var i = TOPN; i < ranked.length && top.length < 7; i++) if (s[ranked[i]] === cut) top.push(ranked[i]);
-    return { s: s, ranked: ranked, top: top };
+    return { s: s, ls: ls, ranked: ranked, top: top, phase: phase };
   }
-  function quietOf(sc, chosen) { for (var i = sc.ranked.length - 1; i >= 0; i--) if (chosen.indexOf(sc.ranked[i]) < 0) return sc.ranked[i]; return null; }
+  // Rufender Archetyp: die stärkste Sehnsucht außerhalb der drei gewählten
+  function callOf(sc, chosen) {
+    var c = ARC.map(function (a) { return a.id; }).filter(function (id) { return chosen.indexOf(id) < 0; });
+    c.sort(function (x, y) { return (sc.ls[y] - sc.ls[x]) || (sc.s[x] - sc.s[y]) || (BY[x].i - BY[y].i); });
+    return c[0] || null;
+  }
+  function quietOf(sc, chosen, call) { for (var i = sc.ranked.length - 1; i >= 0; i--) if (chosen.indexOf(sc.ranked[i]) < 0 && sc.ranked[i] !== call) return sc.ranked[i]; return null; }
   function chosenSorted(sc) { return state.chosen.slice().sort(function (a, b) { return sc.ranked.indexOf(a) - sc.ranked.indexOf(b); }); }
 
   // ---------- Symbole (eigene Linienzeichnungen, 24er Raster) ----------
@@ -81,12 +93,13 @@
       out += '<g class="ak-fill" opacity="' + op + '">' + soft(R0, rr, a0, a1, a.color) + '</g>';
       if (res && o.quiet === a.id) out += '<path d="' + sector(R0 + 2, R1 - 2, a0 + .01, a1 - .01) + '" fill="none" stroke="#7f7b2f" stroke-width="1.6" stroke-dasharray="4 6" stroke-linejoin="round"/>';
       var mc = pt(ang(i), R1 + 32), big = isC || (o.feel && isT);
+      if (res && o.call === a.id) out += '<circle class="ak-call-ring" cx="' + mc[0] + '" cy="' + mc[1] + '" r="34" fill="none" stroke="#c9a54a" stroke-width="2.4" stroke-dasharray="5 5"/>';
       out += '<circle cx="' + mc[0] + '" cy="' + mc[1] + '" r="' + (big ? 27 : 23) + '" fill="#f3e6c8" stroke="' + a.color + '" stroke-width="' + (big ? 3.2 : 2.2) + '"/>' + icon(a.icon, mc[0], mc[1], big ? 32 : 28, '#3b2e1d', 1.7);
       if (!o.compact) {
         var t = ang(i), c = Math.cos(t), sn = Math.sin(t), anc = Math.abs(c) < .2 ? 'middle' : c > 0 ? 'start' : 'end', L = pt(t, R1 + 80), y = L[1] + (sn > .5 ? 24 : sn < -.5 ? -24 : 2);
-        var strong = isC || (o.feel && isT), fs = (strong ? 27 : 23) * (pdf ? 0.84 : 1), ms = 23 * (pdf ? 0.88 : 1), dim = sc && !strong && o.quiet !== a.id;
+        var strong = isC || (o.feel && isT), fs = (strong ? 27 : 23) * (pdf ? 0.84 : 1), ms = 23 * (pdf ? 0.88 : 1), dim = sc && !strong && o.quiet !== a.id && o.call !== a.id;
         out += '<text x="' + L[0] + '" y="' + r1(y) + '" text-anchor="' + anc + '" font-family="Jost, Futura, \'Century Gothic\', sans-serif" font-size="' + fs + '" font-weight="' + (strong ? 500 : 400) + '" letter-spacing="2" style="fill:' + ink + '"' + (dim ? ' fill-opacity=".65"' : '') + '>' + esc(a.name.toUpperCase()) + '</text>';
-        out += '<text x="' + L[0] + '" y="' + r1(y + ms * 1.15) + '" text-anchor="' + anc + '" font-family="\'Cormorant Garamond\', Georgia, serif" font-style="italic" font-size="' + r1(ms) + '" style="fill:' + muted + '">' + (res && o.quiet === a.id ? 'leise · ' : '') + esc(a.motto) + '</text>';
+        out += '<text x="' + L[0] + '" y="' + r1(y + ms * 1.15) + '" text-anchor="' + anc + '" font-family="\'Cormorant Garamond\', Georgia, serif" font-style="italic" font-size="' + r1(ms) + '" style="fill:' + muted + '">' + (res && o.quiet === a.id ? 'leise · ' : res && o.call === a.id ? 'ruft · ' : '') + esc(a.motto) + '</text>';
       }
       out += '</g>';
     });
@@ -94,7 +107,8 @@
     out += '<circle r="' + (R0 - 6) + '" style="fill:' + card + '"/>';
     PHS.forEach(function (ph, k) {
       var r = R0 - 12, a0 = ang(4 * k) - 15 * Math.PI / 180 + .02, a1 = ang(4 * k + 3) + 15 * Math.PI / 180 - .02, rev = Math.sin((a0 + a1) / 2) > .2;
-      out += '<path d="' + sector(0, r, a0, a1) + '" fill="' + ph.color + '" fill-opacity=".4" style="stroke:' + card + '" stroke-width="3"/>';
+      var hl = res && o.phase !== undefined;
+      out += '<path d="' + sector(0, r, a0, a1) + '" fill="' + ph.color + '" fill-opacity="' + (hl ? (o.phase === k ? 0.85 : 0.22) : 0.4) + '" style="stroke:' + card + '" stroke-width="3"/>';
       out += '<path id="' + p + 'n' + k + '" d="' + arc(r - (rev ? 50 : 22), a0 + .12, a1 - .12, rev) + '" fill="none"/><path id="' + p + 'd' + k + '" d="' + arc(r - (rev ? 26 : 46), a0 + .12, a1 - .12, rev) + '" fill="none"/>';
       out += '<text font-family="Jost, Futura, sans-serif" font-size="' + (o.compact ? 19 : 17) + '" letter-spacing="' + (o.compact ? 1.6 : 3) + '" style="fill:' + ink + '"><textPath href="#' + p + 'n' + k + '" startOffset="50%" text-anchor="middle">' + esc(ph.name.toUpperCase()) + '</textPath></text>';
       out += '<text font-family="\'Cormorant Garamond\', Georgia, serif" font-style="italic" font-size="' + (o.compact ? 19.5 : 19) + '" style="fill:' + muted + '"><textPath href="#' + p + 'd' + k + '" startOffset="50%" text-anchor="middle">' + esc(ph.motto) + '</textPath></text>';
@@ -125,34 +139,49 @@
     return a;
   }
   var busy = false;
+  // Nach jedem Wechsel bleibt der Hover-Effekt aus, bis sich wirklich eine Maus bewegt (auf Touchgeräten nie)
+  ansEl.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') ansEl.classList.remove('fresh'); });
   function ask() {
     var qi = state.ans.length; if (qi >= N) { feel(); return; }
-    $('ak-count').textContent = 'Situation ' + (qi + 1) + ' von ' + N;
-    $('ak-scene').textContent = QS[qi].q;
-    $('ak-ask').innerHTML = state.sel ? 'Und was passt <b>am wenigsten</b> zu dir?' : 'Was passt <b>am ehesten</b> zu dir?';
-    PH.q.classList.toggle('worst', !!state.sel);
+    var two = QS[qi].part === 'sehnsucht';
     prog.querySelectorAll('span').forEach(function (s, i) { s.className = i < qi ? 'on' : i === qi ? 'now' : ''; });
+    PH.q.classList.toggle('longing', two);
+    if (two && !state.p2) {
+      $('ak-count').textContent = 'Teil 2 · Was dich gerade ruft';
+      $('ak-scene').textContent = 'Und wonach sehnst du dich gerade?';
+      $('ak-ask').innerHTML = 'Bisher ging es darum, wie du bist. In den letzten sechs Fragen geht es darum, was dich gerade ruft, welche Kraft in dein Leben kommen möchte. Folge wieder deinem ersten Gefühl.';
+      ansEl.innerHTML = '<div><button type="button" class="btn btn-primary" id="ak-p2">Weiter zu Teil 2</button></div>';
+      $('ak-p2').addEventListener('click', function () { state.p2 = true; save(); ask(); });
+      return;
+    }
+    $('ak-count').textContent = (two ? 'Teil 2 · ' : '') + 'Frage ' + (qi + 1) + ' von ' + N;
+    $('ak-scene').textContent = QS[qi].q;
+    $('ak-ask').innerHTML = two ? (state.sel ? 'Und was ruft dich <b>am wenigsten</b>?' : 'Was ruft dich <b>am meisten</b>?') : (state.sel ? 'Und was passt <b>am wenigsten</b> zu dir?' : 'Was passt <b>am ehesten</b> zu dir?');
+    PH.q.classList.toggle('worst', !!state.sel);
     ansEl.innerHTML = '';
     order(qi).forEach(function (x) {
       var b = document.createElement('button'); b.type = 'button'; b.className = 'ak-a'; b.dataset.id = x[0];
       b.innerHTML = '<span class="ak-atxt">' + esc(x[1]) + '</span><span class="ak-tag"></span>';
-      if (state.sel === x[0]) { b.classList.add('best'); b.querySelector('.ak-tag').textContent = 'am ehesten'; }
+      if (state.sel === x[0]) { b.classList.add('best'); b.querySelector('.ak-tag').textContent = two ? 'am meisten' : 'am ehesten'; }
       b.addEventListener('click', function () { pick(x[0], b); });
       ansEl.appendChild(b);
     });
+    ansEl.classList.add('fresh');
     ansEl.classList.remove('swap'); void ansEl.offsetWidth; ansEl.classList.add('swap');
   }
   function pick(id, b) {
     if (busy) return;
     if (!state.sel) { state.sel = id; save(); ask(); return; }
     if (state.sel === id) { state.sel = null; save(); ask(); return; }
-    b.classList.add('worst'); b.querySelector('.ak-tag').textContent = 'am wenigsten';
+    b.classList.add('worst'); b.querySelector('.ak-tag').textContent = 'am wenigsten'; b.blur();
     state.ans.push({ b: state.sel, w: id }); state.sel = null; save(); busy = true;
     setTimeout(function () { busy = false; if (state.ans.length >= N) { feel(); scrollTop(); } else ask(); }, 420);
   }
   $('ak-back').addEventListener('click', function () {
     if (busy) return;
+    var qi = state.ans.length;
     if (state.sel) state.sel = null;
+    else if (QS[qi] && QS[qi].part === 'sehnsucht' && state.p2 && (!QS[qi - 1] || QS[qi - 1].part !== 'sehnsucht')) { state.p2 = false; }
     else if (state.ans.length) { var last = state.ans.pop(); state.sel = last.b; }
     else { show('intro'); save(); return; }
     save(); ask();
@@ -194,9 +223,13 @@
 
   // ---------- Ergebnis ----------
   function result() {
-    var sc = scores(), ch = chosenSorted(sc), qu = quietOf(sc, ch);
+    var sc = scores(), ch = chosenSorted(sc), ca = callOf(sc, ch), qu = quietOf(sc, ch, ca), phs = PHS[sc.phase];
     show('res');
-    var ring = draw('ak-ring-r', { p: 'akr', chosen: ch, quiet: qu, s: sc.s });
+    var ring = draw('ak-ring-r', { p: 'akr', chosen: ch, quiet: qu, call: ca, phase: sc.phase, s: sc.s });
+    $('ak-phase').innerHTML = phs ? '<p class="eyebrow">Deine Phase der Reise</p><h3>' + esc(phs.name) + ' <small>· ' + esc(phs.motto) + '</small></h3><p>' + esc(phs.text) + '</p>' : '';
+    $('ak-phase').style.setProperty('--c', phs ? phs.color : '#c9b48a');
+    var c = BY[ca];
+    $('ak-call').innerHTML = c ? '<span class="ak-ico">' + iconSVG(c, 54) + '</span><div><p class="eyebrow">Dein rufender Archetyp</p><h3>' + esc(full(c)) + ' <small>· ' + esc(c.motto) + '</small></h3><p>Diese Kraft möchte gerade in dein Leben kommen. ' + esc(c.essence) + '</p><p class="ak-qq">' + esc(c.question) + '</p></div>' : '';
     ring.classList.remove('lit'); void ring.getBoundingClientRect(); requestAnimationFrame(function () { ring.classList.add('lit'); });
     $('ak-three').innerHTML = ch.map(function (id, n) {
       var a = BY[id];
@@ -230,11 +263,12 @@
     if (!$('as-ok').checked) { o.textContent = 'Bitte bestätige kurz deine Einwilligung.'; return; }
     var list;
     if (state.ans.length >= N) {
-      var sc = scores(), ch = chosenSorted(sc), qu = quietOf(sc, ch);
+      var sc = scores(), ch = chosenSorted(sc), ca = callOf(sc, ch), qu = quietOf(sc, ch, ca);
       list = (ch.length === PICK ? 'Meine drei Archetypen: ' + ch.map(function (id) { return BY[id].name; }).join(', ') + '\n' : '') +
+        'Phase der Reise: ' + PHS[sc.phase].name + '\n' + (ca ? 'Rufender Archetyp: ' + BY[ca].name + '\n' : '') +
         'Die fünf stärksten: ' + sc.top.map(function (id) { return BY[id].name + ' (' + sc.s[id] + ')'; }).join(', ') + '\n' +
         (qu ? 'Leiser Archetyp: ' + BY[qu].name : '');
-    } else list = 'Noch in Bearbeitung: ' + state.ans.length + ' von ' + N + ' Situationen beantwortet.';
+    } else list = 'Noch in Bearbeitung: ' + state.ans.length + ' von ' + N + ' Fragen beantwortet.';
     var msg = (get('message') ? get('message') + '\n\n' : '') + 'Bitte um Kontaktaufnahme.\n\nArchetypen-Kreis' + ((state.name || '').trim() ? ' von ' + state.name.trim() : '') + ':\n' + list;
     var f = [['firstname', get('firstname')], ['lastname', get('lastname')], ['email', get('email')], ['telefonnummer', get('phone')], ['phone', get('phone')], ['nachricht', msg], ['message', msg]]
       .filter(function (x) { return x[1]; }).map(function (x) { return { objectTypeId: '0-1', name: x[0], value: x[1] }; });
@@ -270,8 +304,8 @@
   function rgb(hex) { var n = parseInt(hex.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
   function makePDF() {
     if (state.ans.length < N || state.chosen.length !== PICK) return Promise.reject(new Error('unvollständig'));
-    var sc = scores(), ch = chosenSorted(sc), qu = quietOf(sc, ch);
-    return Promise.all([loadScript(D.jspdf), toDataURL(D.logo).catch(function () { return null; }), ringJPG({ p: 'akp', chosen: ch, quiet: qu, s: sc.s, pdf: true }, 1500)]).then(function (x) {
+    var sc = scores(), ch = chosenSorted(sc), ca = callOf(sc, ch), qu = quietOf(sc, ch, ca), phs = PHS[sc.phase];
+    return Promise.all([loadScript(D.jspdf), toDataURL(D.logo).catch(function () { return null; }), ringJPG({ p: 'akp', chosen: ch, quiet: qu, call: ca, phase: sc.phase, s: sc.s, pdf: true }, 1500)]).then(function (x) {
       var logo = x[1], img = x[2];
       var doc = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4' });
       var W = 210, M = 18, TW = W - 2 * M, INK = [44, 43, 25], OLIVE = [127, 123, 47], DARK = [74, 73, 32], MUTED = [95, 92, 67], SAND = [244, 239, 225];
@@ -295,7 +329,13 @@
       doc.text(name ? 'Der Archetypen-Kreis von ' + name : 'Mein Archetypen-Kreis', W / 2, 45, { align: 'center' });
       doc.setFontSize(9.5); doc.setTextColor.apply(doc, MUTED); doc.text('Erstellt am ' + today, W / 2, 51.5, { align: 'center' });
       var iw = 160, ih = iw * 880 / 1240; doc.addImage(img, 'JPEG', (W - iw) / 2, 55, iw, ih);
-      var y = 55 + ih + 6;
+      var y = 55 + ih + 5;
+      if (phs) {
+        doc.setFillColor.apply(doc, rgb(phs.color)); doc.roundedRect(M, y - 3.2, 2.2, 21, 1, 1, 'F');
+        doc.setFontSize(8); doc.setTextColor.apply(doc, OLIVE); doc.setCharSpace(0.6); doc.text('DEINE PHASE DER REISE', M + 6, y); doc.setCharSpace(0);
+        doc.setFontSize(12.5); doc.setTextColor.apply(doc, INK); doc.text(phs.name + '  ·  ' + phs.motto, M + 6, y + 5.6);
+        y = para(phs.text, M + 6, y + 10.4, TW - 6, 9.5, MUTED) + 6;
+      }
       doc.setFontSize(8); doc.setTextColor.apply(doc, OLIVE); doc.setCharSpace(0.6); doc.text('DEINE DREI ARCHETYPEN', M, y); doc.setCharSpace(0); y += 7;
       ch.forEach(function (id) {
         var a = BY[id];
@@ -304,7 +344,7 @@
         var nw = doc.getTextWidth(full(a)); doc.setFontSize(10); doc.setTextColor.apply(doc, OLIVE); doc.text('·  ' + a.motto, M + 9 + nw + 3, y); y += 5.2;
         y = para(a.essence, M + 9, y, TW - 9, 10, MUTED) + 1.2;
         y = para('Deine Gabe: ' + a.gift, M + 9, y, TW - 9, 9.5, INK) + 0.6;
-        y = para('Im Schatten: ' + a.shadow, M + 9, y, TW - 9, 9.5, INK) + 5;
+        y = para('Im Schatten: ' + a.shadow, M + 9, y, TW - 9, 9.5, INK) + 4.2;
       });
       // Seite 2
       doc.addPage(); head(); foot();
@@ -318,6 +358,14 @@
         for (var l = 0; l < 2; l++) { doc.setDrawColor(215, 209, 186); doc.setLineWidth(0.25); doc.line(M + 8, y, W - M, y); y += 7.5; }
         y += 2;
       });
+      if (ca) {
+        var c = BY[ca];
+        dot(c, M + 2.5, y - 1.6, 2.5);
+        doc.setFontSize(13); doc.setTextColor.apply(doc, INK); doc.text('Dein rufender Archetyp: ' + full(c), M + 8, y); y += 5.5;
+        y = para('Diese Kraft möchte gerade in dein Leben kommen. ' + c.essence, M + 8, y, TW - 8, 10, MUTED) + 1.5;
+        doc.setFontSize(10); doc.setTextColor.apply(doc, INK); doc.text(c.question, M + 8, y); y += 7;
+        doc.setDrawColor(215, 209, 186); doc.setLineWidth(0.25); doc.line(M + 8, y, W - M, y); y += 8;
+      }
       if (qu) {
         var q = BY[qu];
         dot(q, M + 2.5, y - 1.6, 2.5);

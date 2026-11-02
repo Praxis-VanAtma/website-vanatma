@@ -1,15 +1,20 @@
 # Archetypen-Kreis – zwölf Archetypen nach Carol S. Pearson, eigene Situationen.
-# Auswertung: „am ehesten“ +2, „am wenigsten“ −1. Jeder Archetyp kommt genau sechsmal vor.
+# Auswertung: „am ehesten“ +2, „am wenigsten“ −1.
+# Teil 1 (18 Fragen, „So bin ich“): jeder Archetyp genau sechsmal → gelebte Archetypen und Phase.
+# Teil 2 (6 Fragen, part: sehnsucht): jeder Archetyp genau zweimal → rufender Archetyp.
 # Reihenfolge der Archetypen = Reihenfolge im Rad (je vier pro Phase: Vorbereitung, Reise, Rückkehr).
 
 phases:
   - name: Vorbereitung
+    text: "Du bist gerade in der Phase der Vorbereitung. Es geht darum, Wurzeln zu schlagen und Vertrauen, Halt und Kraft für deinen Weg zu sammeln."
     motto: Wurzeln schlagen
     color: "#c9b48a"
   - name: Reise
+    text: "Du bist gerade mitten auf der Reise. Es geht darum, dich selbst zu finden: aufzubrechen, Altes zu wandeln, zu lieben und Neues zu erschaffen."
     motto: Dich selbst finden
     color: "#8fae8a"
   - name: Rückkehr
+    text: "Du bist gerade in der Phase der Rückkehr. Es geht darum, dein Licht zu teilen: Verantwortung zu tragen, weiterzugeben, was du gelernt hast, und das Leben zu feiern."
     motto: Dein Licht teilen
     color: "#a99bc4"
 
@@ -176,111 +181,153 @@ archetypes:
     invite: Mach heute etwas Verspieltes, einfach aus Freude.
 
 questions:
-  - q: Ein Lebensabschnitt geht zu Ende. Was tust du?
+  - q: "Welches Bild würdest du dir an die Wand hängen?"
     a:
-      - [rebell, "Ich lasse bewusst los, was ausgedient hat, und mache Platz für Neues."]
-      - [liebender, "Ich verbringe die Zeit mit den Menschen, die mir am Herzen liegen."]
-      - [herrscher, "Ich ordne alles in Ruhe, übergebe sauber und plane den nächsten Abschnitt."]
-      - [narr, "Ich feiere den Abschied mit einem Fest und einem Augenzwinkern."]
-  - q: Vor dir liegt eine schwierige Aufgabe.
+      - [rebell, "Ein Gewitter, das über die Berge zieht"]
+      - [liebender, "Zwei Hände, die sich im Abendlicht berühren"]
+      - [herrscher, "Eine alte Burg, die seit Jahrhunderten über dem Tal wacht"]
+      - [narr, "Kinder, die lachend durch eine Pfütze springen"]
+  - q: "Ein gutes Gespräch erkennst du daran, dass …"
     a:
-      - [unschuldiger, "Ich vertraue darauf, dass sich alles gut fügt, und gehe zuversichtlich los."]
-      - [weggefaehrte, "Ich hole mir Menschen an die Seite, denen es ähnlich geht, gemeinsam geht es leichter."]
-      - [krieger, "Ich setze mir ein klares Ziel und arbeite mich Schritt für Schritt durch."]
-      - [magier, "Ich suche den Blickwinkel, aus dem sich die Aufgabe plötzlich verwandelt."]
-  - q: Ein freier Sonntag liegt vor dir.
+      - [unschuldiger, "… du danach wieder fest an das Gute glaubst."]
+      - [weggefaehrte, "… ihr ehrlich und auf Augenhöhe gesprochen habt."]
+      - [krieger, "… am Ende ein klarer nächster Schritt feststeht."]
+      - [magier, "… plötzlich alles in einem neuen Licht erscheint."]
+  - q: "Der Sonntag fühlt sich gelungen an, weil …"
     a:
-      - [fuersorgender, "Ich koche für die Familie oder besuche jemanden, der sich über Gesellschaft freut."]
-      - [entdecker, "Ich wandere einen ganz neuen Weg und schaue, wohin er mich führt."]
-      - [schoepfer, "Ich vertiefe mich in ein eigenes Projekt: malen, bauen, schreiben, gärtnern."]
-      - [weiser, "Ich lese in Ruhe ein gutes Buch und denke über das Gelesene nach."]
-  - q: Ein Mensch, der dir nahesteht, steckt in einer Krise.
+      - [fuersorgender, "… sich die Menschen um dich herum wohlgefühlt haben."]
+      - [entdecker, "… du etwas Unbekanntes entdeckt hast."]
+      - [schoepfer, "… unter deinen Händen etwas Eigenes entstanden ist."]
+      - [weiser, "… du etwas tiefer verstanden hast."]
+  - q: "Ein freier Nachmittag wird dir geschenkt. Am meisten reizt dich …"
     a:
-      - [krieger, "Ich stelle mich an seine Seite und setze mich entschlossen für ihn ein."]
-      - [fuersorgender, "Ich kümmere mich um ihn, höre zu und nehme ihm Lasten ab."]
-      - [liebender, "Ich bin ganz bei ihm und zeige ihm, wie wertvoll er mir ist."]
-      - [schoepfer, "Ich entwickle mit ihm eine Idee, wie es neu weitergehen kann."]
-  - q: Im Wald begegnet dir eine alte, umgestürzte Eiche.
+      - [krieger, "… eine lange Bergtour, die dich so richtig fordert."]
+      - [fuersorgender, "… ein Besuch bei jemandem, der sich riesig darüber freut."]
+      - [liebender, "… ein Nachmittag zu zweit, an dem die Zeit stillsteht."]
+      - [schoepfer, "… ein Vorhaben, an dem du schon lange tüfteln möchtest."]
+  - q: "Welches Tier fühlt sich gerade wie ein Begleiter an?"
     a:
-      - [rebell, "Ich spüre: Aus dem, was fällt, wächst Neues."]
-      - [magier, "Ich lege die Hand auf das Holz und spüre die Kraft, die sich hier verwandelt."]
-      - [weiser, "Ich betrachte die Jahresringe und frage mich, was dieser Baum alles erlebt hat."]
-      - [narr, "Ich balanciere über den Stamm und freue mich wie ein Kind."]
-  - q: Du ziehst an einen neuen Ort.
+      - [rebell, "Die Schlange, die ihre alte Haut abstreift"]
+      - [magier, "Der Rabe, der zwischen den Welten fliegt"]
+      - [weiser, "Die Eule, die auch im Dunkeln klar sieht"]
+      - [narr, "Der Otter, der verspielt durch den Fluss treibt"]
+  - q: "Du ziehst an einen neuen Ort. In den ersten Wochen …"
     a:
-      - [unschuldiger, "Ich gehe offen und voller Vertrauen auf die Nachbarn zu."]
-      - [weggefaehrte, "Ich suche schnell Anschluss, eine Runde, in der ich dazugehöre."]
-      - [entdecker, "Ich erkunde jeden Winkel, jeden Pfad und jeden Aussichtspunkt."]
-      - [herrscher, "Ich richte mich gut ein und übernehme bald eine Aufgabe in der Gemeinschaft."]
-  - q: Was berührt dich an einem Fest am meisten?
+      - [unschuldiger, "… genießt du den Zauber des Anfangs."]
+      - [weggefaehrte, "… lernst du die Nachbarn kennen und findest deine Leute."]
+      - [entdecker, "… erkundest du jeden Pfad und jeden versteckten Winkel."]
+      - [herrscher, "… richtest du alles so ein, dass es auf Dauer trägt."]
+  - q: "Ein Abend wird unvergesslich, wenn …"
     a:
-      - [unschuldiger, "Die heitere Stimmung, in der alles leicht und gut ist."]
-      - [fuersorgender, "Zu sehen, dass alle versorgt sind und sich wohlfühlen."]
-      - [liebender, "Die innigen Gespräche von Herz zu Herz."]
-      - [magier, "Der Moment, in dem eine Runde plötzlich zu etwas Größerem wird."]
-  - q: Du darfst ein Jahr lang etwas Neues lernen.
+      - [unschuldiger, "… alles leicht und heiter ist, wie früher als Kind."]
+      - [fuersorgender, "… jeder Gast mit einem Lächeln nach Hause geht."]
+      - [liebender, "… ein Gespräch so tief wird, dass alles andere verblasst."]
+      - [magier, "… sich etwas fügt, das niemand geplant hat."]
+  - q: "Du hast ein ganzes Jahr frei. Du verbringst es …"
     a:
-      - [krieger, "Etwas, das mich fordert und an meine Grenzen bringt, etwa eine Kampfkunst."]
-      - [entdecker, "Eine fremde Kultur, am liebsten direkt vor Ort."]
-      - [weiser, "Ein Fachgebiet, das ich wirklich in der Tiefe verstehen möchte."]
-      - [narr, "Etwas Verspieltes wie Improtheater, Jonglieren oder Tanzen."]
-  - q: Etwas in deinem Leben fühlt sich schon lange unstimmig an.
+      - [krieger, "… mit einem großen Ziel, auf das du Tag für Tag hinarbeitest."]
+      - [entdecker, "… mit einem Rucksack und einer Landkarte voller weißer Flecken."]
+      - [weiser, "… mit Büchern, Lehrern und viel Zeit zum Nachdenken."]
+      - [narr, "… genau so, wie jeder neue Morgen es dir vorschlägt."]
+  - q: "Etwas in deinem Leben fühlt sich unstimmig an. Was hilft dir am meisten?"
     a:
-      - [weggefaehrte, "Ich schaue ehrlich hin, nehme die Lage an, wie sie ist, und hole mir Rat."]
-      - [rebell, "Ich räume gründlich auf und beende, was mich bindet."]
-      - [schoepfer, "Ich entwerfe mein Leben neu, wie ein Bild auf leerer Leinwand."]
-      - [herrscher, "Ich übernehme Verantwortung, treffe eine Entscheidung und setze sie um."]
-  - q: Was wünschst du dir von einer Freundschaft am meisten?
+      - [weggefaehrte, "Mit jemandem reden, der so etwas selbst kennt."]
+      - [rebell, "Einen klaren Schnitt machen und Platz schaffen."]
+      - [schoepfer, "Ein ganz neues Bild davon entwerfen, wie es sein könnte."]
+      - [herrscher, "Mir einen Überblick verschaffen und entscheiden."]
+  - q: "In einer Freundschaft ist dir am wichtigsten, …"
     a:
-      - [weggefaehrte, "Verlässlichkeit: dass wir in schweren Zeiten füreinander da sind."]
-      - [entdecker, "Freiheit: dass jede und jeder den eigenen Weg gehen darf."]
-      - [liebender, "Tiefe: dass wir einander ganz nah sind."]
-      - [narr, "Leichtigkeit: dass wir miteinander lachen können."]
-  - q: In einer Gruppe steht ein gemeinsames Projekt an.
+      - [weggefaehrte, "… dass man sich aufeinander verlassen kann."]
+      - [entdecker, "… dass jeder seine eigenen Wege gehen darf."]
+      - [liebender, "… dass man sich ganz nah sein kann."]
+      - [narr, "… dass man miteinander albern sein kann."]
+  - q: "In einem gemeinsamen Vorhaben bist du am liebsten die Person, die …"
     a:
-      - [krieger, "Ich packe an und sorge mit Ausdauer dafür, dass wir ankommen."]
-      - [schoepfer, "Ich bringe die zündende Idee ein und gestalte sie aus."]
-      - [herrscher, "Ich übernehme die Leitung, verteile Aufgaben und behalte den Überblick."]
-      - [magier, "Ich schaffe einen Rahmen, in dem Unerwartetes möglich wird."]
-  - q: Du bekommst eine schwere Nachricht.
+      - [krieger, "… dranbleibt, wenn es schwierig wird."]
+      - [schoepfer, "… die erste Skizze aufs leere Blatt bringt."]
+      - [herrscher, "… alle Fäden in der Hand behält."]
+      - [magier, "… den Funken überspringen lässt."]
+  - q: "Eine schwere Nachricht erreicht dich. Was gibt dir als Erstes Halt?"
     a:
-      - [unschuldiger, "Ich halte mich an mein Vertrauen, dass auch darin etwas Gutes liegt."]
-      - [fuersorgender, "Ich denke zuerst an die anderen und schaue, wie es ihnen damit geht."]
-      - [rebell, "Ich lasse den Schmerz zu und erlaube, dass sich etwas in mir wandelt."]
-      - [weiser, "Ich ziehe mich zurück, sortiere die Fakten und suche nach dem Sinn."]
-  - q: Wenn du an deinen Lebenstraum denkst …
+      - [unschuldiger, "Das Vertrauen, dass auch darin etwas Gutes liegt."]
+      - [fuersorgender, "Für die da zu sein, die es ebenso trifft."]
+      - [rebell, "Das Gefühl, dass jetzt etwas Neues beginnen darf."]
+      - [weiser, "Die Ruhe, um zu verstehen, was geschehen ist."]
+  - q: "Welcher Ort zieht dich gerade am meisten an?"
     a:
-      - [entdecker, "… sehe ich ein Leben unterwegs, in dem ich mich immer wieder neu entdecke."]
-      - [rebell, "… sehe ich ein Leben, das alte Muster hinter sich gelassen hat und frei atmet."]
-      - [schoepfer, "… sehe ich ein Werk, das meine Handschrift trägt und bleibt."]
-      - [magier, "… sehe ich, wie Träume Wirklichkeit werden, für mich und andere."]
-  - q: Was macht für dich ein gutes Zuhause aus?
+      - [entdecker, "Ein Hafen, von dem Schiffe in die Ferne aufbrechen"]
+      - [rebell, "Eine Lichtung nach dem Sturm, voller junger Triebe"]
+      - [schoepfer, "Eine Werkstatt voller Material und halbfertiger Ideen"]
+      - [magier, "Ein alter Steinkreis in der Morgendämmerung"]
+  - q: "Welches Licht magst du am liebsten?"
     a:
-      - [unschuldiger, "Geborgenheit, ein Ort, an dem die Welt heil ist."]
-      - [liebender, "Schönheit, Sinnlichkeit und viel Wärme."]
-      - [herrscher, "Klare Strukturen, alles hat seinen Platz."]
-      - [weiser, "Ruhe, Bücher und Raum zum Nachdenken."]
-  - q: Auf einer Wanderung zieht ein Gewitter auf.
+      - [unschuldiger, "Das erste Morgenlicht, wenn der Tag noch ganz frisch ist"]
+      - [liebender, "Kerzenschein, warm und nah"]
+      - [herrscher, "Das klare Mittagslicht, in dem alles deutlich zu sehen ist"]
+      - [weiser, "Die Dämmerung, wenn die Welt still wird"]
+  - q: "Auf einer Wanderung zieht plötzlich ein Gewitter auf."
     a:
-      - [weggefaehrte, "Ich sorge dafür, dass wir als Gruppe zusammenbleiben."]
-      - [krieger, "Ich übernehme die Führung und bringe alle zügig in Sicherheit."]
-      - [fuersorgender, "Ich kümmere mich um die, die sich fürchten oder frieren."]
-      - [narr, "Ich bringe mit einem Lied oder einem Witz alle zum Lachen, bis der Regen vorbei ist."]
-  - q: Woran erkennst du einen gelungenen Tag?
+      - [weggefaehrte, "Du achtest darauf, dass alle zusammenbleiben."]
+      - [krieger, "Du gehst voran und findest den schnellsten Weg ins Trockene."]
+      - [fuersorgender, "Du teilst deine Jacke mit dem, der am meisten friert."]
+      - [narr, "Du stimmst ein Lied an, und es wird ein Abenteuer."]
+  - q: "Ein Tag war gut, wenn …"
     a:
-      - [fuersorgender, "Ich konnte jemandem helfen."]
-      - [herrscher, "Ich habe Wichtiges erledigt und gute Entscheidungen getroffen."]
-      - [magier, "Etwas hat sich wie von selbst gefügt, kleine Wunder inklusive."]
-      - [narr, "Ich habe herzlich gelacht und den Moment genossen."]
-  - q: Jemand stellt deine Überzeugung in Frage.
+      - [fuersorgender, "… jemand durch dich ein wenig leichter durch den Tag kam."]
+      - [herrscher, "… du am Abend weißt, dass alles in guten Händen liegt."]
+      - [magier, "… sich ein kleines Wunder ereignet hat."]
+      - [narr, "… du so gelacht hast, dass dir die Tränen kamen."]
+  - q: "Jemand stellt deine Überzeugung in Frage."
     a:
-      - [unschuldiger, "Ich bleibe freundlich und glaube an seine gute Absicht."]
-      - [krieger, "Ich stehe für meine Überzeugung ein und argumentiere klar."]
-      - [entdecker, "Ich nehme es als Anlass, meinen eigenen Weg neu zu prüfen."]
-      - [rebell, "Ich stelle gleich auch die Regeln dahinter in Frage."]
-  - q: Welches Geschenk würde dich am meisten freuen?
+      - [unschuldiger, "Du hörst freundlich zu und vertraust auf seine gute Absicht."]
+      - [krieger, "Du stehst zu deiner Sicht und vertrittst sie mit klaren Worten."]
+      - [entdecker, "Du nimmst die Frage mit auf deinen Weg und prüfst sie für dich."]
+      - [rebell, "Du nimmst gleich die Regeln dahinter mit unter die Lupe."]
+  - q: "Welches Geschenk würde dich am meisten freuen?"
     a:
-      - [weggefaehrte, "Ein Abend mit guten Freunden, an dem ich einfach dazugehöre."]
-      - [liebender, "Ein Wochenende zu zweit mit einem geliebten Menschen."]
-      - [schoepfer, "Material und Zeit für ein eigenes kreatives Projekt."]
-      - [weiser, "Ein Kurs bei einer inspirierenden Lehrerin oder einem inspirierenden Lehrer."]
+      - [weggefaehrte, "Ein Abend am Lagerfeuer mit alten Freunden"]
+      - [liebender, "Ein Wochenende zu zweit an einem schönen Ort"]
+      - [schoepfer, "Ein Werkzeug, mit dem du etwas Eigenes bauen kannst"]
+      - [weiser, "Ein Gespräch mit einem Menschen, der viel erlebt hat"]
+  - q: "Wenn du an die kommende Zeit denkst, wünschst du dir vor allem …"
+    part: sehnsucht
+    a:
+      - [unschuldiger, "… mehr Leichtigkeit und Vertrauen ins Leben."]
+      - [entdecker, "… einen Aufbruch zu neuen Horizonten."]
+      - [herrscher, "… mehr Klarheit und festen Boden unter den Füßen."]
+      - [liebender, "… mehr Nähe und Herzenswärme."]
+  - q: "Welcher Satz berührt dich gerade?"
+    part: sehnsucht
+    a:
+      - [weggefaehrte, "Ich möchte irgendwo ganz dazugehören."]
+      - [rebell, "Ich möchte etwas Altes endlich hinter mir lassen."]
+      - [magier, "Ich möchte erleben, wie sich Dinge wie von selbst fügen."]
+      - [fuersorgender, "Ich möchte mit dem, was ich gebe, etwas bewirken."]
+  - q: "Welche Kraft würdest du dir gerade gern ausleihen?"
+    part: sehnsucht
+    a:
+      - [krieger, "Die Ausdauer, die bis zum Gipfel trägt"]
+      - [schoepfer, "Die Schaffenskraft, die aus einer Idee ein Werk macht"]
+      - [weiser, "Die Gelassenheit, die das große Ganze sieht"]
+      - [narr, "Die Unbeschwertheit, die jeden Moment zum Spiel macht"]
+  - q: "Welches Bild ruft dich gerade?"
+    part: sehnsucht
+    a:
+      - [unschuldiger, "Eine Blumenwiese im ersten Frühlingslicht"]
+      - [rebell, "Ein Feuer, in dem Altes zu Asche wird"]
+      - [weiser, "Ein stiller Bergsee, in dem sich der Himmel spiegelt"]
+      - [krieger, "Ein Gipfel, im Morgengrauen erreicht"]
+  - q: "Wenn dir drei Monate geschenkt würden, würdest du …"
+    part: sehnsucht
+    a:
+      - [weggefaehrte, "… sie mit Menschen verbringen, bei denen du ganz du selbst bist."]
+      - [entdecker, "… losziehen und schauen, wohin der Weg dich führt."]
+      - [schoepfer, "… das erschaffen, was schon so lange in dir wartet."]
+      - [narr, "… jeden Tag nehmen, wie er kommt, und das Leben feiern."]
+  - q: "Was würde deinem Leben gerade guttun?"
+    part: sehnsucht
+    a:
+      - [fuersorgender, "Eine Aufgabe, bei der du für andere da sein kannst"]
+      - [liebender, "Mehr Leidenschaft und Sinnlichkeit im Alltag"]
+      - [herrscher, "Ein eigener Bereich, für den du Verantwortung trägst"]
+      - [magier, "Ein Wandel, der dich von innen heraus verwandelt"]

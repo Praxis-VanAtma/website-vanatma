@@ -5,7 +5,7 @@
   <div class="wrap">
     <p class="eyebrow">Die zwölf Kräfte in dir</p>
     <h1 id="h1">Dein Archetypen-Kreis</h1>
-    <p class="lead">Zwölf Archetypen, zwölf Kräfte in einem Rad. In 18 kleinen Alltagsszenen entdeckst du, welche drei in dir gerade am stärksten leuchten und welche noch leise sind, und nimmst dir dein Rad als PDF mit.</p>
+    <p class="lead">Zwölf Archetypen, zwölf Kräfte in einem Rad. In 24 kleinen Fragen entdeckst du, welche drei Kräfte in dir gerade am stärksten leuchten, welche Kraft dich ruft und wo du auf deiner Reise stehst. Dein Rad nimmst du dir als PDF mit.</p>
     <div class="btns"><a class="btn btn-light" href="#kreis">Jetzt starten</a></div>
   </div>
 </section>
@@ -13,9 +13,9 @@
 <section class="sec tight-top">
   <div class="wrap">
     <ol class="lb-steps wf-steps">
-      <li><b>Erleben</b><span>18 Situationen aus dem Alltag. Wähle jeweils, was am ehesten und was am wenigsten zu dir passt.</span></li>
+      <li><b>Erleben</b><span>18 kleine Fragen dazu, wie du bist, und 6 dazu, wonach du dich gerade sehnst. Wähle jeweils, was am ehesten und was am wenigsten passt.</span></li>
       <li><b>Spüren</b><span>Dein Rad zeigt, welche Kräfte stark und welche leise sind. Aus den fünf stärksten wählst du deine drei.</span></li>
-      <li><b>Mitnehmen</b><span>Deine drei Archetypen mit Gabe, Schatten und Fragen zum Nachspüren als PDF.</span></li>
+      <li><b>Mitnehmen</b><span>Deine drei Archetypen, deine Phase der Reise und deinen rufenden Archetyp als PDF.</span></li>
     </ol>
     <div class="lb-privacy"><span class="lb-lock" aria-hidden="true">&#10047;</span><p><strong>Dein Archetypen-Kreis gehört ganz dir.</strong> Alle Antworten werden ausschließlich auf deinem Gerät gespeichert, und auch das PDF entsteht direkt in deinem Browser. Eine Kopie erhalten wir nur, wenn du sie uns am Ende ausdrücklich und freiwillig schickst.</p></div>
   </div>
@@ -30,7 +30,7 @@
         <h2 style="margin-top:0">Welche Archetypen wirken in dir?</h2>
         <p>Archetypen sind Urbilder, die in allen Kulturen und Geschichten auftauchen: der Krieger, der Liebende, der Weise, der Narr. Carol S. Pearson beschreibt zwölf von ihnen als Begleiter auf der Reise unseres Lebens, von der Vorbereitung über die Reise bis zur Rückkehr.</p>
         <p>Jeder Mensch trägt alle zwölf in sich. Einige leuchten gerade hell, andere ruhen still und warten auf ihre Zeit. Dein Rad zeigt dir, welche Kräfte dich in dieser Lebensphase tragen und welche noch leise sind.</p>
-        <p><strong>So geht es:</strong> Zu jeder Situation gibt es vier Antworten. Wähle zuerst, was <em>am ehesten</em> zu dir passt, dann, was <em>am wenigsten</em> passt. Folge dabei deinem ersten Gefühl.</p>
+        <p><strong>So geht es:</strong> Zu jeder Frage gibt es vier Antworten. Wähle zuerst, was <em>am ehesten</em> zu dir passt, dann, was <em>am wenigsten</em> passt. Folge dabei deinem ersten Gefühl, alle Antworten sind gleich wertvoll.</p>
         <div class="btns"><button class="btn btn-primary" type="button" id="ak-start">Los geht’s</button></div>
       </div>
     </div>
@@ -61,7 +61,9 @@
       <div>
         <p class="eyebrow">Dein Archetypen-Kreis</p>
         <h2 style="margin-top:0" id="ak-rtitle">Deine drei Archetypen</h2>
+        <div class="ak-phasebox" id="ak-phase"></div>
         <div class="ak-three" id="ak-three"></div>
+        <div class="ak-call" id="ak-call"></div>
         <div class="ak-quiet" id="ak-quiet"></div>
         <p><button type="button" class="wf-back" id="ak-change">Auswahl noch einmal spüren</button></p>
         <label class="lb-name" for="ak-name">Dein Vorname für das PDF <small>(freiwillig)</small></label>

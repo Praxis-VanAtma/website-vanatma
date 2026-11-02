@@ -324,7 +324,7 @@ def build():
     ak_data.pop("areas", None)
     render("archetypenkreis.html", "/archetypen-kreis/", nav="werkzeuge", ak_data=ak_data, ak=ak, ak_events=ak_events,
            title="Archetypen-Kreis · Entdecke deine drei Archetypen · VanAtma",
-           description="Dein Archetypen-Kreis: 18 kleine Alltagsszenen zeigen dir, welche drei der zwölf Archetypen nach Carol S. Pearson in dir am stärksten wirken. Mit PDF zum Mitnehmen, kostenlos von VanAtma.")
+           description="Dein Archetypen-Kreis: 24 kleine Fragen zeigen dir, welche drei der zwölf Archetypen nach Carol S. Pearson in dir am stärksten wirken und welche Kraft dich gerade ruft. Mit PDF, kostenlos von VanAtma.")
     render("werkzeuge.html", "/werkzeuge/", nav="werkzeuge",
            title="Werkzeuge zur Selbstreflexion · Lebensblume, Wertesternbild und Archetypen-Kreis · VanAtma",
            description="Kostenlose Werkzeuge zur Selbstreflexion von VanAtma: die Lebensblume für neun Lebensbereiche, das Wertesternbild für deine sieben wichtigsten Werte und der Archetypen-Kreis, jeweils mit PDF.")
