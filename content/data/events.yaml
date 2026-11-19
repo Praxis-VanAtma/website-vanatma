@@ -97,9 +97,14 @@ events:
     price_value: 69
     price_note: inklusive Brunch
     image: event-mensday.jpg
+    capacity: max. 10 Männer
     description:
-      - Ein Tag unter Männern, mit der Natur verbunden. Wir gehen still durch den Wald, reflektieren, räuchern und feiern schamanische Rituale. Dazu gibt es einen gemeinsamen Brunch.
+      - Ein Tag unter Männern, draußen, bevor das Jahr endet. Du wirst langsamer und spürst dich wieder. Am Abend gehst du mit klarem Kopf nach Hause.
+      - Der Vormittag führt dich über Räuchern, Atem und eine Klangreise zu deinem Thema. Nach dem Brunch gehen wir zwei Stunden schweigend durch den Winterwald, mit fünf Halten an Fels, Bach und Steinhöhle. Zurück in der Praxis schließen Männerkreis und Feuer den Tag.
+      - Erfahrung brauchst du keine. Bring dich selbst mit.
     includes:
-      - Stiller Waldgang zur Reflexion
-      - Räucher- und schamanische Rituale
+      - Räuchern, Atem und eine Klangreise
+      - Gang durch die Elemente — zwei Stunden Stille im Winterwald
+      - Männerkreis und Feuer am Abend
       - Gemeinsamer Brunch
+      - Ein Runenstein und ein Begleitheft für die zwölf Nächte bis zur Sonnenwende
